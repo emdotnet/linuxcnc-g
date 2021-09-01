@@ -1,4 +1,18 @@
 add_custom_command(
+        OUTPUT start-linuxcnc
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_SOURCE_DIR}/start-linuxcnc
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/start-linuxcnc
+)
+
+add_custom_command(
+        OUTPUT activate-linuxcnc
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_SOURCE_DIR}/activate-linuxcnc
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/activate-linuxcnc
+)
+
+add_custom_command(
         OUTPUT halrun
         COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_SOURCE_DIR}/halrun
@@ -19,4 +33,4 @@ add_custom_command(
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/mkconv.sh
 )
 
-add_custom_target(scripts ALL DEPENDS halrun generate_version_script mkconv)
+add_custom_target(scripts ALL DEPENDS halrun generate_version_script mkconv start-linuxcnc activate-linuxcnc)
