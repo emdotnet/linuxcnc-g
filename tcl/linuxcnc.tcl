@@ -18,6 +18,7 @@
 namespace eval linuxcnc {
     variable HOME $env(EMC2_HOME)
     variable BIN_DIR $env(EMC2_BIN_DIR)
+    variable LIB_DIR $env(EMC2_LIB_DIR)
     variable TCL_DIR $env(EMC2_TCL_DIR)
     variable TCL_LIB_DIR $env(EMC2_TCL_LIB_DIR)
     variable TCL_BIN_DIR $env(EMC2_TCL_BIN_DIR)
@@ -62,7 +63,7 @@ load [file join [file dirname [info script]] linuxcnc[info sharedlibextension]]
 
 # Arrange to load hal.so when the 'hal' command is requested
 proc hal {args} {
-    load $::linuxcnc::TCL_LIB_DIR/hal.so
+    load $::linuxcnc::LIB_DIR/hal.so
     eval hal $args
 }
 

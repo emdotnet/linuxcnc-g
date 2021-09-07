@@ -10,3 +10,5 @@ add_custom_command(
         ${CMAKE_CURRENT_SOURCE_DIR}/bin/pickconfig.tcl
         ${PROJECT_BINARY_DIR}/tcl/pickconfig.tcl
 )
+
+add_custom_target(tclfiles ALL DEPENDS linuxcnc.tcl pickconfig.tcl)
