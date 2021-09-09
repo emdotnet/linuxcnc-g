@@ -26,7 +26,7 @@ exec wish "$0" "$@"
 ###############################################################
 
 # Load the linuxcnc.tcl file, which defines variables for various useful paths
-source [file join [file dirname [info script]] .. linuxcnc.tcl]
+source [file join [file dirname [info script]] linuxcnc.tcl]
 
 set logo [linuxcnc::image_search linuxcnc-wizard]
 image create photo machinelogo

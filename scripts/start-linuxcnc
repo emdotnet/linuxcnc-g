@@ -17,7 +17,7 @@
 # Copyright (c) 2004-2009 All rights reserved.
 ################################################################################
 
-source activate-linuxcnc.sh
+source activate-linuxcnc
 
 ################################################################################
 # 0. Values that come from configure
@@ -169,7 +169,7 @@ echo RUN_IN_PLACE=$RUN_IN_PLACE >>$PRINT_FILE
 # common from here..
 INIVAR=inivar
 HALCMD="halcmd $DASHK"
-PICKCONFIG="/usr/local/bin/wish8.6 $LINUXCNC_TCL_DIR/bin/pickconfig.tcl"
+PICKCONFIG="/usr/local/bin/wish8.6 $LINUXCNC_TCL_DIR/pickconfig.tcl"
 LINUXCNC_EMCSH=/usr/local/bin/wish8.6
 
 echo LINUXCNC_DIR=$LINUXCNC_DIR >>$PRINT_FILE
