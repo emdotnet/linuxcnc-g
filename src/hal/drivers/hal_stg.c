@@ -135,11 +135,11 @@
     information, go to www.linuxcnc.org.
 */
 
-#include <asm/io.h>
-#include "rtapi.h"		/* RTAPI realtime OS API */
-#include "rtapi_app.h"		/* RTAPI realtime module decls */
-#include "hal.h"		/* HAL public API decls */
-#include "hal_stg.h"		/* STG related defines */
+#include <sys/io.h>
+#include "rtapi/rtapi.h"		/* RTAPI realtime OS API */
+#include "rtapi/rtapi_app.h"		/* RTAPI realtime module decls */
+#include "hal/hal.h"		/* HAL public API decls */
+#include "hal/drivers/hal_stg.h"		/* STG related defines */
 
 /* module information */
 MODULE_AUTHOR("Alex Joni");

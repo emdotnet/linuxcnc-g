@@ -13,10 +13,10 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program; if not, write to the Free Software
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
-#include "rtapi.h"
-#include "rtapi_app.h"
-#include "hal.h"
-#include "rtapi_string.h"
+#include "rtapi/rtapi.h"
+#include "rtapi/rtapi_app.h"
+#include "hal/hal.h"
+#include "rtapi/rtapi_string.h"
 
 #define MAX 16
 
@@ -56,7 +56,7 @@ static void read_all(struct state *inst, long period);
 
 static void extra_cleanup(void);
 
-#include <asm/io.h>
+#include <sys/io.h>
 #define SHIFT 4
 static inline void pci_8255_outb(int value, hal_u32_t base, int offset) { 
     // int *mem = (int*) base;
@@ -247,7 +247,7 @@ void rtapi_app_exit(void) {
 #define ioaddr (inst->ioaddr)
 #define dir_ (inst->dir_)
 
-#include "rtapi_errno.h"
+#include "rtapi/rtapi_errno.h"
 
 int get_count(void) {
     int i = 0;

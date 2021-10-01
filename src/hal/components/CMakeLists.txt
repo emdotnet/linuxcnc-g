@@ -181,13 +181,17 @@ if(${CMAKE_SYSTEM} MATCHES "Linux")
 	build_component(pci_8255 ../drivers/pci_8255.c ON)
 	build_component(hal_tiro ../drivers/hal_tiro.c ON)
 	build_component(hal_stg ../drivers/hal_stg.c ON)
-	build_component(hal_vti ../drivers/hal_vti.c ON)
-	build_component(hal_evoreg ../drivers/hal_evoreg.c ON)
-	build_component(hal_motenc ../drivers/hal_motenc.c ON)
+	#todo fix vti
+	#build_component(hal_vti ../drivers/hal_vti.c ON)
+	#todo fix evoreg
+	#build_component(hal_evoreg ../drivers/hal_evoreg.c ON)
+	#todo fix motenc
+	#build_component(hal_motenc ../drivers/hal_motenc.c ON)
 	build_component(hal_ax5214h ../drivers/hal_ax5214h.c ON)
 	build_component(hal_speaker ../drivers/hal_speaker.c ON)
 	build_component(hal_skeleton ../drivers/hal_skeleton.c ON)
-	build_component(opto_ac5 ../drivers/opto_ac5.c ON)
+	#todo fix opto ac5 driver
+	#build_component(opto_ac5 ../drivers/opto_ac5.c ON)
 endif()
 
 function(generate_conv_component name typ1 typ2 foo bar baz)
