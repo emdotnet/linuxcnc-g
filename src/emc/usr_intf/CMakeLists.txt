@@ -24,8 +24,9 @@ set(HALUI_SOURCES
         )
 
 add_library(linuxcnc SHARED ${EMCSH_SOURCES})
-target_link_libraries(linuxcnc PRIVATE Python3::Module)
+target_link_libraries(linuxcnc PRIVATE Python3::Python)
 target_link_libraries(linuxcnc PRIVATE pythonplugin)
+target_link_libraries(linuxcnc PRIVATE nml)
 target_link_libraries(linuxcnc PRIVATE nmlintf)
 target_link_libraries(linuxcnc PRIVATE inifile)
 get_uspace_config(linuxcnc)

@@ -21,6 +21,7 @@
 */
 #include "emc/nml_intf/emc.hh"
 #include "emc/nml_intf/emc_nml.hh"
+#include "emc/nml_intf/emcglb.h"
 #include <unistd.h>
 #include "config.h"
 
@@ -43,7 +44,7 @@ int main(int argc, char **argv) {
     if(argc == 2) {
         snprintf(nmlfile,sizeof(nmlfile),"%s",argv[1]);
     } else {
-        snprintf(nmlfile,sizeof(nmlfile),"%s",EMC2_DEFAULT_NMLFILE);
+        snprintf(nmlfile,sizeof(nmlfile),"%s",emc_nmlfile);
     }
     fprintf(stderr,"%s Using: %s\n",argv[0],(char*)nmlfile);
     stat = new RCS_STAT_CHANNEL(emcFormat, "emcStatus", "xemc", nmlfile);

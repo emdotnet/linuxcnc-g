@@ -59,11 +59,11 @@ proc linuxcnc::image_search i {
     error "image $i is not available"
 }
 
-load [file join $::linuxcnc::LIB_DIR/linuxcnc[info sharedlibextension]]
+load [file join $::linuxcnc::LIB_DIR/liblinuxcnc[info sharedlibextension]]
 
 # Arrange to load hal.so when the 'hal' command is requested
 proc hal {args} {
-    load $::linuxcnc::LIB_DIR/hal.so
+    load $::linuxcnc::LIB_DIR/libhal.so
     eval hal $args
 }
 

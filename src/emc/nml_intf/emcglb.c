@@ -17,9 +17,9 @@
 #include "emc/nml_intf/emccfg.h"		/* their initial values */
 #include "emc/nml_intf/emcpos.h"		/* EmcPose */
 
-//char emc_inifile[LINELEN] = DEFAULT_EMC_INIFILE;
+char emc_inifile[LINELEN] = DEFAULT_EMC_INIFILE;
 
-//char emc_nmlfile[LINELEN] = DEFAULT_EMC_NMLFILE;
+char emc_nmlfile[LINELEN];// = DEFAULT_EMC_NMLFILE;
 
 char rs274ngc_startup_code[LINELEN] =
     DEFAULT_RS274NGC_STARTUP_CODE;
