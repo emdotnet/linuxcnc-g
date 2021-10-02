@@ -22,19 +22,19 @@
 #include <tcl.h>
 #include <tk.h>
 
-#include "rcs.hh"
-#include "posemath.h"		// PM_POSE, TO_RAD
-#include "emc.hh"		// EMC NML
-#include "emc_nml.hh"		// EMC NML
-#include "canon.hh"		// CANON_UNITS, CANON_UNITS_INCHES,MM,CM
-#include "emcglb.h"		// EMC_NMLFILE, TRAJ_MAX_VELOCITY, etc.
-#include "emccfg.h"		// DEFAULT_TRAJ_MAX_VELOCITY
-#include "inifile.hh"		// INIFILE
-#include "rcs_print.hh"
-#include "timer.hh"
-#include <rtapi_string.h>
+#include "libnml/rcs/rcs.hh"
+#include "libnml/posemath/posemath.h"		// PM_POSE, TO_RAD
+#include "emc/nml_intf/emc.hh"		// EMC NML
+#include "emc/nml_intf/emc_nml.hh"		// EMC NML
+#include "emc/nml_intf/canon.hh"		// CANON_UNITS, CANON_UNITS_INCHES,MM,CM
+#include "emc/nml_intf/emcglb.h"		// EMC_NMLFILE, TRAJ_MAX_VELOCITY, etc.
+#include "emc/nml_intf/emccfg.h"		// DEFAULT_TRAJ_MAX_VELOCITY
+#include "libnml/inifile/inifile.hh"		// INIFILE
+#include "libnml/rcs/rcs_print.hh"
+#include "libnml/os_intf/timer.hh"
+#include <rtapi/rtapi_string.h>
 
-#include "shcom.hh"
+#include "emc/usr_intf/shcom.hh"
 
 #define setresult(t,s) Tcl_SetObjResult((t), Tcl_NewStringObj((s),-1))
 
