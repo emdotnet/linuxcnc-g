@@ -92,7 +92,7 @@ case "" in
             echo "LinuxCNC requires the real-time kernel  to run."
             echo "Before running LinuxCNC, reboot and choose this kernel at the boot menu."
         else
-            /usr/local/bin/wish8.6 <<EOF
+            wish8.6 <<EOF
                 wm wi .
                 tk_messageBox -type ok \
                     -title LinuxCNC -icon error -title "Realtime Kernel Required" \
@@ -114,7 +114,7 @@ fi
 function ErrorCheck () {
     result=$?
     if [ ! -z "$DISPLAY" ]; then
-        echo "catch {send -async popimage destroy .}; destroy ." | /usr/local/bin/wish8.6
+        echo "catch {send -async popimage destroy .}; destroy ." | wish8.6
     fi
 
     if [ $result -ne 0 ]; then
@@ -140,7 +140,7 @@ and
     $HOME/linuxcnc_print.txt
 as well as in the output of the shell command 'dmesg' and in the terminal"
         else
-            /usr/local/bin/wish8.6 $LINUXCNC_TCL_DIR/show_errors.tcl $DEBUG_FILE $PRINT_FILE
+            wish8.6 $LINUXCNC_TCL_DIR/show_errors.tcl $DEBUG_FILE $PRINT_FILE
         fi
     fi
     rm -f $DEBUG_FILE $PRINT_FILE 2>/dev/null
@@ -169,8 +169,8 @@ echo RUN_IN_PLACE=$RUN_IN_PLACE >>$PRINT_FILE
 # common from here..
 INIVAR=inivar
 HALCMD="halcmd $DASHK"
-PICKCONFIG="/usr/local/bin/wish8.6 $LINUXCNC_TCL_DIR/pickconfig.tcl"
-LINUXCNC_EMCSH=/usr/local/bin/wish8.6
+PICKCONFIG="wish8.6 $LINUXCNC_TCL_DIR/pickconfig.tcl"
+LINUXCNC_EMCSH=wish8.6
 
 echo LINUXCNC_DIR=$LINUXCNC_DIR >>$PRINT_FILE
 echo LINUXCNC_BIN_DIR=$LINUXCNC_BIN_DIR >>$PRINT_FILE
@@ -608,7 +608,7 @@ if [ -f $LOCKFILE ]; then
     echo "No display, no tty, trying to clean up other instance automatically"
     input=y
   else
-    input=$(/usr/local/bin/wish8.6 <<EOF
+    input=$(wish8.6 <<EOF
 wm wi .
 puts [tk_messageBox -title LinuxCNC -message "LinuxCNC is still running.  Restart it?" -type yesno]
 exit
