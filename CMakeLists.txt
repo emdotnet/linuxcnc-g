@@ -33,7 +33,7 @@ else()
 endif()
 
 find_package(Readline REQUIRED)
-find_package(TCL REQUIRED)
+find_package(Tclsh REQUIRED)
 
 option(USE_GTK2 "compile some legacy GTK2 libraries" ON)
 if(USE_GTK2)
