@@ -14,6 +14,8 @@ include_directories("include/")
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
+find_package(X11 REQUIRED)
+
 find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 
 set(BOOSTPYTHON CACHE STRING python${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR})
