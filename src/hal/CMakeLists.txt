@@ -46,9 +46,9 @@ set(HALSH_SOURCES
         )
 add_library(halsh SHARED ${HALSH_SOURCES})
 target_include_directories(halsh PRIVATE ${READLINE_INCLUDE})
-target_include_directories(halsh PRIVATE ${TCL_INCLUDE_PATH})
+target_include_directories(halsh PRIVATE ${TCLSH_INCLUDE_PATH})
 target_link_libraries(halsh PRIVATE ${READLINE_LIBRARIES})
-target_link_libraries(halsh PRIVATE ${TCL_LIBRARY})
+target_link_libraries(halsh PRIVATE ${TCLSH_LIBRARY})
 get_uspace_config(halsh)
 
 add_executable(halstreamer components/streamer_usr.c)
