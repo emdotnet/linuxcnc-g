@@ -2872,6 +2872,8 @@ static int emcTaskExecute(void)
 // called to allocate and init resources
 static int emctask_startup()
 {
+    emc_nmlfile = DEFAULT_EMC_NMLFILE; 
+
     double end;
     int good;
 

@@ -30,6 +30,7 @@
    on Linux System V semaphores will be used instead.
 */
 
+#define _WANT_SEMUN
 #include <sys/sem.h>		/* struct sembuf */
 #include <math.h>		/* fmod() */
 #include <signal.h>
@@ -38,9 +39,9 @@
 typedef int rcs_sem_t;
 #define rcs_sem_t_defined
 
-#include "_sem.h"
-#include "_timer.h"		/* etime() */
-#include "rcs_print.hh"
+#include "libnml/os_intf/_sem.h"
+#include "libnml/os_intf/_timer.h"		/* etime() */
+#include "libnml/rcs/rcs_print.hh"
 
 #define SEM_TAKE (-1)		/* decrement sembuf.sem_op */
 #define SEM_GIVE (1)		/* increment sembuf.sem_op */

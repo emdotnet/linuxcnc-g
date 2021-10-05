@@ -38,13 +38,13 @@
  */
 
 #include "config.h"
-#include "rtapi.h"
-#include "hal.h"
-#include "../hal_priv.h"
-#include "halcmd.h"
-#include "halcmd_commands.h"
-#include "halcmd_completion.h"
-#include <rtapi_mutex.h>
+#include "rtapi/rtapi.h"
+#include "hal/hal.h"
+#include "hal/hal_priv.h"
+#include "hal/utils/halcmd.h"
+#include "hal/utils/halcmd_commands.h"
+#include "hal/utils/halcmd_completion.h"
+#include <rtapi/rtapi_mutex.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -432,7 +432,7 @@ static void print_help_general(int showR)
 }
 
 #ifdef HAVE_READLINE
-#include "halcmd_completion.h"
+#include "hal/utils/halcmd_completion.h"
 
 static int get_input(FILE *srcfile, char *buf, size_t bufsize) {
     static int first_time = 1;

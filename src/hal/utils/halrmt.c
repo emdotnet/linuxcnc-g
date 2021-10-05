@@ -298,15 +298,15 @@
 #include <fnmatch.h>
 #include <getopt.h>
 
-#include "rtapi.h"		/* RTAPI realtime OS API */
-#include <rtapi_mutex.h>
-#include "hal.h"		/* HAL public API decls */
-#include "../hal_priv.h"	/* private HAL decls */
+#include "rtapi/rtapi.h"		/* RTAPI realtime OS API */
+#include <rtapi/rtapi_mutex.h>
+#include "hal/hal.h"		/* HAL public API decls */
+#include "hal/hal_priv.h"	/* private HAL decls */
 /* non-EMC related uses of halrmt may want to avoid libnml dependency */
 #ifndef NO_INI
-#include "inifile.h"		/* iniFind() from libnml */
+#include "libnml/inifile/inifile.h"		/* iniFind() from libnml */
 #endif
-#include <rtapi_string.h>
+#include <rtapi/rtapi_string.h>
 
 /***********************************************************************
 *                  LOCAL FUNCTION DECLARATIONS                         *
@@ -1384,7 +1384,9 @@ static int unloadrt_comp(char *mod_name)
     }
     if ( pid == 0 ) {
 	/* this is the child process - prepare to exec() rmmod */
-	argv[0] = EMC2_BIN_DIR "/linuxcnc_module_helper";
+	char s[1024];
+	snprintf(s, sizeof(s), "%s%s", EMC2_BIN_DIR, "/linuxcnc_module_helper");
+	argv[0] = s;
 	argv[1] = "remove";
 	argv[2] = mod_name;
 	/* add a NULL to terminate the argv array */
@@ -1617,6 +1619,7 @@ static int doLoadUsr(char *args[])
 	exit(-1);
     }
     hal_ready(comp_id);
+
     if ( wait_comp_flag ) {
         int ready = 0, count=0;
         int next;
@@ -1629,6 +1632,8 @@ static int doLoadUsr(char *args[])
             rtapi_mutex_get(&(hal_data->mutex));
             next = hal_data->comp_list_ptr;
             while(next) {
+		fprintf(stderr, "next\n");
+		fflush(stderr);
                 hal_comp_t *comp = SHMPTR(next);
                 next = comp->next_ptr;
                 if(strcmp(comp->name, new_comp_name) == 0 && comp->ready) {

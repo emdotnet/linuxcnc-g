@@ -17,9 +17,6 @@
 
 #include "config.h"
 
-#ifdef __linux__
-#include <sys/fsuid.h>
-#endif
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/un.h>
@@ -39,25 +36,24 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
-#ifdef HAVE_SYS_IO_H
-#include <sys/io.h>
-#endif
 #include <sys/resource.h>
 #include <sys/mman.h>
-#ifdef __linux__
 #include <malloc.h>
-#include <sys/prctl.h>
-#endif
+
 #ifdef __FreeBSD__
 #include <pthread_np.h>
+#else
+#include <sys/fsuid.h>
+#include <sys/io.h>
+#include <sys/prctl.h>
 #endif
 
 #include "config.h"
 
-#include "rtapi.h"
-#include "hal.h"
+#include "rtapi/rtapi.h"
+#include "hal/hal.h"
 #include "hal/hal_priv.h"
-#include "rtapi_uspace.hh"
+#include "rtapi/rtapi_uspace.hh"
 
 #include <string.h>
 #include <boost/lockfree/queue.hpp>
@@ -150,10 +146,10 @@ static int instance_count = 0;
 static int force_exit = 0;
 
 static int do_newinst_cmd(string type, string name, string arg) {
-    void *module = modules["hal_lib"];
+    void *module = modules["hal_rt"];
     if(!module) {
         rtapi_print_msg(RTAPI_MSG_ERR,
-                "newinst: hal_lib is required, but not loaded\n");
+                "newinst: hal_rt is required, but not loaded\n");
         return -1;
     }
 
@@ -459,7 +455,7 @@ static int master(int fd, vector<string> args) {
         perror("pthread_create (queue function)");
         return -1;
     }
-    do_load_cmd("hal_lib", vector<string>()); instance_count = 0;
+    do_load_cmd("hal_rt", vector<string>()); instance_count = 0;
     App(); // force rtapi_app to be created
     int result=0;
     if(args.size()) {
@@ -521,7 +517,7 @@ int main(int argc, char **argv) {
             fprintf(stderr,
                 "Refusing to run as root without fallback UID specified\n"
                 "To run under a debugger with I/O, use e.g.,\n"
-                "    sudo env RTAPI_UID=`id -u` RTAPI_FIFO_PATH=$HOME/.rtapi_fifo gdb " EMC2_BIN_DIR "/rtapi_app\n");
+                "    sudo env RTAPI_UID=`id -u` RTAPI_FIFO_PATH=$HOME/.rtapi_fifo gdb %s/rtapi_app\n", EMC2_BIN_DIR);
             exit(1);
         }
         setreuid(fallback_uid, 0);
@@ -805,10 +801,16 @@ static RtapiApp *makeApp()
     WithRoot r;
     void *dll = nullptr;
     if(detect_xenomai()) {
-        dll = dlopen(EMC2_HOME "/lib/libuspace-xenomai.so.0", RTLD_NOW);
+        char* path = (char*)malloc(1024*sizeof(char));
+        snprintf(path, 1024*sizeof(char), "%s%s", EMC2_HOME, "/lib/libuspace-xenomai.so.0");
+        dll = dlopen(path, RTLD_NOW);
+        free(path);
         if(!dll) fprintf(stderr, "dlopen: %s\n", dlerror());
     } else if(detect_rtai()) {
-        dll = dlopen(EMC2_HOME "/lib/libuspace-rtai.so.0", RTLD_NOW);
+        char* path = (char*)malloc(1024*sizeof(char));
+        snprintf(path, 1024*sizeof(char), "%s%s", EMC2_HOME, "/lib/libuspace-rtai.so.0");
+        dll = dlopen(path, RTLD_NOW);
+        free(path);
         if(!dll) fprintf(stderr, "dlopen: %s\n", dlerror());
     }
     if(dll)

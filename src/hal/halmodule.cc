@@ -23,10 +23,10 @@
 using namespace std;
 
 #include "config.h"
-#include "rtapi.h"
-#include <rtapi_mutex.h>
-#include "hal.h"
-#include "hal_priv.h"
+#include "rtapi/rtapi.h"
+#include <rtapi/rtapi_mutex.h>
+#include "hal/hal.h"
+#include "hal/hal_priv.h"
 
 #define EXCEPTION_IF_NOT_LIVE(retval) do { \
     if(self->hal_id <= 0) { \

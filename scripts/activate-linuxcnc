@@ -1,0 +1,59 @@
+
+export PIDOF="pidof -x"
+export PS=ps
+export AWK=awk
+export GREP=grep
+export IPCS=ipcs
+export KILL=kill
+
+export THIS=$(basename $0)
+
+export RUN_IN_PLACE=yes
+
+export DEBUG_FILE=$(mktemp /tmp/linuxcnc.debug.XXXXXX)
+export PRINT_FILE=$(mktemp /tmp/linuxcnc.print.XXXXXX)
+
+export RTS=0
+
+export EMC2_HOME=$(dirname $0)/..
+export EMC2_HOME_DIR=$(dirname $0)/..
+export EMC2_BIN_DIR=$(dirname $0)/../bin
+export EMC2_LIB_DIR=$(dirname $0)/../lib/
+export EMC2_RTLIB_DIR=$(dirname $0)/../rtlib/
+export EMC2_TCL_DIR=${EMC2_HOME_DIR}/tcl
+export EMC2_TCL_BIN_DIR=${EMC2_HOME_DIR}/tcl
+export EMC2_TCL_SCRIPTS_DIR=${EMC2_HOME_DIR}/tcl
+export EMC2_TCL_LIB_DIR=${EMC2_HOME_DIR}/lib
+export EMC2_HELP_DIR=${EMC2_HOME_DIR}/docs/help
+export EMC2_NCFILES_DIR=${EMC2_HOME_DIR}/nc_files
+export EMC2_LANG_DIR=${EMC2_HOME_DIR}/objects
+export EMC2_IMAGE_DIR=$(dirname $0)/images/
+export HAL_RTMOD_DIR=$(dirname $0)/../rtlib/
+export LINUXCNC_AUX_GLADEVCP=$(dirname $0)/../aux/
+export LINUXCNC_AUX_EXAMPLES=$(dirname $0)/../aux/examples
+
+export PATH=${PATH}:${EMC2_BIN_DIR}
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${EMC2_LIB_DIR}
+export PYTHONPATH=${EMC2_HOME_DIR}/python
+
+export MODULE_EXT=.so
+
+export LINUXCNC_HOME=${EMC2_HOME_DIR}
+export LINUXCNC_BIN_DIR=${EMC2_BIN_DIR}
+export LINUXCNC_LIB_DIR=${EMC2_LIB_DIR}
+export LINUXCNC_RTLIB_DIR=${EMC2_RTLIB_DIR}
+export LINUXCNCVERSION="3.0.0"
+
+export REALTIME=${EMC2_BIN_DIR}/realtime
+export LINUXCNC_TCL_DIR=${EMC2_HOME_DIR}/tcl
+
+# export LINUXCNC_HELP_DIR=/home/end/projects/linuxcnc/docs/help
+# export LINUXCNC_RTLIB_DIR=/home/end/projects/linuxcnc/rtlib
+# export LINUXCNC_CONFIG_PATH="~/linuxcnc/configs:/home/end/projects/linuxcnc/configs"
+# export LINUXCNC_NCFILES_DIR=/home/end/projects/linuxcnc/nc_files
+# export LINUXCNC_LANG_DIR=/home/end/projects/linuxcnc/src/objects
+# export REALTIME=/home/end/projects/linuxcnc/scripts/realtime
+# export LINUXCNC_IMAGEDIR=/home/end/projects/linuxcnc
+# export LINUXCNC_TCL_LIB_DIR=/home/end/projects/linuxcnc/tcl
+# export HALLIB_DIR=/home/end/projects/linuxcnc/lib/hallib; export HALLIB_DIR
+# export HALLIB_PATH=.:$HALLIB_DIR; export HALLIB_PATH

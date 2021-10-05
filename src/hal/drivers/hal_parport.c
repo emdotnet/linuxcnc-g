@@ -95,15 +95,15 @@
     information, go to www.linuxcnc.org.
 */
 
-#include "rtapi.h"		/* RTAPI realtime OS API */
-#include "rtapi_ctype.h"	/* isspace() */
-#include "rtapi_app.h"		/* RTAPI realtime module decls */
+#include "rtapi/rtapi.h"		/* RTAPI realtime OS API */
+#include "rtapi/rtapi_ctype.h"	/* isspace() */
+#include "rtapi/rtapi_app.h"		/* RTAPI realtime module decls */
 
-#include "hal.h"		/* HAL public API decls */
+#include "hal/hal.h"		/* HAL public API decls */
 
-#include <rtapi_io.h>
+#include <rtapi/rtapi_io.h>
 
-#include "hal_parport.h"
+#include "hal/hal_parport.h"
 
 /* module information */
 MODULE_AUTHOR("John Kasunich");
