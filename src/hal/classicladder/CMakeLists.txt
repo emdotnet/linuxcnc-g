@@ -33,7 +33,6 @@ set(CLASSICLADDER_SOURCES
         symbols_gtk.c
         vars_names.c
         vars_access.c
-        ../utils/miscgtk.c
         )
 
 add_executable(classicladder ${CLASSICLADDER_SOURCES})
