@@ -70,10 +70,10 @@ set(HALMETER_SOURCES
         utils/miscgtk.c
         )
 add_executable(halmeter ${HALMETER_SOURCES})
-target_include_directories(halmeter PRIVATE ${GTK2_INCLUDE_DIRS})
+target_include_directories(halmeter PRIVATE ${GTK3_INCLUDE_DIRS})
 target_include_directories(halmeter PRIVATE ${Intl_INCLUDE_DIRS})
 target_link_libraries(halmeter PRIVATE hal)
-target_link_libraries(halmeter PRIVATE ${GTK2_LIBRARIES})
+target_link_libraries(halmeter PRIVATE ${GTK3_LIBRARIES})
 target_link_libraries(halmeter PRIVATE ${Intl_LIBRARIES})
 get_uspace_config(halmeter)
 
@@ -87,11 +87,11 @@ set(HALSCOPE_SOURCES
         utils/miscgtk.c
         )
 add_executable(halscope ${HALSCOPE_SOURCES})
-target_include_directories(halscope PRIVATE ${GTK2_INCLUDE_DIRS})
+target_include_directories(halscope PRIVATE ${GTK3_INCLUDE_DIRS})
 target_include_directories(halscope PRIVATE ${Intl_INCLUDE_DIRS})
 target_link_libraries(halscope PRIVATE hal)
 target_link_libraries(halscope PRIVATE m)
-target_link_libraries(halscope PRIVATE ${GTK2_LIBRARIES})
+target_link_libraries(halscope PRIVATE ${GTK3_LIBRARIES})
 target_link_libraries(halscope PRIVATE ${Intl_LIBRARIES})
 get_uspace_config(halscope)
 
