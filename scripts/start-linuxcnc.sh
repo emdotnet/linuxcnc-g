@@ -17,7 +17,7 @@
 # Copyright (c) 2004-2009 All rights reserved.
 ################################################################################
 
-source activate-linuxcnc
+source activate-linuxcnc.sh
 
 ################################################################################
 # 0. Values that come from configure

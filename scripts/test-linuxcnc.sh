@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source active-linuxcnc
+source activate-linuxcnc.sh
 
 # When running with "-v", the test itself runs in a pipeline with tee, and
 # without pipefail we get the exit value from tee instead of from the test.
@@ -22,26 +22,26 @@ esac
 MYDIR=$(cd $MYDIR; pwd);
 TOPDIR=$(cd $MYDIR/..; pwd)
 
-prefix=@prefix@
-if test @RUN_IN_PLACE@ = yes; then
-    . $TOPDIR/scripts/rip-environment >&/dev/null
-    export HEADERS=@EMC2_HOME@/include
-    export LIBDIR=${TOPDIR}/lib
-    export REALTIME=realtime
-else
-    # Set $EMC2_HOME to $prefix for tests that depend on it
-    export SYSTEM_BUILD=1
-    export EMC2_HOME=@EMC2_HOME@
-    export HEADERS=@includedir@/linuxcnc
-    export LIBDIR=@EMC2_HOME@/lib
-    export LINUXCNC_EMCSH=@WISH@
-    export REALTIME=/etc/init.d/realtime
-    export SUDO=sudo
-fi
-export PYTHON_CPPFLAGS="@PYTHON_CPPFLAGS@"
-export PYTHON_EXTRA_LIBS="@PYTHON_EXTRA_LIBS@"
-export PYTHON_EXTRA_LDFLAGS="@PYTHON_EXTRA_LDFLAGS@"
-export PYTHON_LIBS="@PYTHON_EXTRA_LIBS@"
+#prefix=@prefix@
+#if test @RUN_IN_PLACE@ = yes; then
+#    . $TOPDIR/scripts/rip-environment >&/dev/null
+#    export HEADERS=@EMC2_HOME@/include
+#    export LIBDIR=${TOPDIR}/lib
+#    export REALTIME=realtime
+#else
+#    # Set $EMC2_HOME to $prefix for tests that depend on it
+#    export SYSTEM_BUILD=1
+#    export EMC2_HOME=@EMC2_HOME@
+#    export HEADERS=@includedir@/linuxcnc
+#    export LIBDIR=@EMC2_HOME@/lib
+#    export LINUXCNC_EMCSH=@WISH@
+#    export REALTIME=/etc/init.d/realtime
+#    export SUDO=sudo
+#fi
+#export PYTHON_CPPFLAGS="@PYTHON_CPPFLAGS@"
+#export PYTHON_EXTRA_LIBS="@PYTHON_EXTRA_LIBS@"
+#export PYTHON_EXTRA_LDFLAGS="@PYTHON_EXTRA_LDFLAGS@"
+#export PYTHON_LIBS="@PYTHON_EXTRA_LIBS@"
 
 export RUNTESTS="$(readlink -f $0)"
 

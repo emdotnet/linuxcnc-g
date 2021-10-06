@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(linuxcnc VERSION 2.9.0)
+project(linuxcnc VERSION 3.0.0)
 
 include(CMakeDependentOption)
 include(CMakeDetermineSystem)
@@ -111,6 +111,15 @@ add_compile_definitions(
 if(NOT ${BUILD_UDEV})
     add_compile_definitions(NO_LIBUDEV)
 endif()
+
+# copy test files
+add_custom_command(
+        OUTPUT tests
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_CURRENT_SOURCE_DIR}/tests/
+        ${CMAKE_BINARY_DIR}/tests/
+)
+add_custom_target(testfiles ALL DEPENDS tests)
 
 # configure variables
 #if(${RUN_IN_PLACE})

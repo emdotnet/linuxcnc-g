@@ -1,15 +1,22 @@
 add_custom_command(
-        OUTPUT start-linuxcnc
+        OUTPUT start-linuxcnc.sh
         COMMAND ${CMAKE_COMMAND} -E copy
-        ${CMAKE_CURRENT_SOURCE_DIR}/start-linuxcnc
-        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/start-linuxcnc
+        ${CMAKE_CURRENT_SOURCE_DIR}/start-linuxcnc.sh
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/start-linuxcnc.sh
 )
 
 add_custom_command(
-        OUTPUT activate-linuxcnc
+        OUTPUT activate-linuxcnc.sh
         COMMAND ${CMAKE_COMMAND} -E copy
-        ${CMAKE_CURRENT_SOURCE_DIR}/activate-linuxcnc
-        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/activate-linuxcnc
+        ${CMAKE_CURRENT_SOURCE_DIR}/activate-linuxcnc.sh
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/activate-linuxcnc.sh
+)
+
+add_custom_command(
+        OUTPUT test-linuxcnc.sh
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_SOURCE_DIR}/test-linuxcnc.sh
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test-linuxcnc.sh
 )
 
 add_custom_command(
@@ -33,4 +40,4 @@ add_custom_command(
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/mkconv.sh
 )
 
-add_custom_target(scripts ALL DEPENDS halrun generate_version_script mkconv start-linuxcnc activate-linuxcnc)
+add_custom_target(scripts ALL DEPENDS halrun generate_version_script mkconv start-linuxcnc.sh activate-linuxcnc.sh test-linuxcnc.sh)
