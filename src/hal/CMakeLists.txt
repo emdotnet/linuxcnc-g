@@ -30,9 +30,9 @@ set(HALCMD_SOURCES
         utils/halcmd_completion.c
         )
 add_executable(halcmd ${HALCMD_SOURCES})
-target_include_directories(halcmd PRIVATE ${TCLSH_INCLUDE})
+target_include_directories(halcmd PRIVATE ${TCL_INCLUDE_PATH})
 target_include_directories(halcmd PRIVATE ${READLINE_INCLUDE})
-target_link_libraries(halcmd PRIVATE ${TCLSH_LIBRARIES})
+target_link_libraries(halcmd PRIVATE ${TCL_LIBRARY})
 target_link_libraries(halcmd PRIVATE ${READLINE_LIBRARIES})
 target_link_libraries(halcmd PRIVATE inifile)
 target_link_libraries(halcmd PRIVATE hal)
@@ -46,9 +46,9 @@ set(HALSH_SOURCES
         )
 add_library(halsh SHARED ${HALSH_SOURCES})
 target_include_directories(halsh PRIVATE ${READLINE_INCLUDE})
-target_include_directories(halsh PRIVATE ${TCLSH_INCLUDE_PATH})
+target_include_directories(halsh PRIVATE ${TCL_INCLUDE_PATH})
 target_link_libraries(halsh PRIVATE ${READLINE_LIBRARIES})
-target_link_libraries(halsh PRIVATE ${TCLSH_LIBRARY})
+target_link_libraries(halsh PRIVATE ${TCL_LIBRARY})
 get_uspace_config(halsh)
 
 add_executable(halstreamer components/streamer_usr.c)
