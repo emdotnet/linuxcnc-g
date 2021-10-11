@@ -17,7 +17,8 @@
 # Copyright (c) 2004-2009 All rights reserved.
 ################################################################################
 
-source activate-linuxcnc.sh
+p=$(dirname `realpath $0`)
+source ${p}/activate-linuxcnc.sh
 
 ################################################################################
 # 0. Values that come from configure

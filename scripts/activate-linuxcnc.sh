@@ -15,22 +15,25 @@ export PRINT_FILE=$(mktemp /tmp/linuxcnc.print.XXXXXX)
 
 export RTS=0
 
-export EMC2_HOME=$(dirname $0)/..
-export EMC2_HOME_DIR=$(dirname $0)/..
-export EMC2_BIN_DIR=$(dirname $0)/../bin
-export EMC2_LIB_DIR=$(dirname $0)/../lib/
-export EMC2_RTLIB_DIR=$(dirname $0)/../rtlib/
+rpath=$(dirname `realpath $0`)
+
+export EMC2_HOME=${rpath}/..
+export EMC2_HOME_DIR=${rpath}/..
+export EMC2_BIN_DIR=${rpath}/../bin
+export EMC2_LIB_DIR=${rpath}/../lib/
+export EMC2_RTLIB_DIR=${rpath}/../rtlib/
 export EMC2_TCL_DIR=${EMC2_HOME_DIR}/tcl
 export EMC2_TCL_BIN_DIR=${EMC2_HOME_DIR}/tcl
 export EMC2_TCL_SCRIPTS_DIR=${EMC2_HOME_DIR}/tcl
 export EMC2_TCL_LIB_DIR=${EMC2_HOME_DIR}/lib
 export EMC2_HELP_DIR=${EMC2_HOME_DIR}/docs/help
-export EMC2_NCFILES_DIR=${EMC2_HOME_DIR}/nc_files
+export EMC2_NCFILES_DIR=${EMC2_HOME_DIR}/../nc_files
 export EMC2_LANG_DIR=${EMC2_HOME_DIR}/objects
-export EMC2_IMAGE_DIR=$(dirname $0)/images/
-export HAL_RTMOD_DIR=$(dirname $0)/../rtlib/
-export LINUXCNC_AUX_GLADEVCP=$(dirname $0)/../aux/
-export LINUXCNC_AUX_EXAMPLES=$(dirname $0)/../aux/examples
+export EMC2_IMAGE_DIR=${rpath}/../images/
+export HAL_RTMOD_DIR=${rpath}/../rtlib/
+export LINUXCNC_AUX_GLADEVCP=${rpath}/../aux/
+export LINUXCNC_AUX_EXAMPLES=${rpath}/../aux/examples
+export LINUXCNC_CONFIG_PATH=${EMC2_HOME_DIR}/../configs/
 
 export PATH=${PATH}:${EMC2_BIN_DIR}
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${EMC2_LIB_DIR}
