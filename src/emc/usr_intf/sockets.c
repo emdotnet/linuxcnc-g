@@ -35,8 +35,8 @@
 #include <stdarg.h>
 #include <fcntl.h>
 
-#include "rcs_print.hh"
-#include "sockets.h"
+#include "libnml/rcs/rcs_print.hh"
+#include "emc/usr_intf/sockets.h"
 
 /**************************************************
 *  LCDproc client sockets code...
