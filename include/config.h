@@ -12,6 +12,8 @@ static inline const char* get_linuxcnc_option(const char* name) {
     return opt;
 }
 
+#define PACKAGE_VERSION "3.0.0"
+
 /* LINELEN is used throughout for buffer sizes, length of file name strings,
    etc. Let's just have one instead of a multitude of defines all the same. */
 #define LINELEN 255
@@ -30,7 +32,7 @@ static inline const char* get_linuxcnc_option(const char* name) {
 #define EMC2_PO_DIR get_linuxcnc_option("EMC2_PO_DIR")
 #define MODULE_EXT get_linuxcnc_option("MODULE_EXT")
 #define RTDIR get_linuxcnc_option("RTDIR")
-//#define EMC2_DEFAULT_NMLFILE get_linuxcnc_option("EMC2_DEFAULT_NMLFILE")
+#define EMC2_DEFAULT_NMLFILE get_linuxcnc_option("EMC2_DEFAULT_NMLFILE")
 
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE

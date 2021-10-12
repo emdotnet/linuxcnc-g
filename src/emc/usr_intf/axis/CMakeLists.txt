@@ -1,0 +1,6 @@
+add_library(emcmodule SHARED extensions/emcmodule.cc)
+target_link_libraries(emcmodule PRIVATE Python3::Python)
+target_link_libraries(emcmodule PRIVATE nmlintf)
+target_link_libraries(emcmodule PRIVATE nml)
+target_link_libraries(emcmodule PRIVATE ulapi)
+get_uspace_config(emcmodule)

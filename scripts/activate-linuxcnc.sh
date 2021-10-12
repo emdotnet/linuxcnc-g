@@ -37,7 +37,7 @@ export LINUXCNC_CONFIG_PATH=${EMC2_HOME_DIR}/../configs/
 
 export PATH=${PATH}:${EMC2_BIN_DIR}
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${EMC2_LIB_DIR}
-export PYTHONPATH=${EMC2_HOME_DIR}/python
+export PYTHONPATH=${EMC2_HOME_DIR}/python:${EMC2_HOME_DIR}/lib
 
 export MODULE_EXT=.so
 

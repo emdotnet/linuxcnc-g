@@ -67,3 +67,5 @@ target_link_libraries(halui PRIVATE ulapi)
 target_link_libraries(halui PRIVATE hal)
 target_link_libraries(halui PRIVATE tooldata)
 get_uspace_config(halui)
+
+add_subdirectory(axis)

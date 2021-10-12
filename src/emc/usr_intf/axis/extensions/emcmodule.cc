@@ -24,20 +24,20 @@
 #include <structmember.h>
 #include <inttypes.h>
 #include "config.h"
-#include "rcs.hh"
-#include "emc.hh"
-#include "emc_nml.hh"
-#include "kinematics.h"
+#include "libnml/rcs/rcs.hh"
+#include "emc/nml_intf/emc.hh"
+#include "emc/nml_intf/emc_nml.hh"
+#include "emc/kinematics/kinematics.h"
 #include "config.h"
-#include "inifile.hh"
-#include "timer.hh"
-#include "nml_oi.hh"
-#include "rcs_print.hh"
-#include <rtapi_string.h>
+#include "libnml/inifile/inifile.hh"
+#include "libnml/os_intf/timer.hh"
+#include "libnml/nml/nml_oi.hh"
+#include "libnml/rcs/rcs_print.hh"
+#include <rtapi/rtapi_string.h>
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "tooldata.hh"
+#include "emc/tooldata/tooldata.hh"
 
 #include <cmath>
 
@@ -2387,7 +2387,11 @@ PyMODINIT_FUNC PyInit_linuxcnc(void)
     pthread_mutex_init(&mutex, NULL);
 
     PyModule_AddStringConstant(m, "PREFIX", EMC2_HOME);
-    PyModule_AddStringConstant(m, "SHARE", EMC2_HOME "/share");
+    char* s = (char*)malloc(1024*sizeof(char));
+    snprintf(s, 1024, "%s%s", EMC2_HOME, "/share");
+    PyModule_AddStringConstant(m, "SHARE", s);
+    free(s);
+
     PyModule_AddStringConstant(m, "nmlfile", EMC2_DEFAULT_NMLFILE);
 
     PyModule_AddIntConstant(m, "OPERATOR_ERROR", EMC_OPERATOR_ERROR_TYPE);

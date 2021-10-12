@@ -5,7 +5,7 @@ THIS_VERSION = "1.1"
 import sys
 import os
 import shutil
-import linuxcnc
+import libemcmodule as linuxcnc
 import re
 import datetime
 

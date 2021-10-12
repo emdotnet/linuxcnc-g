@@ -23,6 +23,9 @@ set(BOOSTPYTHON python${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR} CACHE STR
 find_package(Boost COMPONENTS ${BOOSTPYTHON} REQUIRED)
 find_package(Intl REQUIRED)
 
+find_package(Epoxy REQUIRED)
+find_package(GLUT REQUIRED)
+
 if(${CMAKE_SYSTEM} MATCHES "Linux")
 find_package(TIRPC REQUIRED)
 else()
