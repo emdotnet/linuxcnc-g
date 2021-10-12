@@ -60,18 +60,18 @@
 #include <ctype.h>
 #include <getopt.h>
 
-#include "hal.h"                /* access to HAL functions/definitions */
-#include "rtapi.h"                /* rtapi_print_msg */
-#include "rcs.hh"                /* RCS_CMD_CHANNEL */
-#include "emc.hh"                /* EMC NML */
-#include "emc_nml.hh"
-#include "emcglb.h"                /* EMC_NMLFILE, EMC_INIFILE, TOOL_TABLE_FILE */
-#include "inifile.hh"                /* INIFILE */
-#include "nml_oi.hh"
-#include "timer.hh"
-#include "rcs_print.hh"
-#include <rtapi_string.h>
-#include "tooldata.hh"
+#include "hal/hal.h"                /* access to HAL functions/definitions */
+#include "rtapi/rtapi.h"                /* rtapi_print_msg */
+#include "libnml/rcs/rcs.hh"                /* RCS_CMD_CHANNEL */
+#include "emc/nml_intf/emc.hh"                /* EMC NML */
+#include "emc/nml_intf/emc_nml.hh"
+#include "emc/nml_intf/emcglb.h"                /* EMC_NMLFILE, EMC_INIFILE, TOOL_TABLE_FILE */
+#include "libnml/inifile/inifile.hh"                /* INIFILE */
+#include "libnml/nml/nml_oi.hh"
+#include "libnml/os_intf/timer.hh"
+#include "libnml/rcs/rcs_print.hh"
+#include <rtapi/rtapi_string.h>
+#include "emc/tooldata/tooldata.hh"
 
 static bool io_debug = 0;
 #define UNEXPECTED_MSG fprintf(stderr,"UNEXPECTED %s %d\n",__FILE__,__LINE__);
