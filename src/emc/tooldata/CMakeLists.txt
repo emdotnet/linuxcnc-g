@@ -6,6 +6,7 @@ set(TOOLDATA_SOURCES
 
 add_library(tooldata ${TOOLDATA_SOURCES})
 get_uspace_config(tooldata)
+set_property(TARGET tooldata PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 if(${TOOL_NML})
     target_sources(tooldata PRIVATE
