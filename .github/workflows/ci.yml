@@ -28,3 +28,5 @@ jobs:
         cd build
         cmake ..
         make -j
+        cd bin
+        ./test-linuxcnc.sh -v ../../tests/
