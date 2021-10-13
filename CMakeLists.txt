@@ -102,6 +102,7 @@ endif()
 
 add_compile_definitions(
         EMC2_VERSION="3.0.0"
+  	    PACKAGE_VERSION="3.0.0"
         HAVE_READLINE
         SEQUENTIAL_SUPPORT
         HAL_SUPPORT

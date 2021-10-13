@@ -387,7 +387,7 @@ if [ "$retval" != "1.1" ]; then
     esac
 fi
 
-/usr/local/bin/tclsh8.6 $HALLIB_DIR/check_config.tcl "$INIFILE"
+tclsh8.6 $HALLIB_DIR/check_config.tcl "$INIFILE"
 exitval=$?
 case "$exitval" in
   0) ;;
@@ -432,7 +432,7 @@ case $EMCDISPLAY in
 esac
 
 # 2.9. get NML config information
-GetFromIniEx NML_FILE LINUXCNC NML_FILE EMC /usr/home/end/projects/linuxcnc/configs/common/linuxcnc.nml
+GetFromIniEx NML_FILE LINUXCNC NML_FILE EMC ${LINUXCNC_CONFIG_PATH}/common/linuxcnc.nml
 NMLFILE=$retval
 export NMLFILE
 

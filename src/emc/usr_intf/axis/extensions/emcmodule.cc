@@ -2362,8 +2362,8 @@ static struct PyModuleDef linuxcnc_moduledef = {
     emc_methods     /* m_methods */
 };
 
-PyMODINIT_FUNC PyInit_linuxcnc(void);
-PyMODINIT_FUNC PyInit_linuxcnc(void)
+PyMODINIT_FUNC PyInit_emcmodule(void);
+PyMODINIT_FUNC PyInit_emcmodule(void)
 {
         
     verbose_nml_error_messages = 0;

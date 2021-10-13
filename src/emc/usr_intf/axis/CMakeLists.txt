@@ -8,4 +8,6 @@ target_link_libraries(emcmodule PRIVATE tooldata)
 target_link_libraries(emcmodule PRIVATE ${EPOXY_LIBRARIES})
 get_uspace_config(emcmodule)
 
-set_property(TARGET emcmodule PROPERTY POSITION_INDEPENDENT_CODE ON)
+set_target_properties(emcmodule PROPERTIES POSITION_INDEPENDENT_CODE ON
+                                           PREFIX ""
+                                           LIBRARY_OUTPUT_NAME emcmodule)

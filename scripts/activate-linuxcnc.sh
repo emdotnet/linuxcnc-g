@@ -31,6 +31,7 @@ export EMC2_NCFILES_DIR=${EMC2_HOME_DIR}/../nc_files
 export EMC2_LANG_DIR=${EMC2_HOME_DIR}/objects
 export EMC2_IMAGE_DIR=${rpath}/../images/
 export HAL_RTMOD_DIR=${rpath}/../rtlib/
+export HALLIB_DIR=${EMC2_LIB_DIR}/hallib/
 export LINUXCNC_AUX_GLADEVCP=${rpath}/../aux/
 export LINUXCNC_AUX_EXAMPLES=${rpath}/../aux/examples
 export LINUXCNC_CONFIG_PATH=${EMC2_HOME_DIR}/../configs/
