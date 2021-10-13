@@ -41,6 +41,13 @@ add_custom_command(
 )
 
 add_custom_command(
+        OUTPUT realtime
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_SOURCE_DIR}/realtime
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/realtime
+)
+
+add_custom_command(
         OUTPUT linuxcnc.gif
         COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_SOURCE_DIR}/../linuxcnc.gif
@@ -57,7 +64,8 @@ add_custom_command(
 set_source_files_properties(configs PROPERTIES SYMBOLIC "true")
 
 add_custom_target(images ALL DEPENDS linuxcnc.gif linuxcnc-wizard.gif)
-add_custom_target(scripts ALL DEPENDS linuxcnc images halrun generate_version_script mkconv start-linuxcnc.sh activate-linuxcnc.sh test-linuxcnc.sh)
+add_custom_target(scripts ALL DEPENDS linuxcnc realtime images halrun generate_version_script mkconv start-linuxcnc.sh activate-linuxcnc.sh test-linuxcnc.sh)
+
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../configs DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../nc_files DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../)

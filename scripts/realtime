@@ -23,15 +23,15 @@ EOF
     esac
 }
 
-RUN_IN_PLACE=yes
-if [ $RUN_IN_PLACE = yes ]; then
-    # When using RIP make sure PATH includes the directory where rtapi_app
-    # resides
-    PATH=/home/end/projects/linuxcnc/bin:$PATH; export PATH
-fi
+#RUN_IN_PLACE=yes
+#if [ $RUN_IN_PLACE = yes ]; then
+#    # When using RIP make sure PATH includes the directory where rtapi_app
+#    # resides
+#    PATH=/home/end/projects/linuxcnc/bin:$PATH; export PATH
+#fi
 
 CheckConfig(){
-    prefix=/usr/home/end/projects/linuxcnc
+    #prefix=/usr/home/end/projects/linuxcnc
     exec_prefix=${prefix}
     sysconfdir=${prefix}/etc
     if [ $RUN_IN_PLACE = yes ]; then
