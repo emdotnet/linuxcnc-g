@@ -34,7 +34,7 @@ export HAL_RTMOD_DIR=${rpath}/../rtlib/
 export HALLIB_DIR=${rpath}/../hallib/
 export LINUXCNC_AUX_GLADEVCP=${rpath}/../aux/
 export LINUXCNC_AUX_EXAMPLES=${rpath}/../aux/examples
-export LINUXCNC_CONFIG_PATH=$j{EMC2_HOME_DIR}/../configs/
+export LINUXCNC_CONFIG_PATH=${EMC2_HOME_DIR}/../configs/
 
 export EMC2_DEFAULT_NMLFILE=${rpath}/configs/common/linuxcnc.nml
 

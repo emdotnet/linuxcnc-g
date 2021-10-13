@@ -2871,6 +2871,7 @@ static int emcTaskExecute(void)
 
 // called to allocate and init resources
 static int emctask_startup() {
+    printf("test %s\n", DEFAULT_EMC_NMLFILE);
     snprintf(emc_nmlfile, 255*sizeof(char), "%s", DEFAULT_EMC_NMLFILE);
 
     double end;
