@@ -36,7 +36,7 @@ export LINUXCNC_AUX_GLADEVCP=${rpath}/../aux/
 export LINUXCNC_AUX_EXAMPLES=${rpath}/../aux/examples
 export LINUXCNC_CONFIG_PATH=${EMC2_HOME_DIR}/../configs/
 
-export EMC2_DEFAULT_NMLFILE=${rpath}/configs/common/linuxcnc.nml
+export EMC2_DEFAULT_NMLFILE=${LINUXCNC_CONFIG_PATH}/common/linuxcnc.nml
 
 export PATH=${PATH}:${EMC2_BIN_DIR}
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${EMC2_LIB_DIR}

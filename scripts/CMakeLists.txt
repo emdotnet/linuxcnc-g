@@ -27,6 +27,13 @@ add_custom_command(
 )
 
 add_custom_command(
+        OUTPUT rtapi.conf
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_SOURCE_DIR}/rtapi.conf
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/rtapi.conf
+)
+
+add_custom_command(
         OUTPUT generate_version_script
         COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_SOURCE_DIR}/generate_version_script.sh
@@ -64,7 +71,7 @@ add_custom_command(
 set_source_files_properties(configs PROPERTIES SYMBOLIC "true")
 
 add_custom_target(images ALL DEPENDS linuxcnc.gif linuxcnc-wizard.gif)
-add_custom_target(scripts ALL DEPENDS linuxcnc realtime images halrun generate_version_script mkconv start-linuxcnc.sh activate-linuxcnc.sh test-linuxcnc.sh)
+add_custom_target(scripts ALL DEPENDS linuxcnc realtime rtapi.conf images halrun generate_version_script mkconv start-linuxcnc.sh activate-linuxcnc.sh test-linuxcnc.sh)
 
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../configs DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../)

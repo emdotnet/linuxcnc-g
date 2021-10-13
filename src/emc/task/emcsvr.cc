@@ -62,6 +62,7 @@ static int iniLoad(const char *filename)
 	rtapi_strxcpy(emc_nmlfile, inistring);
     } else {
 	// not found, use default
+    rtapi_snprintf(emc_nmlfile, sizeof(emc_nmlfile), "%s", EMC2_DEFAULT_NMLFILE);
     }
     inifile.Find(&tool_channels,"TOOL_CHANNELS","EMC");
     // close it
@@ -117,7 +118,6 @@ int main(int argc, char *argv[])
     set_rcs_print_destination(RCS_PRINT_TO_NULL);
 
     rcs_print("after iniLoad()\n");
-
 
     start_time = etime();
 
