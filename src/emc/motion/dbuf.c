@@ -19,9 +19,9 @@
 #else
 #include <stdlib.h>
 #endif
-#include "rtapi_string.h"
-#include "rtapi_errno.h"
-#include "dbuf.h"
+#include "rtapi/rtapi_string.h"
+#include "rtapi/rtapi_errno.h"
+#include "emc/motion/dbuf.h"
 
 typedef struct dbuf dbuf;
 typedef struct dbuf_iter dbuf_iter;

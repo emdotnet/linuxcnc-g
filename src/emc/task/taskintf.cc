@@ -17,22 +17,22 @@
 #include <string.h>		// memcpy() strncpy()
 #include <unistd.h>             // unlink()
 
-#include "usrmotintf.h"		// usrmotInit(), usrmotReadEmcmotStatus(),
+#include "emc/motion/usrmotintf.h"		// usrmotInit(), usrmotReadEmcmotStatus(),
 				// etc.
-#include "motion.h"		// emcmot_command_t,STATUS, etc.
-#include "motion_debug.h"
-#include "homing.h"
-#include "emc.hh"
-#include "emccfg.h"		// EMC_INIFILE
-#include "emcglb.h"		// EMC_INIFILE
-#include "emc_nml.hh"
-#include "rcs_print.hh"
-#include "timer.hh"
-#include "inifile.hh"
-#include "iniaxis.hh"
-#include "inijoint.hh"
-#include "initraj.hh"
-#include "inihal.hh"
+#include "emc/motion/motion.h"		// emcmot_command_t,STATUS, etc.
+#include "emc/motion/motion_debug.h"
+#include "emc/motion/homing.h"
+#include "emc/nml_intf/emc.hh"
+#include "emc/nml_intf/emccfg.h"		// EMC_INIFILE
+#include "emc/nml_intf/emcglb.h"		// EMC_INIFILE
+#include "emc/nml_intf/emc_nml.hh"
+#include "libnml/rcs/rcs_print.hh"
+#include "libnml/os_intf/timer.hh"
+#include "libnml/inifile/inifile.hh"
+#include "emc/ini/iniaxis.hh"
+#include "emc/ini/inijoint.hh"
+#include "emc/ini/initraj.hh"
+#include "emc/ini/inihal.hh"
 
 value_inihal_data old_inihal_data;
 

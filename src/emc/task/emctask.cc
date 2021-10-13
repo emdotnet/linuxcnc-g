@@ -20,21 +20,21 @@
 #include <limits.h>		// PATH_MAX
 #include <dlfcn.h>
 
-#include "rcs.hh"		// INIFILE
-#include "emc.hh"		// EMC NML
-#include "emc_nml.hh"
-#include "emcglb.h"		// EMC_INIFILE
-#include "interpl.hh"		// NML_INTERP_LIST, interp_list
-#include "canon.hh"		// CANON_VECTOR, GET_PROGRAM_ORIGIN()
-#include "rs274ngc_interp.hh"	// the interpreter
-#include "interp_return.hh"	// INTERP_FILE_NOT_OPEN
-#include "inifile.hh"
-#include "rcs_print.hh"
-#include "task.hh"		// emcTaskCommand etc
-#include "python_plugin.hh"
-#include "taskclass.hh"
-#include "motion.h"
-#include <rtapi_string.h>
+#include "libnml/rcs/rcs.hh"		// INIFILE
+#include "emc/nml_intf/emc.hh"		// EMC NML
+#include "emc/nml_intf/emc_nml.hh"
+#include "emc/nml_intf/emcglb.h"		// EMC_INIFILE
+#include "emc/nml_intf/interpl.hh"		// NML_INTERP_LIST, interp_list
+#include "emc/nml_intf/canon.hh"		// CANON_VECTOR, GET_PROGRAM_ORIGIN()
+#include "emc/rs274ngc/rs274ngc_interp.hh"	// the interpreter
+#include "emc/nml_intf/interp_return.hh"	// INTERP_FILE_NOT_OPEN
+#include "libnml/inifile/inifile.hh"
+#include "libnml/rcs/rcs_print.hh"
+#include "emc/task/task.hh"		// emcTaskCommand etc
+#include "emc/pythonplugin/python_plugin.hh"
+#include "emc/task/taskclass.hh"
+#include "emc/motion/motion.h"
+#include <rtapi/rtapi_string.h>
 
 #define USER_DEFINED_FUNCTION_MAX_DIRS 5
 #define MAX_M_DIRS (USER_DEFINED_FUNCTION_MAX_DIRS+1)

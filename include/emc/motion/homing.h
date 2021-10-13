@@ -1,7 +1,7 @@
 #ifndef HOMING_H
 #define HOMING_H
 
-#include <rtapi_bool.h>
+#include <rtapi/rtapi_bool.h>
 
 /* HOME_* flags (typ set in emc/task/taskintf.cc) */
 #define HOME_IGNORE_LIMITS            1

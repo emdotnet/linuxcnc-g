@@ -71,15 +71,15 @@ to another.
 #ifndef MOTION_H
 #define MOTION_H
 
-#include "posemath.h"		/* PmCartesian, PmPose, pmCartMag() */
-#include "emcpos.h"		/* EmcPose */
-#include "cubic.h"		/* CUBIC_STRUCT, CUBIC_COEFF */
+#include "libnml/posemath/posemath.h"		/* PmCartesian, PmPose, pmCartMag() */
+#include "emc/nml_intf/emcpos.h"		/* EmcPose */
+#include "emc/kinematics/cubic.h"		/* CUBIC_STRUCT, CUBIC_COEFF */
 #include "emcmotcfg.h"		/* EMCMOT_MAX_JOINTS */
-#include "kinematics.h"
+#include "emc/kinematics/kinematics.h"
 #include "simple_tp.h"
-#include "rtapi_limits.h"
+#include "rtapi/rtapi_limits.h"
 #include <stdarg.h>
-#include "rtapi_bool.h"
+#include "rtapi/rtapi_bool.h"
 #include "state_tag.h"
 
 // define a special value to denote an invalid motion ID 

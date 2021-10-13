@@ -24,16 +24,16 @@
 #include <stdlib.h>		// malloc()
 #include <sys/wait.h>
 
-#include "rcs.hh"		// RCS_CMD_CHANNEL, etc.
-#include "rcs_print.hh"
-#include "timer.hh"             // esleep, etc.
-#include "emc.hh"		// EMC NML
-#include "emc_nml.hh"
-#include "emcglb.h"		// EMC_INIFILE
+#include "libnml/rcs/rcs.hh"		// RCS_CMD_CHANNEL, etc.
+#include "libnml/rcs/rcs_print.hh"
+#include "libnml/os_intf/timer.hh"             // esleep, etc.
+#include "emc/nml_intf/emc.hh"		// EMC NML
+#include "emc/nml_intf/emc_nml.hh"
+#include "emc/nml_intf/emcglb.h"		// EMC_INIFILE
 
-#include "python_plugin.hh"
-#include "taskclass.hh"
-#include <rtapi_string.h>
+#include "emc/pythonplugin/python_plugin.hh"
+#include "emc/task/taskclass.hh"
+#include <rtapi/rtapi_string.h>
 
 #define BOOST_PYTHON_MAX_ARITY 4
 #include <boost/python/dict.hpp>

@@ -24,25 +24,25 @@
 #include <boost/python/implicit.hpp>
 #include <boost/python/module.hpp>
 #include <boost/python/overloads.hpp>
-#include <boost_pyenum_macros.hh>
+#include <emc/rs274ngc/boost_pyenum_macros.hh>
 #include <boost/python/scope.hpp>
-#include "python_plugin.hh"
-#include "rs274ngc.hh"
-#include "interp_internal.hh"
-#include "taskclass.hh"
-#include "emcglb.h"		// EMC_INIFILE
+#include "emc/pythonplugin/python_plugin.hh"
+#include "emc/rs274ngc/rs274ngc.hh"
+#include "emc/rs274ngc/interp_internal.hh"
+#include "emc/task/taskclass.hh"
+#include "emc/nml_intf/emcglb.h"		// EMC_INIFILE
 
 namespace bp = boost::python;
 
-#include "array1.hh"
+#include "emc/rs274ngc/array1.hh"
 
 namespace pp = pyplusplus::containers::static_sized;
 
-#include "interp_array_types.hh"  // import activeMCodes,activeGCodes,activeSettings, toolTable
+#include "emc/rs274ngc/interp_array_types.hh"  // import activeMCodes,activeGCodes,activeSettings, toolTable
 
-#include "rcs.hh"		// NML classes, nmlErrorFormat()
-#include "emc.hh"		// EMC NML
-#include "emc_nml.hh"
+#include "libnml/rcs/rcs.hh"		// NML classes, nmlErrorFormat()
+#include "emc/nml_intf/emc.hh"		// EMC NML
+#include "emc/nml_intf/emc_nml.hh"
 
 extern void emctask_quit(int sig);
 extern EMC_STAT *emcStatus;

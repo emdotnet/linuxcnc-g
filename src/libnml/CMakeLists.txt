@@ -52,3 +52,15 @@ target_include_directories(nml PRIVATE ${TIRPC_INCLUDE_DIRS})
 get_uspace_config(nml)
 
 set_property(TARGET nml PROPERTY POSITION_INDEPENDENT_CODE ON)
+
+set(POSEMATH_SOURCES posemath/posemath.cc
+        posemath/_posemath.c
+        posemath/gomath.c
+        posemath/sincos.c
+        )
+
+add_library(posemath SHARED ${POSEMATH_SOURCES})
+get_uspace_config(posemath)
+
+set_property(TARGET posemath PROPERTY POSITION_INDEPENDENT_CODE ON)
+

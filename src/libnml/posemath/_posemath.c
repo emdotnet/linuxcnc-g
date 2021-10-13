@@ -27,12 +27,12 @@
 #include <stdio.h>
 #include <stdarg.h>
 #endif
-#include "posemath.h"
+#include "libnml/posemath/posemath.h"
 
-#include "rtapi_math.h"
+#include "rtapi/rtapi_math.h"
 #include <float.h>
 
-#include "sincos.h"
+#include "libnml/posemath/sincos.h"
 
 /* global error number */
 int pmErrno = 0;

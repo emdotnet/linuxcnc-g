@@ -18,24 +18,24 @@
 #include <sys/stat.h>
 #include <string.h>		/* memcpy() */
 #include <float.h>		/* DBL_MIN */
-#include "motion.h"		/* emcmot_status_t,CMD */
-#include "motion_debug.h"       /* emcmot_debug_t */
-#include "motion_struct.h"      /* emcmot_struct_t */
-#include "emcmotcfg.h"		/* EMCMOT_ERROR_NUM,LEN */
-#include "emcmotglb.h"		/* SHMEM_KEY */
-#include "usrmotintf.h"		/* these decls */
-#include "_timer.h"
-#include "rcs_print.hh"
+#include "emc/motion/motion.h"		/* emcmot_status_t,CMD */
+#include "emc/motion/motion_debug.h"       /* emcmot_debug_t */
+#include "emc/motion/motion_struct.h"      /* emcmot_struct_t */
+#include "emc/motion/emcmotcfg.h"		/* EMCMOT_ERROR_NUM,LEN */
+#include "emc/motion/emcmotglb.h"		/* SHMEM_KEY */
+#include "emc/motion/usrmotintf.h"		/* these decls */
+#include "libnml/os_intf/_timer.h"
+#include "libnml/rcs/rcs_print.hh"
 
-#include "inifile.hh"
+#include "libnml/inifile/inifile.hh"
 
 #define READ_TIMEOUT_SEC 0	/* seconds for timeout */
 #define READ_TIMEOUT_USEC 100000	/* microseconds for timeout */
 
-#include "rtapi.h"
+#include "rtapi/rtapi.h"
 
-#include "dbuf.h"
-#include "stashf.h"
+#include "emc/motion/dbuf.h"
+#include "emc/motion/stashf.h"
 
 static int inited = 0;		/* flag if inited */
 

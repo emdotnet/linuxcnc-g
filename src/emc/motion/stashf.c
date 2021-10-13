@@ -15,10 +15,10 @@
 //    along with this program; if not, write to the Free Software
 //    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#include "stashf.h"
-#include "dbuf.h"
-#include "rtapi_errno.h"
-#include "rtapi_string.h"
+#include "emc/motion/stashf.h"
+#include "emc/motion/dbuf.h"
+#include "rtapi/rtapi_errno.h"
+#include "rtapi/rtapi_string.h"
 #include <stdarg.h>
 
 #ifdef __KERNEL__
@@ -120,17 +120,17 @@ extern int rtapi_snprintf(char *, unsigned long, const char *, ...);
 #endif
 #define EXTRA buf += result; n -= result; if(n<0) n = 0;
 int snprintdbuf(char *buf, int n, struct dbuf_iter *o) {
-#include "stashf_wrap.h"
+#include "emc/motion/stashf_wrap.h"
 }
 
 #ifndef RTAPI
 #define PRINT(...) fprintf(f, ## __VA_ARGS__)
 int fprintdbuf(FILE *f, struct dbuf_iter *o) {
-#include "stashf_wrap.h"
+#include "emc/motion/stashf_wrap.h"
 }
 
 #define PRINT(...) printf(__VA_ARGS__)
 int printdbuf(struct dbuf_iter *o) {
-#include "stashf_wrap.h"
+#include "emc/motion/stashf_wrap.h"
 }
 #endif

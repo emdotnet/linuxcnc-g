@@ -58,9 +58,9 @@
 #include <ctype.h>		// isspace()
 #include <libintl.h>
 #include <locale.h>
-#include "usrmotintf.h"
-#include <rtapi_string.h>
-#include "tooldata.hh"
+#include "emc/motion/usrmotintf.h"
+#include <rtapi/rtapi_string.h>
+#include "emc/tooldata/tooldata.hh"
 
 #if 0
 // Enable this to niftily trap floating point exceptions for debugging
@@ -68,22 +68,22 @@
 fpu_control_t __fpu_control = _FPU_IEEE & ~(_FPU_MASK_IM | _FPU_MASK_ZM | _FPU_MASK_OM);
 #endif
 
-#include "rcs.hh"		// NML classes, nmlErrorFormat()
-#include "emc.hh"		// EMC NML
-#include "emc_nml.hh"
-#include "canon.hh"		// CANON_TOOL_TABLE stuff
-#include "inifile.hh"		// INIFILE
-#include "interpl.hh"		// NML_INTERP_LIST, interp_list
-#include "emcglb.h"		// EMC_INIFILE,NMLFILE, EMC_TASK_CYCLE_TIME
-#include "interp_return.hh"	// public interpreter return values
-#include "interp_internal.hh"	// interpreter private definitions
-#include "rcs_print.hh"
-#include "timer.hh"
-#include "nml_oi.hh"
-#include "task.hh"		// emcTaskCommand etc
-#include "taskclass.hh"
-#include "motion.h"             // EMCMOT_ORIENT_*
-#include "inihal.hh"
+#include "libnml/rcs/rcs.hh"		// NML classes, nmlErrorFormat()
+#include "emc/nml_intf/emc.hh"		// EMC NML
+#include "emc/nml_intf/emc_nml.hh"
+#include "emc/nml_intf/canon.hh"		// CANON_TOOL_TABLE stuff
+#include "libnml/inifile/inifile.hh"		// INIFILE
+#include "emc/nml_intf/interpl.hh"		// NML_INTERP_LIST, interp_list
+#include "emc/nml_intf/emcglb.h"		// EMC_INIFILE,NMLFILE, EMC_TASK_CYCLE_TIME
+#include "emc/nml_intf/interp_return.hh"	// public interpreter return values
+#include "emc/rs274ngc/interp_internal.hh"	// interpreter private definitions
+#include "libnml/rcs/rcs_print.hh"
+#include "libnml/os_intf/timer.hh"
+#include "libnml/nml/nml_oi.hh"
+#include "emc/task/task.hh"		// emcTaskCommand etc
+#include "emc/task/taskclass.hh"
+#include "emc/motion/motion.h"             // EMCMOT_ORIENT_*
+#include "emc/ini/inihal.hh"
 
 static emcmot_config_t emcmotConfig;
 
@@ -2870,9 +2870,8 @@ static int emcTaskExecute(void)
 }
 
 // called to allocate and init resources
-static int emctask_startup()
-{
-    emc_nmlfile = DEFAULT_EMC_NMLFILE; 
+static int emctask_startup() {
+    snprintf(emc_nmlfile, 255*sizeof(char), "%s", DEFAULT_EMC_NMLFILE);
 
     double end;
     int good;

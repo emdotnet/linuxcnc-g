@@ -16,8 +16,8 @@
 * Copyright (c) 2004 All rights reserved.
 ********************************************************************/
 
-#include "emcmotglb.h"		/* these decls */
-#include "emcmotcfg.h"		/* initial values */
+#include "emc/motion/emcmotglb.h"		/* these decls */
+#include "emc/motion/emcmotcfg.h"		/* initial values */
 
 char EMCMOT_INIFILE[EMCMOT_INIFILE_LEN] = DEFAULT_EMCMOT_INIFILE;
 

@@ -18,8 +18,8 @@
 #ifndef TASKCLASS_HH
 #define TASKCLASS_HH
 
-#include "emc.hh"
-#include "inifile.hh"
+#include "emc/nml_intf/emc.hh"
+#include "libnml/inifile/inifile.hh"
 
 class Task {
 public:

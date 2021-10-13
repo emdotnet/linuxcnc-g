@@ -19,8 +19,8 @@
 
 #include "config.h"
 
-#include "rtapi_math.h"
-#include "sincos.h"
+#include "rtapi/rtapi_math.h"
+#include "libnml/posemath/sincos.h"
 
 void pm_sincos(double x, double *sx, double *cx)
 {

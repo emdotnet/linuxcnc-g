@@ -7,7 +7,7 @@
 #   2) if trivkins, check consistency of [JOINT_] and [AXIS_]
 #      MIN_LIMIT and MAX_LIMIT
 #----------------------------------------------------------------------
-lappend auto_path "/home/end/projects/linuxcnc-cmake/build/tcl/"
+lappend auto_path $::env(EMC2_TCL_LIB_DIR)
 set ::mandatory_items {KINS KINEMATICS
                        KINS JOINTS
                       }

@@ -20,16 +20,16 @@
 extern int printf(const char * fmt, ...);
 #include <stddef.h>		/* NULL */
 
-#include "rtapi_math.h"
+#include "rtapi/rtapi_math.h"
 #include <float.h>
 
-#include "sincos.h"
+#include "libnml/posemath/sincos.h"
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
-#include "gotypes.h"		/* GoResult ,Real, etc */
-#include "gomath.h"		/* these decls, GoCartesian, etc. */
+#include "libnml/posemath/gotypes.h"		/* GoResult ,Real, etc */
+#include "libnml/posemath/gomath.h"		/* these decls, GoCartesian, etc. */
 
 go_real go_cbrt(go_real x)
 {
