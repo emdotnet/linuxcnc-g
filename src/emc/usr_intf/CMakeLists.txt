@@ -26,6 +26,7 @@ set(HALUI_SOURCES
 add_library(linuxcnc SHARED ${EMCSH_SOURCES})
 target_include_directories(linuxcnc PRIVATE ${TCL_INCLUDE_PATH})
 target_link_libraries(linuxcnc PRIVATE ${TCL_LIBRARY})
+target_link_libraries(linuxcnc PRIVATE ${TK_LIBRARY})
 target_link_libraries(linuxcnc PRIVATE X11::Xinerama)
 target_link_libraries(linuxcnc PRIVATE Python3::Python)
 target_link_libraries(linuxcnc PRIVATE pythonplugin)
