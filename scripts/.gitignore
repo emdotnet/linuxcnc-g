@@ -3,7 +3,6 @@ linuxcnc-python
 linuxcnc_info
 rip-environment
 haltcl
-rtapi.conf
 runtests
 linuxcncmkdesktop
 linuxcnc_var
