@@ -133,6 +133,8 @@ static int emcIoNmlGet()
 {
     int retval = 0;
 
+    rtapi_snprintf(emc_nmlfile, sizeof(emc_nmlfile), "%s", EMC2_DEFAULT_NMLFILE);
+
     /* Try to connect to EMC IO command buffer */
     if (emcioCommandBuffer == 0) {
         emcioCommandBuffer =

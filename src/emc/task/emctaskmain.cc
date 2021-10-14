@@ -2871,7 +2871,7 @@ static int emcTaskExecute(void)
 
 // called to allocate and init resources
 static int emctask_startup() {
-    snprintf(emc_nmlfile, 255*sizeof(char), "%s", DEFAULT_EMC_NMLFILE);
+    rtapi_snprintf(emc_nmlfile, 255*sizeof(char), "%s", DEFAULT_EMC_NMLFILE);
 
     double end;
     int good;
