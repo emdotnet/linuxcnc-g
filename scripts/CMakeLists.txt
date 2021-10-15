@@ -1,11 +1,4 @@
 add_custom_command(
-        OUTPUT start-linuxcnc.sh
-        COMMAND ${CMAKE_COMMAND} -E copy
-        ${CMAKE_CURRENT_SOURCE_DIR}/start-linuxcnc.sh
-        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/start-linuxcnc.sh
-)
-
-add_custom_command(
         OUTPUT activate-linuxcnc.sh
         COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_SOURCE_DIR}/activate-linuxcnc.sh
@@ -113,3 +106,11 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../python DESTINATION ${CMAKE_RUNTIME_OUTP
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../hallib DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../tcl DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../share DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../)
+
+add_custom_command(
+	TARGET scripts POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_SOURCE_DIR}/start-linuxcnc.sh
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/linuxcnc
+)
+
