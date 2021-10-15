@@ -68,10 +68,39 @@ add_custom_command(
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../images/linuxcnc-wizard.gif
 )
 
+add_custom_command(
+        OUTPUT axis
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/axis.py
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/axis
+)
+
+add_custom_command(
+        OUTPUT axis-remote
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/axis-remote.py
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/axis-remote
+)
+
+add_custom_command(
+        OUTPUT debuglevel
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/debuglevel.py
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/debuglevel
+)
+
+add_custom_command(
+        OUTPUT hal_manualtoolchange
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/hal_manualtoolchange.py
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/hal_manualtoolchange
+)
+add_custom_target(axis-scripts ALL DEPENDS axis axis-remote debuglevel hal_manualtoolchange)
+
 set_source_files_properties(configs PROPERTIES SYMBOLIC "true")
 
 add_custom_target(images ALL DEPENDS linuxcnc.gif linuxcnc-wizard.gif)
-add_custom_target(scripts ALL DEPENDS linuxcnc realtime rtapi.conf images halrun generate_version_script mkconv start-linuxcnc.sh activate-linuxcnc.sh test-linuxcnc.sh)
+add_custom_target(scripts ALL DEPENDS axis-scripts linuxcnc realtime rtapi.conf images halrun generate_version_script mkconv start-linuxcnc.sh activate-linuxcnc.sh test-linuxcnc.sh)
 
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../configs DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../)
