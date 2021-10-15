@@ -9,6 +9,7 @@ export KILL=kill
 export THIS=$(basename $0)
 
 export RUN_IN_PLACE=yes
+export RTPREFIX="uspace"
 
 export DEBUG_FILE=$(mktemp /tmp/linuxcnc.debug.XXXXXX)
 export PRINT_FILE=$(mktemp /tmp/linuxcnc.print.XXXXXX)
@@ -37,6 +38,7 @@ export LINUXCNC_AUX_EXAMPLES=${rpath}/../aux/examples
 export LINUXCNC_CONFIG_PATH=${EMC2_HOME_DIR}/../configs/
 
 export EMC2_DEFAULT_NMLFILE=${LINUXCNC_CONFIG_PATH}/common/linuxcnc_big.nml
+export EMC2_DEFAULT_TOOLTABLE=${LINUXCNC_CONFIG_PATH}/sim/sim.tbl
 
 export PATH=${PATH}:${EMC2_BIN_DIR}
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${EMC2_LIB_DIR}
