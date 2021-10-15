@@ -17,11 +17,11 @@
  */
 // keep linker happy so TaskMod can be resolved
 
-#include "rcs.hh"		// NML classes, nmlErrorFormat()
-#include "emc.hh"		// EMC NML
-#include "emc_nml.hh"
-#include "rs274ngc.hh"
-#include "rs274ngc_interp.hh"
+#include "libnml/rcs/rcs.hh"		// NML classes, nmlErrorFormat()
+#include "emc/nml_intf/emc.hh"		// EMC NML
+#include "emc/nml_intf/emc_nml.hh"
+#include "emc/rs274ngc/rs274ngc.hh"
+#include "emc/rs274ngc/rs274ngc_interp.hh"
 
 EMC_STAT *emcStatus = new EMC_STAT;
 

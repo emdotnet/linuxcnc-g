@@ -31,17 +31,17 @@
 * Last change:
 ********************************************************************/
 
-#include <saicanon.hh>
-#include "tooldata.hh"
+#include <emc/sai/saicanon.hh>
+#include "emc/tooldata/tooldata.hh"
 
-#include "rs274ngc.hh"
-#include "rs274ngc_interp.hh"
+#include "emc/rs274ngc/rs274ngc.hh"
+#include "emc/rs274ngc/rs274ngc_interp.hh"
 #include <math.h>
 #include <string.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <errno.h>
-#include <rtapi_string.h>
+#include <rtapi/rtapi_string.h>
 
 #define UNEXPECTED_MSG fprintf(stderr,"UNEXPECTED %s %d\n",__FILE__,__LINE__);
 

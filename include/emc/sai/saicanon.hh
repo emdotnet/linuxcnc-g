@@ -2,8 +2,8 @@
 #define SAICANON_HH
 
 #include <stdio.h>
-#include <interp_fwd.hh>
-#include <canon.hh>
+#include <emc/rs274ngc/interp_fwd.hh>
+#include <emc/nml_intf/canon.hh>
 #include <string>
 
 struct StandaloneInterpInternals;

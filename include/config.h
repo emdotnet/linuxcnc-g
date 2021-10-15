@@ -34,6 +34,7 @@ static inline const char* get_linuxcnc_option(const char* name) {
 #define RTDIR get_linuxcnc_option("RTDIR")
 #define EMC2_DEFAULT_NMLFILE get_linuxcnc_option("EMC2_DEFAULT_NMLFILE")
 #define DEFAULT_EMC_NMLFILE EMC2_DEFAULT_NMLFILE
+#define EMC2_DEFAULT_TOOLTABLE get_linuxcnc_option("EMC2_DEFAULT_TOOLTABLE")
 
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE
