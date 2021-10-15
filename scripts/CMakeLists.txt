@@ -92,6 +92,63 @@ add_custom_command(
         ${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/hal_manualtoolchange.py
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/hal_manualtoolchange
 )
+
+add_custom_command(
+		OUTPUT haltest
+		USE_SOURCE_PERMISSIONS
+		COMMAND ${CMAKE_COMMAND} -E copy
+		${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/haltest.py
+		${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/haltest
+)
+
+add_custom_command(
+		OUTPUT image-to-gcode
+		USE_SOURCE_PERMISSIONS
+		COMMAND ${CMAKE_COMMAND} -E copy
+		${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/image-to-gcode.py
+		${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/image-to-gcode
+)
+
+add_custom_command(
+		OUTPUT lintini
+		USE_SOURCE_PERMISSIONS
+		COMMAND ${CMAKE_COMMAND} -E copy
+		${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/linitini.py
+		${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/lintini
+)
+
+add_custom_command(
+		OUTPUT linuxcnctop
+		USE_SOURCE_PERMISSIONS
+		COMMAND ${CMAKE_COMMAND} -E copy
+		${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/linuxcnctop.py
+		${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/linuxcnctop
+)
+
+add_custom_command(
+OUTPUT mdi
+USE_SOURCE_PERMISSIONS
+COMMAND ${CMAKE_COMMAND} -E copy
+${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/mdi.py
+${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/mdi
+)
+
+add_custom_command(
+		OUTPUT teach-in
+		USE_SOURCE_PERMISSIONS
+		COMMAND ${CMAKE_COMMAND} -E copy
+		${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/teach-in.py
+		${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/teach-in
+)
+
+add_custom_command(
+		OUTPUT tracking-test
+		USE_SOURCE_PERMISSIONS
+		COMMAND ${CMAKE_COMMAND} -E copy
+		${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/tracking-test.py
+		${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tracking-test
+)
+
 add_custom_target(axis-scripts ALL DEPENDS axis axis-remote debuglevel hal_manualtoolchange)
 
 set_source_files_properties(configs PROPERTIES SYMBOLIC "true")
