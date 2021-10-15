@@ -1,4 +1,4 @@
-import emcmodule as linuxcnc
+import linuxcnc
 import os,sys
 # path to the configuration the user requested
 # used to see if the is local handler files to use

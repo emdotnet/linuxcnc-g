@@ -30,7 +30,7 @@ else:
     from .hal_widgets import _HalWidgetBase
     from .hal_actions import _EMC_ActionBase, ensure_mode
 
-import emcmodule as linuxcnc
+import linuxcnc
 from hal_glib import GStat
 
 # path to TCL for external programs eg. halshow

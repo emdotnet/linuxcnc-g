@@ -23,7 +23,7 @@
 #
 
 import os
-import emcmodule as linuxcnc
+import linuxcnc
 
 class Private_Data:
     def __init__(self,app,bin_dir,base_dir):

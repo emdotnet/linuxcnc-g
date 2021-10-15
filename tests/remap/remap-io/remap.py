@@ -1,4 +1,4 @@
-import emcmodule as linuxcnc
+import linuxcnc
 import emccanon
 import interpreter
 

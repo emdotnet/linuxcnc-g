@@ -22,7 +22,7 @@ mdi.py may be specified on the commandline, e.g.,
         bin/mdi g0 x0
 '''
 import sys, os
-import emcmodule as linuxcnc
+import linuxcnc
 
 #if len(sys.argv) > 1:
 #    linuxcnc.nmlfile = sys.argv[1]

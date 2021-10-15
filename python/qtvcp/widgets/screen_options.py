@@ -18,7 +18,7 @@ import os
 import time
 
 from PyQt5 import QtCore, QtWidgets, QtGui
-import emcmodule as linuxcnc
+import linuxcnc
 
 from qtvcp.widgets.widget_baseclass import _HalWidgetBase
 from qtvcp.widgets.xembed import XEmbeddable

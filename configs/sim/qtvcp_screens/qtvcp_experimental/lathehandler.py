@@ -26,7 +26,7 @@ import hal
 import hal_glib
 import gtk
 import glib
-import emcmodule as linuxcnc
+import linuxcnc
 import rsvg
 import cairo
 import signal

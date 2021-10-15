@@ -32,7 +32,7 @@ from gi.repository import GObject
 
 import os
 
-import emcmodule as linuxcnc
+import linuxcnc
 import gremlin
 import rs274.glcanon
 import gcode

@@ -64,7 +64,7 @@ import re
 import getopt
 import datetime
 import subprocess
-import emcmodule as linuxcnc
+import linuxcnc
 import hashlib
 import glob
 import shutil

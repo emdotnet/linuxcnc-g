@@ -4,7 +4,7 @@ import subprocess
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import Qt, QProcess
 
-import emcmodule as linuxcnc
+import linuxcnc
 import hal
 
 # Set up logging

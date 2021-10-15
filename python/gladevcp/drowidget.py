@@ -16,7 +16,7 @@
 
 import sys,os
 import math
-import emcmodule as linuxcnc
+import linuxcnc
 
 import gi
 gi.require_version("Gtk","3.0")

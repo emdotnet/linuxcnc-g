@@ -13,7 +13,7 @@ How to use this test script:
 
 """
 
-import emcmodule as linuxcnc
+import linuxcnc
 
 c = linuxcnc.command()
 #NOTE probably should be done already paused

@@ -22,7 +22,7 @@ import pyodbc
 try:
     import emc
 except ImportError:
-    import emcmodule as linuxcnc as emc  # ini only
+    import linuxcnc as emc  # ini only
 import sys, traceback
 
 class SqlToolAccess(object):

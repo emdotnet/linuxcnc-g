@@ -21,7 +21,7 @@
 
 import xml.dom.minidom
 import sys, os
-import emcmodule as linuxcnc
+import linuxcnc
 import pyvcp_widgets
 import hal 
 import time

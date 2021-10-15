@@ -2703,7 +2703,7 @@ is set via a HAL pin, which causes the widget's scale to readjust dynamically:
 
 [source,python]
 ----------------------------------
-import emcmodule as linuxcnc
+import linuxcnc
 import os
 import hal
 import hal_glib

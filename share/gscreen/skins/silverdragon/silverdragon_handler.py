@@ -10,7 +10,7 @@ from gi.repository import GObject as gobject
 from gi.repository import Pango as pango
 import hal
 import hal_glib
-import emcmodule as linuxcnc
+import linuxcnc
 from time import strftime
 
 # constants

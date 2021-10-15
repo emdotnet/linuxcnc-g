@@ -1,5 +1,5 @@
 import hal
-import emcmodule as linuxcnc
+import linuxcnc
 import json
 
 DBG_state = 0

@@ -15,7 +15,7 @@
 # GNU General Public License for more details.
 
 import sys,os
-import emcmodule as linuxcnc
+import linuxcnc
 
 import gi
 gi.require_version('Gtk', '3.0')

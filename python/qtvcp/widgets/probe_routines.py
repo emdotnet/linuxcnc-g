@@ -6,7 +6,7 @@ import sys
 import time
 import select
 import math
-import emcmodule as linuxcnc
+import linuxcnc
 from qtvcp.core import Status, Action
 from qtvcp import logger
 LOG = logger.getLogger(__name__)

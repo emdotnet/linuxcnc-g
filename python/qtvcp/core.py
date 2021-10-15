@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # vim: sts=4 sw=4 et
 
-import emcmodule as linuxcnc
+import linuxcnc
 import gi
 from gi.repository import GObject as gobject
 

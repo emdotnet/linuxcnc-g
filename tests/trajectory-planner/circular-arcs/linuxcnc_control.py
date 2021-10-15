@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 '''Copied from m61-test'''
 
-import emcmodule as linuxcnc
+import linuxcnc
 import os
 from time import sleep
 

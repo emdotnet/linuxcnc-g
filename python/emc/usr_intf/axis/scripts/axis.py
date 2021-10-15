@@ -69,7 +69,7 @@ import nf
 import locale
 import bwidget
 from math import hypot, atan2, sin, cos, pi, sqrt
-import emcmodule as linuxcnc
+import linuxcnc
 from glnav import *
 
 if "AXIS_NO_HAL" in os.environ:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import emcmodule as linuxcnc, hal
+import linuxcnc, hal
 import sys, os
 
 # Set up pins

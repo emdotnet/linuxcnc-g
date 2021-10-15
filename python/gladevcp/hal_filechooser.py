@@ -24,7 +24,7 @@ from gi.repository import Gtk as gtk
 from gi.repository import GObject as gobject
 
 from .hal_widgets import _HalWidgetBase
-import emcmodule as linuxcnc
+import linuxcnc
 from hal_glib import GStat
 
 _ = lambda x: x

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import emcmodule as linuxcnc
+import linuxcnc
 import hal
 
 import math

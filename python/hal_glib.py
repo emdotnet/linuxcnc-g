@@ -2,7 +2,7 @@
 # vim: sts=4 sw=4 et
 
 import _hal, hal
-import emcmodule as linuxcnc
+import linuxcnc
 import os
 import math
 

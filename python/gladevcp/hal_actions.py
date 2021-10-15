@@ -24,7 +24,7 @@ import time
 import re, string
 
 from .hal_widgets import _HalWidgetBase
-import emcmodule as linuxcnc
+import linuxcnc
 from hal_glib import GStat
 
 _ = lambda x: x

@@ -23,7 +23,7 @@
 #
 # most entries are default, a few, for axes and joints, to make an XYZ machine
 
-import emcmodule as linuxcnc
+import linuxcnc
 class fakeStatus():
     def __init__(self):
 

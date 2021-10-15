@@ -371,7 +371,7 @@ It's broken up in sections for ease of discussion. +
 ############################
 import sys
 import os
-import emcmodule as linuxcnc
+import linuxcnc
 
 from PyQt5 import QtCore, QtWidgets
 

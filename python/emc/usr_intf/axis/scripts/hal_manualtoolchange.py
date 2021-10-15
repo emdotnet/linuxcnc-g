@@ -5,7 +5,7 @@ BASE = os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), ".."))
 
 gettext.install("linuxcnc", localedir=os.path.join(BASE, "share", "locale"))
 
-import emcmodule as linuxcnc
+import linuxcnc
 import hal
 
 _after = None

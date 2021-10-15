@@ -1,5 +1,5 @@
 import os
-import emcmodule as linuxcnc
+import linuxcnc
 import collections
 
 # Set up logging

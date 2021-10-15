@@ -1,4 +1,4 @@
-import emcmodule as linuxcnc
+import linuxcnc
 
 # Set up logging
 from . import logger

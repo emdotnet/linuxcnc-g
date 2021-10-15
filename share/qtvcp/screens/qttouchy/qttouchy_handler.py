@@ -3,7 +3,7 @@
 ############################
 import sys
 import os
-import emcmodule as linuxcnc
+import linuxcnc
 import hal
 
 from PyQt5 import QtCore, QtWidgets, QtGui

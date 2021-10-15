@@ -20,7 +20,7 @@
 ###############################################################################
 
 from PyQt5 import QtCore, QtWidgets
-import emcmodule as linuxcnc
+import linuxcnc
 
 from qtvcp.widgets.widget_baseclass import _HalWidgetBase
 from qtvcp.widgets.simple_widgets import Indicated_PushButton
