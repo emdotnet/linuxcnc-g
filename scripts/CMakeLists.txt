@@ -70,6 +70,7 @@ add_custom_command(
 
 add_custom_command(
         OUTPUT axis
+        USE_SOURCE_PERMISSIONS
         COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/axis.py
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/axis
@@ -77,6 +78,7 @@ add_custom_command(
 
 add_custom_command(
         OUTPUT axis-remote
+        USE_SOURCE_PERMISSIONS
         COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/axis-remote.py
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/axis-remote
@@ -84,6 +86,7 @@ add_custom_command(
 
 add_custom_command(
         OUTPUT debuglevel
+        USE_SOURCE_PERMISSIONS
         COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/debuglevel.py
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/debuglevel
@@ -91,6 +94,7 @@ add_custom_command(
 
 add_custom_command(
         OUTPUT hal_manualtoolchange
+        USE_SOURCE_PERMISSIONS
         COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_SOURCE_DIR}/../python/emc/usr_intf/axis/scripts/hal_manualtoolchange.py
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/hal_manualtoolchange
