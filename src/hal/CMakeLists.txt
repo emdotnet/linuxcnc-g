@@ -16,12 +16,14 @@ set(LIBHALMODULE_SOURCES
         halmodule.cc
         )
 
-add_library(halmodule SHARED ${LIBHALMODULE_SOURCES})
-target_include_directories(halmodule PUBLIC Python3::Python)
-target_link_libraries(halmodule PRIVATE Threads::Threads)
-target_link_libraries(halmodule PRIVATE Python3::Python)
-target_link_libraries(halmodule PRIVATE rt)
-get_uspace_config(halmodule)
+add_library(_hal SHARED ${LIBHALMODULE_SOURCES})
+target_link_libraries(_hal PRIVATE hal)
+target_include_directories(_hal PUBLIC Python3::Python)
+target_link_libraries(_hal PRIVATE Threads::Threads)
+target_link_libraries(_hal PRIVATE Python3::Python)
+target_link_libraries(_hal PRIVATE rt)
+set_target_properties(_hal PROPERTIES PREFIX "")
+get_uspace_config(_hal)
 
 set(HALCMD_SOURCES
         utils/halcmd.c
