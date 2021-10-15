@@ -10,14 +10,13 @@
 *
 ********************************************************************/
 
-#include "motion.h"
-#include "hal.h"
-#include "rtapi.h"
-#include "rtapi.h"      /* RTAPI realtime OS API */
-#include "rtapi_app.h"  /* RTAPI realtime module decls */
-#include "rtapi_math.h"
-#include "rtapi_string.h"
-#include "kinematics.h"
+#include "emc/motion/motion.h"
+#include "hal/hal.h"
+#include "rtapi/rtapi.h"      /* RTAPI realtime OS API */
+#include "rtapi/rtapi_app.h"  /* RTAPI realtime module decls */
+#include "rtapi/rtapi_math.h"
+#include "rtapi/rtapi_string.h"
+#include "emc/kinematics/kinematics.h"
 
 
 #define SET(f) pos->f = joints[i]

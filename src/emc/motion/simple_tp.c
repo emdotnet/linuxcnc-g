@@ -10,8 +10,8 @@
 * Copyright (c) 2004 All rights reserved.
 ********************************************************************/
 
-#include "simple_tp.h"
-#include "rtapi_math.h"
+#include "emc/motion/simple_tp.h"
+#include "rtapi/rtapi_math.h"
 
 void simple_tp_update(simple_tp_t *tp, double period)
 {

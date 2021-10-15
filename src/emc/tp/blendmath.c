@@ -11,14 +11,14 @@
 * Last change:
 ********************************************************************/
 
-#include "posemath.h"
-#include "tc_types.h"
-#include "tc.h"
-#include "tp_types.h"
-#include "rtapi_math.h"
-#include "spherical_arc.h"
-#include "blendmath.h"
-#include "tp_debug.h"
+#include "libnml/posemath/posemath.h"
+#include "emc/tp/tc_types.h"
+#include "emc/tp/tc.h"
+#include "emc/tp/tp_types.h"
+#include "rtapi/rtapi_math.h"
+#include "emc/tp/spherical_arc.h"
+#include "emc/tp/blendmath.h"
+#include "emc/tp/tp_debug.h"
 
 /** @section utilityfuncs Utility functions */
 

@@ -14,7 +14,7 @@
 
 #include <stdio.h>    /* ulapi */
 #include <sys/time.h> /* struct timeval */
-#include "genserkins.h"
+#include "emc/kinematics/genserkins.h"
 
 static double timestamp()
 {

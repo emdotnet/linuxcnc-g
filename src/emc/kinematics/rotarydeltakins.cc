@@ -16,7 +16,7 @@
 
 #define BOOST_PYTHON_MAX_ARITY 4
 #include <cmath>
-#include "rotarydeltakins-common.h"
+#include "emc/kinematics/rotarydeltakins-common.h"
 #include <boost/python.hpp>
 using namespace boost::python;
 

@@ -13,9 +13,9 @@
 *    
 * Copyright (c) 2004 All rights reserved.
 ********************************************************************/
-#include "posemath.h"
-#include "cubic.h"
-#include "rtapi_math.h"
+#include "libnml/posemath/posemath.h"
+#include "emc/kinematics/cubic.h"
+#include "rtapi/rtapi_math.h"
 
 #define SEGMENT_TIME_SET 0x01
 #define INTERPOLATION_RATE_SET 0x02

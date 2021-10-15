@@ -38,9 +38,9 @@
 //
 
 
-#include "kinematics.h"
-#include "rtapi_math.h"
-#include "gotypes.h"
+#include "emc/kinematics/kinematics.h"
+#include "rtapi/rtapi_math.h"
+#include "libnml/posemath/gotypes.h"
 
 
 //
@@ -293,9 +293,9 @@ KINEMATICS_TYPE kinematicsType(void) {
 }
 
 
-#include "rtapi.h"
-#include "rtapi_app.h"
-#include "hal.h"
+#include "rtapi/rtapi.h"
+#include "rtapi/rtapi_app.h"
+#include "hal/hal.h"
 
 KINS_NOT_SWITCHABLE
 EXPORT_SYMBOL(kinematicsType);

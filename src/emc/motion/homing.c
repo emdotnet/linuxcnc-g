@@ -11,12 +11,12 @@
 * Copyright (c) 2004 All rights reserved.
 ********************************************************************/
 
-#include "rtapi.h"
-#include "rtapi_math.h"
-#include "motion.h"
-#include "hal.h"
-#include "mot_priv.h"
-#include "homing.h"
+#include "rtapi/rtapi.h"
+#include "rtapi/rtapi_math.h"
+#include "emc/motion/motion.h"
+#include "hal/hal.h"
+#include "emc/motion/mot_priv.h"
+#include "emc/motion/homing.h"
 
 #define ABS(x) (((x) < 0) ? -(x) : (x))
 

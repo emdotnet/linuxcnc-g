@@ -10,16 +10,16 @@
 ********************************************************************/
 
 #include <stdarg.h>
-#include "rtapi.h"		/* RTAPI realtime OS API */
-#include "rtapi_app.h"		/* RTAPI realtime module decls */
-#include "rtapi_string.h"       /* memset */
-#include "hal.h"		/* decls for HAL implementation */
-#include "motion.h"
-#include "motion_debug.h"
-#include "motion_struct.h"
-#include "mot_priv.h"
-#include "rtapi_math.h"
-#include "homing.h"
+#include "rtapi/rtapi.h"		/* RTAPI realtime OS API */
+#include "rtapi/rtapi_app.h"		/* RTAPI realtime module decls */
+#include "rtapi/rtapi_string.h"       /* memset */
+#include "hal/hal.h"		/* decls for HAL implementation */
+#include "emc/motion/motion.h"
+#include "emc/motion/motion_debug.h"
+#include "emc/motion/motion_struct.h"
+#include "emc/motion/mot_priv.h"
+#include "rtapi/rtapi_math.h"
+#include "emc/motion/homing.h"
 
 // Mark strings for translation, but defer translation to userspace
 #define _(s) (s)

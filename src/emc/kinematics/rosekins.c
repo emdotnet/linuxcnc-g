@@ -16,12 +16,12 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-#include "kinematics.h"
-#include "posemath.h"
-#include "hal.h"
-#include "rtapi.h"
-#include "rtapi_math.h"
-#include "rtapi_app.h"
+#include "emc/kinematics/kinematics.h"
+#include "libnml/posemath/posemath.h"
+#include "hal/hal.h"
+#include "rtapi/rtapi.h"
+#include "rtapi/rtapi_math.h"
+#include "rtapi/rtapi_app.h"
 
 KINS_NOT_SWITCHABLE
 EXPORT_SYMBOL(kinematicsType);

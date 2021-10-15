@@ -10,17 +10,17 @@
 *
 * Copyright (c) 2004 All rights reserved.
 ********************************************************************/
-#include "rtapi.h"              /* rtapi_print_msg */
-#include "posemath.h"           /* Geometry types & functions */
-#include "tc.h"
-#include "tp.h"
-#include "emcpose.h"
-#include "rtapi_math.h"
-#include "mot_priv.h"
-#include "motion_debug.h"
-#include "motion_types.h"
-#include "spherical_arc.h"
-#include "blendmath.h"
+#include "rtapi/rtapi.h"              /* rtapi_print_msg */
+#include "libnml/posemath/posemath.h"           /* Geometry types & functions */
+#include "emc/tp/tc.h"
+#include "emc/tp/tp.h"
+#include "emc/nml_intf/emcpose.h"
+#include "rtapi/rtapi_math.h"
+#include "emc/motion/mot_priv.h"
+#include "emc/motion/motion_debug.h"
+#include "emc/nml_intf/motion_types.h"
+#include "emc/tp/spherical_arc.h"
+#include "emc/tp/blendmath.h"
 //KLUDGE Don't include all of emc.hh here, just hand-copy the TERM COND
 //definitions until we can break the emc constants out into a separate file.
 //#include "emc.hh"
@@ -37,7 +37,7 @@
  * and selectively compile in assertions and debug printing.
  */
 
-#include "tp_debug.h"
+#include "emc/tp/tp_debug.h"
 
 // FIXME: turn off this feature, which causes blends between rapids to
 // use the feed override instead of the rapid override

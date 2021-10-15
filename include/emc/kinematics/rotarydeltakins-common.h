@@ -45,7 +45,7 @@
 #ifndef LINUXCNCROTARYDELTAKINS_COMMON_H
 #define LINUXCNCROTARYDELTAKINS_COMMON_H
 
-#include "emcpos.h"
+#include "emc/nml_intf/emcpos.h"
 // distance from origin to a hip joint
 static double platformradius;
 

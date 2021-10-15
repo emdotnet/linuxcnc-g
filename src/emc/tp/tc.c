@@ -14,18 +14,18 @@
 * Last change:
 ********************************************************************/
 
-#include "rtapi.h"		/* rtapi_print_msg */
-#include "rtapi_math.h"
-#include "posemath.h"
-#include "blendmath.h"
-#include "emcpose.h"
-#include "tc.h"
-#include "tp_types.h"
-#include "spherical_arc.h"
-#include "motion_types.h"
+#include "rtapi/rtapi.h"		/* rtapi_print_msg */
+#include "rtapi/rtapi_math.h"
+#include "libnml/posemath/posemath.h"
+#include "emc/tp/blendmath.h"
+#include "emc/nml_intf/emcpose.h"
+#include "emc/tp/tc.h"
+#include "emc/tp/tp_types.h"
+#include "emc/tp/spherical_arc.h"
+#include "emc/nml_intf/motion_types.h"
 
 //Debug output
-#include "tp_debug.h"
+#include "emc/tp/tp_debug.h"
 
 
 double tcGetMaxTargetVel(TC_STRUCT const * const tc,

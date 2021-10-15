@@ -12,8 +12,8 @@
 *
 ********************************************************************/
 
-#include "rtapi_math.h"
-#include "kinematics.h"		/* these decls */
+#include "rtapi/rtapi_math.h"
+#include "emc/kinematics/kinematics.h"		/* these decls */
 
 int kinematicsForward(const double *joints,
 		      EmcPose * pos,
@@ -70,9 +70,9 @@ KINEMATICS_TYPE kinematicsType()
     return KINEMATICS_BOTH;
 }
 
-#include "rtapi.h"		/* RTAPI realtime OS API */
-#include "rtapi_app.h"		/* RTAPI realtime module decls */
-#include "hal.h"
+#include "rtapi/rtapi.h"		/* RTAPI realtime OS API */
+#include "rtapi/rtapi_app.h"		/* RTAPI realtime module decls */
+#include "hal/hal.h"
 
 KINS_NOT_SWITCHABLE
 EXPORT_SYMBOL(kinematicsType);

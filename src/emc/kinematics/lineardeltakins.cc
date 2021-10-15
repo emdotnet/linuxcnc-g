@@ -19,7 +19,7 @@
 #include <boost/python.hpp>
 using namespace boost::python;
 #define isnan(x) std::isnan(x)
-#include "lineardeltakins-common.h"
+#include "emc/kinematics/lineardeltakins-common.h"
 
 static object forward(double j0, double j1, double j2)
 {

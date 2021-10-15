@@ -55,18 +55,18 @@
 ********************************************************************/
 
 #include <float.h>
-#include "posemath.h"
-#include "rtapi.h"
-#include "hal.h"
-#include "motion.h"
-#include "motion_debug.h"
-#include "motion_struct.h"
-#include "mot_priv.h"
-#include "rtapi_math.h"
-#include "motion_types.h"
-#include "homing.h"
+#include "libnml/posemath/posemath.h"
+#include "rtapi/rtapi.h"
+#include "hal/hal.h"
+#include "emc/motion/motion.h"
+#include "emc/motion/motion_debug.h"
+#include "emc/motion/motion_struct.h"
+#include "emc/motion/mot_priv.h"
+#include "rtapi/rtapi_math.h"
+#include "emc/nml_intf/motion_types.h"
+#include "emc/motion/homing.h"
 
-#include "tp_debug.h"
+#include "emc/tp/tp_debug.h"
 
 #define ABS(x) (((x) < 0) ? -(x) : (x))
 

@@ -33,11 +33,11 @@
 #ifndef GENSERKINS_H
 #define GENSERKINS_H
 
-#include "gomath.h"                /* go_pose */
-#include "hal.h"                /* HAL data types */
+#include "libnml/posemath/gomath.h"                /* go_pose */
+#include "hal/hal.h"                /* HAL data types */
 
-#include "gotypes.h"                /* go_result, go_integer */
-#include "gomath.h"                /* go_pose */
+#include "libnml/posemath/gotypes.h"                /* go_result, go_integer */
+#include "libnml/posemath/gomath.h"                /* go_pose */
 #include "kinematics.h"
 /*!
   The maximum number of joints supported by the general serial

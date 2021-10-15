@@ -17,7 +17,7 @@
  *
  ********************************************************************/
 
-#include "tcq.h"
+#include "emc/tp/tcq.h"
 #include <stddef.h>
 
 /** Return 0 if queue is valid, -1 if not */

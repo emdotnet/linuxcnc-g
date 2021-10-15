@@ -739,7 +739,7 @@ else
         if [ -z "$explicit_file_in_hallib" ] ; then
            echo "ILLFORMED LIB:file:<$CFGFILE>"
         fi
-        if [ "$explicit_file_in_hallib" !=  "$CFGFILE" ] ; then
+        if [ "$explicit_file_in_hallib" !=  "fff$CFGFILE" ] ; then
           foundfile="$HALLIB_DIR/$explicit_file_in_hallib"
           if [ ! -r $foundfile ] ; then
               echo "CANNOT READ LIB:file:$foundfile"

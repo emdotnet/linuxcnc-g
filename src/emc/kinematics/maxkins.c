@@ -10,11 +10,11 @@
 * Copyright (c) 2007 Chris Radek
 ********************************************************************/
 
-#include "kinematics.h"		/* these decls */
-#include "posemath.h"
-#include "hal.h"
-#include "rtapi.h"
-#include "rtapi_math.h"
+#include "emc/kinematics/kinematics.h"		/* these decls */
+#include "libnml/posemath/posemath.h"
+#include "hal/hal.h"
+#include "rtapi/rtapi.h"
+#include "rtapi/rtapi_math.h"
 
 #define d2r(d) ((d)*PM_PI/180.0)
 #define r2d(r) ((r)*180.0/PM_PI)
@@ -98,8 +98,8 @@ KINEMATICS_TYPE kinematicsType()
     return KINEMATICS_BOTH;
 }
 
-#include "rtapi.h"		/* RTAPI realtime OS API */
-#include "rtapi_app.h"		/* RTAPI realtime module decls */
+#include "rtapi/rtapi.h"		/* RTAPI realtime OS API */
+#include "rtapi/rtapi_app.h"		/* RTAPI realtime module decls */
 
 KINS_NOT_SWITCHABLE
 EXPORT_SYMBOL(kinematicsType);

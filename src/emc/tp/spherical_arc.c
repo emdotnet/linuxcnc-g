@@ -11,12 +11,12 @@
  *
  ********************************************************************/
 
-#include "posemath.h"
-#include "spherical_arc.h"
-#include "tp_types.h"
-#include "rtapi_math.h"
+#include "libnml/posemath/posemath.h"
+#include "emc/tp/spherical_arc.h"
+#include "emc/tp/tp_types.h"
+#include "rtapi/rtapi_math.h"
 
-#include "tp_debug.h"
+#include "emc/tp/tp_debug.h"
 
 int arcInitFromPoints(SphericalArc * const arc, PmCartesian const * const start,
         PmCartesian const * const end,

@@ -43,9 +43,9 @@
 **---------------------------------------------------------------------
 */
 
-#include "rtapi.h"
-#include "motion.h"
-#include "rtapi_string.h"
+#include "rtapi/rtapi.h"
+#include "emc/motion/motion.h"
+#include "rtapi/rtapi_string.h"
 
 // principal joint numbers based on module 'coordinates' parameter
 static int JX = -1;
