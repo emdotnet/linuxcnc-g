@@ -136,7 +136,7 @@ try:
     CONFIGPATH = os.environ['CONFIG_DIR']
 except:
     pass
-import linuxcnc
+import emcmodule as linuxcnc
 from gscreen import emc_interface
 from gscreen import mdi
 from gscreen import preferences

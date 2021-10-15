@@ -14,7 +14,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
-import linuxcnc
+import emcmodule as linuxcnc
 import sys
 import os
 

@@ -18,7 +18,7 @@
 #    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 import sys, os
-import linuxcnc, time
+import emcmodule as linuxcnc, time
 import rs274.options
 
 import gettext

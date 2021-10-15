@@ -64,7 +64,7 @@ linuxcnc is running for typical values):
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import sys
-import linuxcnc
+import emcmodule as linuxcnc
 try:
     s = linuxcnc.stat() # create a connection to the status channel
     s.poll() # get current values
@@ -378,7 +378,7 @@ are integers and the rest are floats.
 ----
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import linuxcnc
+import emcmodule as linuxcnc
 s = linuxcnc.stat()
 s.poll()
 # to find the loaded tool information it is in tool table index 0
@@ -401,7 +401,7 @@ of a particular axis:
 ---------------------------------------------------------------------
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import linuxcnc
+import emcmodule as linuxcnc
 s = linuxcnc.stat()
 s.poll()
 print "Joint 1 homed: ", s.joint[1]["homed"]
@@ -550,7 +550,7 @@ so an appropriate test before sending an MDI command through
 ---------------------------------------------------------------------
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import linuxcnc
+import emcmodule as linuxcnc
 s = linuxcnc.stat()
 c = linuxcnc.command()
 
@@ -572,7 +572,7 @@ Before sending a command, initialize a command channel like so:
 ---------------------------------------------------------------------
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import linuxcnc
+import emcmodule as linuxcnc
 c = linuxcnc.command()
 
 # Usage examples for some of the commands listed below:
@@ -751,7 +751,7 @@ c.tool_offset(toolno, z_offset,  x_offset, diameter, frontangle, backangle, orie
 [source, python]
 ---------------------------------------------------------------------
 #!/usr/bin/env python3
-import linuxcnc
+import emcmodule as linuxcnc
 c = linuxcnc.command()
 
 #Increase speed of spindle 0 by 100rpm. Spindle must be on first
@@ -821,7 +821,7 @@ one error channel reader task in a setup.
 ---------------------------------------------------------------------
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import linuxcnc
+import emcmodule as linuxcnc
 e = linuxcnc.error_channel()
 
 error = e.poll()
@@ -849,7 +849,7 @@ Here's an example for reading values from an ini file through the
 # python ini-example.py ~/emc2-dev/configs/sim/axis/axis_mm.ini
 
 import sys
-import linuxcnc
+import emcmodule as linuxcnc
 
 inifile = linuxcnc.ini(sys.argv[1])
 

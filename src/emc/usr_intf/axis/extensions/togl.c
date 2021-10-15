@@ -102,7 +102,7 @@ typedef struct TkClassProcs {
 } TkClassProcs;
 
 
-#include "togl.h"
+#include "emc/usr_intf/axis/extensions/togl.h"
 
 
 /* Defaults */

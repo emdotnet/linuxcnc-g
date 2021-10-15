@@ -33,7 +33,7 @@ from gi.repository import GtkSource
 from gi.repository import GLib
 
 from .hal_widgets import _HalWidgetBase
-import linuxcnc
+import emcmodule as linuxcnc
 from hal_glib import GStat
 from .hal_actions import _EMC_ActionBase, _EMC_Action
 from .hal_filechooser import _EMC_FileChooser

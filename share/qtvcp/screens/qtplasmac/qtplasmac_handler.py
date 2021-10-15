@@ -30,7 +30,7 @@ from subprocess import check_output as CHKOP
 import time
 import tarfile
 import math
-import linuxcnc
+import emcmodule as linuxcnc
 import hal, hal_glib
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtCore import *

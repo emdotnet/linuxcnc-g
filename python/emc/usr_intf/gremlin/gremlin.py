@@ -63,7 +63,7 @@ import glnav
 
 import rs274.glcanon
 import rs274.interpret
-import linuxcnc
+import emcmodule as linuxcnc
 import gcode
 
 import time

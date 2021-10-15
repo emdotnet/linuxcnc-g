@@ -58,7 +58,7 @@ def set_text(w, t):
         ot = w.get_label()
         if ot != t: w.set_label(t)
 
-import linuxcnc
+import emcmodule as linuxcnc
 from touchy import emc_interface
 from touchy import mdi
 from touchy import hal_interface

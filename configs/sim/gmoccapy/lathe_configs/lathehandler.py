@@ -25,7 +25,7 @@ from gladevcp.persistence import IniFile,widget_defaults,set_debug,select_widget
 import hal
 import hal_glib
 import glib
-import linuxcnc
+import emcmodule as linuxcnc
 import cairo
 import signal
 import gi

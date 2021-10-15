@@ -22,7 +22,7 @@ import itertools
 import math
 import glnav
 import hershey
-import linuxcnc
+import emcmodule as linuxcnc
 import array
 import gcode
 import os

@@ -38,7 +38,7 @@ def starttask():
     try:
         import emc
     except ImportError:
-        import linuxcnc as emc  # ini only
+        import emcmodule as linuxcnc as emc  # ini only
 
     ini = emc.ini(emctask.ini_filename())
     t = ini.find("PYTHON", "PYTHON_TASK")

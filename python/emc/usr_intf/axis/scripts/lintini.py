@@ -18,7 +18,7 @@
 #    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 import sys, os
-import linuxcnc
+import emcmodule as linuxcnc
 
 ini = linuxcnc.ini(sys.argv[1])
 

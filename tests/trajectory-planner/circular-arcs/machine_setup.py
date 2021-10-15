@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 '''Copied from m61-test'''
 
-import linuxcnc
+import emcmodule as linuxcnc
 from linuxcnc_control import  LinuxcncControl
 import hal
 

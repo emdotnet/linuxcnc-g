@@ -21,7 +21,7 @@ with this program; if not, write to the Free Software Foundation, Inc
 
 import os
 import sys
-import linuxcnc
+import emcmodule as linuxcnc
 import math
 import shutil
 import time

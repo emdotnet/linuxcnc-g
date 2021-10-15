@@ -22,7 +22,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 from gi.repository import GObject
 
-import linuxcnc
+import emcmodule as linuxcnc
 from hal_glib import GStat
 
 if __name__ == "__main__":

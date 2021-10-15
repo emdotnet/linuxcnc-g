@@ -13,7 +13,7 @@ from qtvcp.lib.preferences import Access
 from qtvcp.widgets.overlay_widget import FocusOverlay
 
 from qtvcp.core import Status, Action
-import linuxcnc
+import emcmodule as linuxcnc
 import sys
 import os
 

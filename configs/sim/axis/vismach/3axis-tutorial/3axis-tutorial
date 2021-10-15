@@ -13,7 +13,7 @@ import sys
 
 # used for diameter for versions less than 2.8.
 # it gives us way to access variable values from vismach script.
-import linuxcnc
+import emcmodule as linuxcnc
 s = linuxcnc.stat()
 s.poll()
 

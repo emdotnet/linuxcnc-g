@@ -30,7 +30,7 @@ import hal_glib
 import gtk
 import glib
 
-import linuxcnc
+import emcmodule as linuxcnc
 
 debug = 0
 

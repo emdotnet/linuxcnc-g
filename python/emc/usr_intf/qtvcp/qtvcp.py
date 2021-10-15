@@ -134,7 +134,7 @@ class QTVCP:
         #################
         if INIPATH:
             LOG.info('green<Building A Linuxcnc Main Screen with {}>'.format(ver))
-            import linuxcnc
+            import emcmodule as linuxcnc
             # pull info from the INI file
             self.inifile = linuxcnc.ini(INIPATH)
             self.inipath = INIPATH

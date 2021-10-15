@@ -2,7 +2,7 @@
 LinuxCNC User Interface helper functions
 """
 
-import linuxcnc
+import emcmodule as linuxcnc
 
 import sys
 import time

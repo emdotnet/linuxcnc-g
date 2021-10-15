@@ -22,7 +22,7 @@ import os                   # needed to get the paths and directories
 import hal_glib             # needed to make our own hal pins
 import gtk.glade
 import sys                  # handle system calls
-import linuxcnc             # to get our own error sytsem
+import emcmodule as linuxcnc             # to get our own error sytsem
 import gladevcp
 import time
 import math

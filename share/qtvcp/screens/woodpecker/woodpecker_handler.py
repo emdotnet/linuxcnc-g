@@ -1,5 +1,5 @@
 import os
-import linuxcnc
+import emcmodule as linuxcnc
 import hal
 import time
 from PyQt5 import QtCore, QtWidgets, QtGui

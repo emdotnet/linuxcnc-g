@@ -18,7 +18,7 @@ from qtvcp.core import Status, Action
 # Set up logging
 from qtvcp import logger
 
-import linuxcnc
+import emcmodule as linuxcnc
 import sys
 import os
 

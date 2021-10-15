@@ -2033,7 +2033,7 @@ ver. 0.6.02
 - all icons moved to icon folder
 - implemented get toolinfo, tool frame now shows correct data
 - implemented user mdi command through gscreen, so there is no need
-  any more to import linuxcnc
+  any more to import emcmodule as linuxcnc
 - added some more icon
 
 ver. 0.6.01

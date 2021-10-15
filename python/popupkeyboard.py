@@ -53,7 +53,7 @@ Optional button LABELS (case insensitive):
 
 """
 
-import linuxcnc
+import emcmodule as linuxcnc
 import sys
 import os
 import gi

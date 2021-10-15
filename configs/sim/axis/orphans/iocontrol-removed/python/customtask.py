@@ -29,7 +29,7 @@ import hal
 try:
     import emc
 except ImportError:
-    import linuxcnc as emc  # ini only
+    import emcmodule as linuxcnc as emc  # ini only
 
 try:
     import cPickle as pickle

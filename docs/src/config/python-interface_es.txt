@@ -66,7 +66,7 @@ linuxcnc se está ejecutando para valores típicos):
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import sys
-import linuxcnc
+import emcmodule as linuxcnc
 try:
     s = linuxcnc.stat() # crea una conexión al canal de estado
     s.poll() # obtener valores actuales
@@ -377,7 +377,7 @@ son enteros y el resto son floats.
 ----
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import linuxcnc
+import emcmodule as linuxcnc
 s = linuxcnc.stat()
 s.poll()
 # para encontrar la información de la herramienta cargada en el índice 0 de la tabla de herramientas
@@ -400,7 +400,7 @@ de un eje particular:
 ---------------------------------------------------------------------
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import linuxcnc
+import emcmodule as linuxcnc
 s = linuxcnc.stat()
 s.poll()
 print "Joint 1 homed: ", s.joint[1]["homed"]
@@ -549,7 +549,7 @@ entonces una prueba apropiada antes de enviar un comando MDI a través de
 ---------------------------------------------------------------------
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import linuxcnc
+import emcmodule as linuxcnc
 s = linuxcnc.stat()
 c = linuxcnc.command()
 
@@ -571,7 +571,7 @@ Antes de enviar un comando, inicialice un canal de comando así:
 ---------------------------------------------------------------------
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import linuxcnc
+import emcmodule as linuxcnc
 c = linuxcnc.command()
 
 # Ejemplos de uso para algunos de los comandos enumerados a continuación:
@@ -740,7 +740,7 @@ c.tool_offset(toolno, z_offset,  x_offset, diameter, frontangle, backangle, orie
 [source, python]
 ---------------------------------------------------------------------
 #!/usr/bin/env python3
-import linuxcnc
+import emcmodule as linuxcnc
 c = linuxcnc.command()
 
 # Aumente la velocidad del husillo 0 en 100 rpm. El husillo debe estar encendido primero
@@ -809,7 +809,7 @@ una tarea de lector de canal de error en una configuración.
 ---------------------------------------------------------------------
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import linuxcnc
+import emcmodule as linuxcnc
 e = linuxcnc.error_channel()
 
 error = e.poll()
@@ -837,7 +837,7 @@ objeto `linuxcnc.ini`:
 # python ini-example.py ~/emc2-dev/configs/sim/axis/axis_mm.ini
 
 import sys
-import linuxcnc
+import emcmodule as linuxcnc
 
 inifile = linuxcnc.ini(sys.argv[1])
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import linuxcnc
+import emcmodule as linuxcnc
 import sys
 import time
 

@@ -15,7 +15,7 @@
 #
 
 import os
-import linuxcnc
+import emcmodule as linuxcnc
 
 from PyQt5.QtWidgets import QWidget, QGridLayout
 from PyQt5.QtCore import pyqtProperty

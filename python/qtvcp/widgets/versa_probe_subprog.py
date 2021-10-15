@@ -21,7 +21,7 @@ import math
 import time
 import select
 
-import linuxcnc
+import emcmodule as linuxcnc
 
 from PyQt5.QtCore import QObject
 from qtvcp.core import Status, Action, Info

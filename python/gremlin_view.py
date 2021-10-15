@@ -79,7 +79,7 @@ from gi.repository import GLib
 import os
 import sys
 import gladevcp.hal_actions  # reqd for Builder
-import linuxcnc
+import emcmodule as linuxcnc
 import time
 import subprocess
 import gettext

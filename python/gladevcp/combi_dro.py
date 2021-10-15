@@ -28,7 +28,7 @@ from gi.repository import GLib
 import os
 import sys
 import math
-import linuxcnc
+import emcmodule as linuxcnc
 from hal_glib import GStat
 import re
 
