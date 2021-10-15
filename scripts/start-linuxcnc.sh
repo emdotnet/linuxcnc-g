@@ -720,7 +720,7 @@ fi
 TWOPASS=`$INIVAR -ini "$INIFILE" -var TWOPASS -sec HAL -num 1 2> /dev/null`
 if [ -n "$TWOPASS" ] ; then
   # 4.3.6.1. if [HAL]TWOPASS is defined, handle all [HAL]HALFILE entries here:
-  CFGFILE=/home/end/projects/linuxcnc/tcl/twopass.tcl
+  CFGFILE=${EMC2_TCL_DIR}/twopass.tcl
   export PRINT_FILE # twopass can append to PRINT_FILE
   if ! haltcl -i "$INIFILE" $CFGFILE && [ "$DASHK" = "" ]; then
       Cleanup
