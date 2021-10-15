@@ -10,7 +10,7 @@ get_uspace_config(emcmodule)
 
 set_target_properties(emcmodule PROPERTIES POSITION_INDEPENDENT_CODE ON
                                            PREFIX ""
-                                           LIBRARY_OUTPUT_NAME emcmodule)
+                                           LIBRARY_OUTPUT_NAME linuxcnc)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 

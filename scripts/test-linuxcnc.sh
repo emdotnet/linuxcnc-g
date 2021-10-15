@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source activate-linuxcnc.sh
+p=$(dirname `realpath $0`)
+source ${p}/activate-linuxcnc.sh
 
 # When running with "-v", the test itself runs in a pipeline with tee, and
 # without pipefail we get the exit value from tee instead of from the test.
