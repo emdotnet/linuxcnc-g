@@ -107,7 +107,7 @@ def find_prefix(f):
     if f == "/" or f == '': raise RuntimeError("Share directory not found")
     return find_prefix(os.path.dirname(f))
 
-PREFIX = "/home/end/projects/linuxcnc_master"
+PREFIX = os.environ["EMC2_HOME_DIR"]
 SHARE = os.path.join(PREFIX, "share", "axis")
 tcl_libdir = os.path.join(SHARE, "tcl")
 

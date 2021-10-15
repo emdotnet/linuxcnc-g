@@ -19,10 +19,10 @@
 #include <Python.h>
 #include <structmember.h>
 
-#include "rs274ngc.hh"
-#include "rs274ngc_interp.hh"
-#include "interp_return.hh"
-#include "canon.hh"
+#include "emc/rs274ngc/rs274ngc.hh"
+#include "emc/rs274ngc/rs274ngc_interp.hh"
+#include "emc/nml_intf/interp_return.hh"
+#include "emc/nml_intf/canon.hh"
 #include "config.h"		// LINELEN
 
 int _task = 0; // control preview behaviour when remapping
