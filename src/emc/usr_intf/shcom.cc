@@ -78,6 +78,8 @@ int emcTaskNmlGet()
 {
     int retval = 0;
 
+    rtapi_snprintf(emc_nmlfile, sizeof(emc_nmlfile), "%s", EMC2_DEFAULT_NMLFILE);
+
     // try to connect to EMC cmd
     if (emcCommandBuffer == 0) {
 	emcCommandBuffer =
