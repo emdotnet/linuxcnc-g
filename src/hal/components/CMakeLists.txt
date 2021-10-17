@@ -34,7 +34,7 @@ function(compile_component name src relative)
 	get_filename_component(SRC_NAME ${src} NAME_WE)
 	add_custom_command(OUTPUT ${SRC_NAME}.c
 		COMMAND ${Python3_EXECUTABLE} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/halcompile --preprocess -o ${SRC_NAME}.c ${S}
-		DEPENDS halcompile ${src})
+		DEPENDS halcompile_script ${src})
 
 	build_component(NAME ${name} SOURCES ${SRC_NAME})
 endfunction()
