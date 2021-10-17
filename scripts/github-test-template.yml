@@ -4,5 +4,5 @@
     steps:
      - name: Run test NAME
        run: |
-         cd build/bin
+         cd ./build/bin
          ./test-linuxcnc.sh -v ../../tests/NAME
