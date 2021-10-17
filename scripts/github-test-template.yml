@@ -1,0 +1,8 @@
+  test-NAME:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test NAME
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/NAME

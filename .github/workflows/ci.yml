@@ -33,20 +33,587 @@ jobs:
         cd build
         make -j
         
+  test-abort:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test abort
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/abort
+  test-abs.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test abs.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/abs.0
+  test-alias.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test alias.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/alias.0
+  test-and-or-not-mux.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test and-or-not-mux.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/and-or-not-mux.0
+  test-basic:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test basic
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/basic
+  test-biquad:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test biquad
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/biquad
+  test-build:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test build
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/build
+  test-ccomp:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test ccomp
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/ccomp
+  test-counter-encoder.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test counter-encoder.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/counter-encoder.0
+  test-edge:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test edge
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/edge
+  test-flipflop.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test flipflop.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/flipflop.0
+  test-halcompile:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test halcompile
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/halcompile
+  test-hal-link-unlink:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test hal-link-unlink
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/hal-link-unlink
+  test-halmodule.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test halmodule.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/halmodule.0
+  test-halmodule.1:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test halmodule.1
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/halmodule.1
+  test-halrun-getopt-reset:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test halrun-getopt-reset
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/halrun-getopt-reset
+  test-halrun-lock:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test halrun-lock
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/halrun-lock
+  test-halui:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test halui
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/halui
+  test-hard-limits:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test hard-limits
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/hard-limits
+  test-hm2-idrom:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test hm2-idrom
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/hm2-idrom
+  test-ilowpass:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test ilowpass
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/ilowpass
   test-interp:
     runs-on: ubuntu-20.04
     needs: build
     steps:
-    - name: Run test interp
-      run: |
-        cd build/bin
-        ./test-linuxcnc.sh -v ../../tests/interp
-        
+     - name: Run test interp
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/interp
+  test-io-startup:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test io-startup
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/io-startup
   test-lathe:
     runs-on: ubuntu-20.04
     needs: build
     steps:
-    - name: Run test lathe
-      run: |
-        cd build/bin
-        ./test-linuxcnc.sh -v ../../tests/lathe
+     - name: Run test lathe
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/lathe
+  test-limit3:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test limit3
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/limit3
+  test-linuxcncrsh:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test linuxcncrsh
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/linuxcncrsh
+  test-linuxcncrsh-tcp:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test linuxcncrsh-tcp
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/linuxcncrsh-tcp
+  test-loadrt.1:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test loadrt.1
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/loadrt.1
+  test-loadrt.2:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test loadrt.2
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/loadrt.2
+  test-lowlevel:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test lowlevel
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/lowlevel
+  test-m70-m73:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test m70-m73
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/m70-m73
+  test-mdi-queue:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test mdi-queue
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/mdi-queue
+  test-mdi-queue-length:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test mdi-queue-length
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/mdi-queue-length
+  test-mdi-while-queuebuster-waitflag:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test mdi-while-queuebuster-waitflag
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/mdi-while-queuebuster-waitflag
+  test-modparam.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test modparam.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/modparam.0
+  test-module-loading:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test module-loading
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/module-loading
+  test-motion:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test motion
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/motion
+  test-motion-logger:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test motion-logger
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/motion-logger
+  test-multiclick:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test multiclick
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/multiclick
+  test-mux:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test mux
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/mux
+  test-near.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test near.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/near.0
+  test-overrun:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test overrun
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/overrun
+  test-oword:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test oword
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/oword
+  test-pyhal:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test pyhal
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/pyhal
+  test-README:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test README
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/README
+  test-realtime-math:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test realtime-math
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/realtime-math
+  test-remap:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test remap
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/remap
+  test-rs274ngc-startup:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test rs274ngc-startup
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/rs274ngc-startup
+  test-rtapi_printf.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test rtapi_printf.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/rtapi_printf.0
+  test-save.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test save.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/save.0
+  test-save.1:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test save.1
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/save.1
+  test-single-step:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test single-step
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/single-step
+  test-source.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test source.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/source.0
+  test-startup-state:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test startup-state
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/startup-state
+  test-statbuffer-g5x-abort:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test statbuffer-g5x-abort
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/statbuffer-g5x-abort
+  test-stepgen.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test stepgen.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/stepgen.0
+  test-stepgen.1:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test stepgen.1
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/stepgen.1
+  test-stepgen.2:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test stepgen.2
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/stepgen.2
+  test-Submakefile:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test Submakefile
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/Submakefile
+  test-symbols.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test symbols.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/symbols.0
+  test-symbols.1:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test symbols.1
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/symbols.1
+  test-t0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test t0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/t0
+  test-tclsh-extensions:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test tclsh-extensions
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/tclsh-extensions
+  test-threads.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test threads.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/threads.0
+  test-threads.1:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test threads.1
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/threads.1
+  test-timedelay.0:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test timedelay.0
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/timedelay.0
+  test-tlo:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test tlo
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/tlo
+  test-toolchanger:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test toolchanger
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/toolchanger
+  test-tool-info:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test tool-info
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/tool-info
+  test-trajectory-planner:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test trajectory-planner
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/trajectory-planner
+  test-twopass:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test twopass
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/twopass
+  test-twopass-personality:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test twopass-personality
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/twopass-personality
+  test-uspace:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+     - name: Run test uspace
+       run: |
+         cd build/bin
+         ./test-linuxcnc.sh -v ../../tests/uspace
