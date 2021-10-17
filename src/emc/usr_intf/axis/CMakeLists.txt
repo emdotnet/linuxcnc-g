@@ -15,6 +15,7 @@ set_target_properties(emcmodule PROPERTIES POSITION_INDEPENDENT_CODE ON
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_library(_togl SHARED extensions/_toglmodule.c)
+target_include_directories(_togl PRIVATE ${TCL_INCLUDE_PATH})
 target_link_libraries(_togl PRIVATE Python3::Python)
 target_link_libraries(_togl PRIVATE ${TCL_LIBRARY})
 target_link_libraries(_togl PRIVATE ${TK_LIBRARY})
