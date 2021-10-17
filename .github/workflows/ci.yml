@@ -9,7 +9,7 @@ on:
     types: [rerequested]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-20.04
     steps:
     - name: Dump GitHub context
@@ -32,7 +32,21 @@ jobs:
       run: |
         cd build
         make -j
-    - name: Run tests
+        
+  test-interp:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+    - name: Run test interp
       run: |
         cd build/bin
-        ./test-linuxcnc.sh -v ../../tests/
+        ./test-linuxcnc.sh -v ../../tests/interp
+        
+  test-lathe:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+    - name: Run test lathe
+      run: |
+        cd build/bin
+        ./test-linuxcnc.sh -v ../../tests/lathe
