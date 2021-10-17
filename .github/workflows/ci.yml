@@ -29,8 +29,10 @@ jobs:
         cd build
         cmake ..
     - name: Execute Make
-      run: make -j
+      run: |
+        cd build
+        make -j
     - name: Run tests
       run: |
-        cd bin
+        cd build/bin
         ./test-linuxcnc.sh -v ../../tests/
