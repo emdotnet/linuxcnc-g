@@ -15,10 +15,11 @@
       - name: Install build dependecies
         run: ./scripts/travis-install-build-deps.sh
 
-      - name: Download build
+      - uses: actions/checkout@v2
+      - name: Download buildfiles
         uses: actions/download-artifact@v2
         with:
-          - name: buildfiles
+          name: 'build-files'
 
       - name: Run test NAME
         run: |
