@@ -35,7 +35,7 @@ jobs:
       - name: Save build folders
         uses: actions/upload-artifact@v2
         with:
-          name: buildfiles
+          name: build-files
           path: |
             linuxcnc/build
 
@@ -60,7 +60,7 @@ jobs:
       - name: Download build
         uses: actions/download-artifact@v2
         with:
-          - name: buildfiles
+          - name: build-files
 
       - name: Run test biquad
         run: |
