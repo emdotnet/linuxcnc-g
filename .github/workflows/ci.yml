@@ -57,8 +57,7 @@ jobs:
         run: ./scripts/travis-install-build-deps.sh
 
       - uses: actions/checkout@v2
-      - name: Download build
-        uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v2
         with:
           - name: build-files
 
