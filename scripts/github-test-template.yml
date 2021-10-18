@@ -2,6 +2,24 @@
     runs-on: ubuntu-20.04
     needs: build
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+      - run: git fetch --recurse-submodules=no https://github.com/linuxcnc/linuxcnc refs/tags/*:refs/tags/*
+
+      - name: Install build dependecies
+        run: ./scripts/travis-install-build-deps.sh
+
+     - name: Download build
+       uses: actions/download-artifacts@v2
+       with:
+         - name: buildfiles
+
      - name: Run test NAME
        run: |
          cd ./build/bin
