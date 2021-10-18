@@ -37,7 +37,7 @@ jobs:
         with:
           name: buildfiles
           path: |
-            build
+            linuxcnc/build
 
   test-biquad:
     runs-on: ubuntu-20.04
