@@ -15,12 +15,12 @@
       - name: Install build dependecies
         run: ./scripts/travis-install-build-deps.sh
 
-     - name: Download build
-       uses: actions/download-artifacts@v2
-       with:
-         - name: buildfiles
+      - name: Download build
+        uses: actions/download-artifacts@v2
+        with:
+          - name: buildfiles
 
-     - name: Run test NAME
-       run: |
-         cd ./build/bin
-         ./test-linuxcnc.sh -v ../../tests/NAME
+      - name: Run test NAME
+        run: |
+          cd ./build/bin
+          ./test-linuxcnc.sh -v ../../tests/NAME
