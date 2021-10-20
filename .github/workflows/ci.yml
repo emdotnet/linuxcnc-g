@@ -35,4 +35,4 @@ jobs:
       - name: Execute Tests
         run: |
           cd bin
-          ./test-linuxcnc.sh ../../tests/  
+          bash test-linuxcnc.sh ../../tests/  
