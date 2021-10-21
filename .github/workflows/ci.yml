@@ -34,6 +34,7 @@ jobs:
           make -j
       - name: Execute Tests
         run: |
-          ls
+          ls build
+          cd build
           cd bin
           bash test-linuxcnc.sh ../../tests/  
