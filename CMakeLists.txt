@@ -52,7 +52,7 @@ set(CMAKE_C_STANDARD_REQUIRED True)
 if(NOT DEBUG)
   set(CMAKE_C_FLAGS -Wall\ -O2)
 else()
-  set(CMAKE_C_FLAGS -rdynamic -Wall\ -O0\ -g)
+  set(CMAKE_C_FLAGS -rdynamic\ -Wall\ -O0\ -g)
 endif()
 
 # specify the default C++ compiler options
@@ -63,7 +63,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 if(NOT DEBUG)
     set(CMAKE_CXX_FLAGS -Wall\ -O2)
 else()
-    set(CMAKE_CXX_FLAGS -rdynamic -Wall\ -O0\ -g)
+    set(CMAKE_CXX_FLAGS -rdynamic\ -Wall\ -O0\ -g)
 endif()
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
