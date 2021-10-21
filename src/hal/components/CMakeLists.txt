@@ -5,7 +5,7 @@ function(build_component)
 	set(name ${BUILD_COMPONENT_NAME})
 	add_library(obj-${name} OBJECT ${BUILD_COMPONENT_SOURCES})
 	set_property(TARGET obj-${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
-	target_compile_options(obj-${name} PRIVATE -rdynamic)
+	target_compile_options(obj-${name} PRIVATE -rdynamic -fvisibility=default)
 	target_compile_definitions(obj-${name} PRIVATE RTAPI USPACE __MODULE__)
 
 	# binary stripping
@@ -26,6 +26,7 @@ function(build_component)
 
 	add_library(${name} SHARED $<TARGET_OBJECTS:obj-${name}>)
 	target_link_libraries(${name} PRIVATE rtapi_lib)
+	target_compile_options(${name} PRIVATE -rdynamic -fvisibility=default)
 	add_dependencies(${name} ${name}-ver)
 
 	set_target_properties(${name} PROPERTIES PREFIX "")
