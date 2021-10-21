@@ -7,8 +7,15 @@ function(build_component)
 	set_property(TARGET obj-${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
 	target_compile_definitions(obj-${name} PRIVATE RTAPI USPACE __MODULE__)
 
+	# binary stripping
+	if(NOT DEBUG)
+		set(TLINKER -r -s)
+	else()
+		set(TLINKER -r)
+	endif()
+
 	add_custom_command(OUTPUT ${name}.tmp
-		COMMAND ld -r -s -o ${name}.tmp `echo \"$<TARGET_OBJECTS:obj-${name}>\" | sed 's/\;/ /g'`
+		COMMAND ld ${TLINKER} -o ${name}.tmp `echo \"$<TARGET_OBJECTS:obj-${name}>\" | sed 's/\;/ /g'`
 		DEPENDS obj-${name})
 	add_custom_command(OUTPUT ${name}.ver
 		COMMAND sh ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/generate_version_script.sh ${name}.tmp > ${name}.ver
