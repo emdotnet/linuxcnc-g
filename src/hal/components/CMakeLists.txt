@@ -5,6 +5,7 @@ function(build_component)
 	set(name ${BUILD_COMPONENT_NAME})
 	add_library(obj-${name} OBJECT ${BUILD_COMPONENT_SOURCES})
 	set_property(TARGET obj-${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
+	target_compile_options(obj-${name} PRIVATE -rdynamic)
 	target_compile_definitions(obj-${name} PRIVATE RTAPI USPACE __MODULE__)
 
 	# binary stripping
