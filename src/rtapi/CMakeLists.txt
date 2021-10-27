@@ -40,6 +40,7 @@ if(USE_PREEMPT_RT)
     add_executable(rtapi_app ${RTAPI_SOURCES})
     target_link_libraries(rtapi_app Threads::Threads)
     target_link_libraries(rtapi_app ${CMAKE_DL_LIBS})
+    target_link_libraries(rtapi_app rt)
     target_link_options(rtapi_app PRIVATE -rdynamic)
     target_compile_definitions(rtapi_app PRIVATE SIM RTAPI)
 
