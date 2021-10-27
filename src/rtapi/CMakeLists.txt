@@ -30,19 +30,19 @@ if(USE_PREEMPT_RT)
 
     set_source_files_properties(rtapi_pci.cc PROPERTIES COMPILE_FLAGS -O0)
     
-    add_library(rtapi_lib ${RTAPI_SOURCES})
-    target_link_libraries(rtapi_lib Threads::Threads)
-    target_link_libraries(rtapi_lib ${CMAKE_DL_LIBS})
-    target_compile_options(rtapi_lib PRIVATE -rdynamic)
-    target_compile_definitions(rtapi_lib PRIVATE SIM RTAPI)
-    set_property(TARGET rtapi_lib PROPERTY POSITION_INDEPENDENT_CODE ON)
+    #add_library(rtapi_lib ${RTAPI_SOURCES})
+    #target_link_libraries(rtapi_lib Threads::Threads)
+    #target_link_libraries(rtapi_lib ${CMAKE_DL_LIBS})
+    #target_compile_options(rtapi_lib PRIVATE -rdynamic)
+    #target_compile_definitions(rtapi_lib PRIVATE SIM RTAPI)
+    #set_property(TARGET rtapi_lib PROPERTY POSITION_INDEPENDENT_CODE ON)
 
     add_executable(rtapi_app ${RTAPI_SOURCES})
     target_link_libraries(rtapi_app Threads::Threads)
     target_link_libraries(rtapi_app ${CMAKE_DL_LIBS})
-    target_compile_options(rtapi_app PRIVATE -rdynamic)
+    target_link_options(rtapi_app PRIVATE -rdynamic)
     target_compile_definitions(rtapi_app PRIVATE SIM RTAPI)
-            
+
     if(BUILD_PARPORT)
 	    target_sources(rtapi_app PRIVATE uspace_rtapi_parport.cc)
     endif(BUILD_PARPORT)

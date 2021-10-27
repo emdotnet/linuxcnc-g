@@ -5,7 +5,7 @@ function(build_component)
 	set(name ${BUILD_COMPONENT_NAME})
 	add_library(obj-${name} OBJECT ${BUILD_COMPONENT_SOURCES})
 	set_property(TARGET obj-${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
-	target_compile_options(obj-${name} PRIVATE -rdynamic -fvisibility=default)
+	target_compile_options(obj-${name} PRIVATE -rdynamic)
 	target_compile_definitions(obj-${name} PRIVATE RTAPI USPACE __MODULE__)
 
 	# binary stripping
@@ -25,13 +25,13 @@ function(build_component)
 	add_custom_target(${name}-ver ALL DEPENDS ${name}.ver)
 
 	add_library(${name} SHARED $<TARGET_OBJECTS:obj-${name}>)
-	target_link_libraries(${name} PRIVATE rtapi_lib)
-	target_compile_options(${name} PRIVATE -rdynamic -fvisibility=default)
+	target_compile_options(${name} PRIVATE -rdynamic -nostdinc)
+	target_link_options(${name} PRIVATE "-Bsymbolic,-Wl,-rpath,${CMAKE_LIBRARY_OUTPUT_DIRECTORY},-Wl,--version-script=${CMAKE_CURRENT_BINARY_DIR}/${name}.ver")
 	add_dependencies(${name} ${name}-ver)
 
 	set_target_properties(${name} PROPERTIES PREFIX "")
-	set_target_properties(${name} PROPERTIES LINK_FLAGS "-Bsymbolic -Wl,--version-script='${name}.ver'")
 	set_target_properties(${name} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/rtlib)
+	set_property(TARGET ${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
 endfunction()
 
 function(compile_component name src relative)
