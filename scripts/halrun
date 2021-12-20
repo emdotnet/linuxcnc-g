@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-PATH=.:${PATH}
-THIS=$(basename $0)
+source activate-linuxcnc.sh
 
-export EMC2_HOME_DIR=$(dirname $0)/..
-export EMC2_BIN_DIR=$(dirname $0)/../bin
-export EMC2_RTLIB_DIR=$(dirname $0)/../rtlib/
-export HAL_RTMOD_DIR=$(dirname $0)/../rtlib/
-export PATH="$(dirname $0)/../bin:$PATH"
+#PATH=.:${PATH}
+#THIS=$(basename $0)
+#
+#export EMC2_HOME_DIR=$(dirname $0)/..
+#export EMC2_BIN_DIR=$(dirname $0)/../bin
+#export EMC2_RTLIB_DIR=$(dirname $0)/../rtlib/
+#export HAL_RTMOD_DIR=$(dirname $0)/../rtlib/
+#export PATH="$(dirname $0)/../bin:$PATH"
 
 help () {
 halcmd -h
@@ -153,6 +155,7 @@ fi
 
 if [ ! -z "$INTERACTIVE" ]; then $INTERACTIVE; fi
 
+echo "foo"
 halcmd stop || result=$?
 halcmd unload all || result=$?
 
