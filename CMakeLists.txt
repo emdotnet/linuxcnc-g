@@ -18,7 +18,7 @@ find_package(X11 REQUIRED)
 
 find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 
-set(BOOSTPYTHON python${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR} CACHE STRING "name of the boost python")
+set(BOOSTPYTHON python${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR})
 
 find_package(Boost COMPONENTS ${BOOSTPYTHON} REQUIRED)
 find_package(Intl REQUIRED)

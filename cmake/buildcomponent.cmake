@@ -1,0 +1,57 @@
+
+function(build_component)
+    cmake_parse_arguments(PARSE_ARGV 0 "BUILD_COMPONENT" "" "NAME" "SOURCES")
+
+    set(name ${BUILD_COMPONENT_NAME})
+    add_library(obj-${name} OBJECT ${BUILD_COMPONENT_SOURCES})
+    set_property(TARGET obj-${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
+    target_compile_options(obj-${name} PRIVATE -rdynamic)
+    target_compile_definitions(obj-${name} PRIVATE RTAPI USPACE __MODULE__)
+
+    # binary stripping
+    if(NOT DEBUG)
+        set(TLINKER -r -s)
+    else()
+        set(TLINKER -r)
+    endif()
+
+    add_custom_command(OUTPUT ${name}.tmp
+            COMMAND ld ${TLINKER} -o ${name}.tmp `echo \"$<TARGET_OBJECTS:obj-${name}>\" | sed 's/\;/ /g'`
+            DEPENDS obj-${name})
+    add_custom_command(OUTPUT ${name}.ver
+            COMMAND sh ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/generate_version_script.sh ${name}.tmp > ${name}.ver
+            DEPENDS ${name}.tmp scripts)
+
+    add_custom_target(${name}-ver ALL DEPENDS ${name}.ver)
+
+    add_library(${name} SHARED $<TARGET_OBJECTS:obj-${name}>)
+    target_compile_options(${name} PRIVATE -rdynamic -nostdinc)
+    target_link_options(${name} PRIVATE "-Bsymbolic,-Wl,-rpath,${CMAKE_LIBRARY_OUTPUT_DIRECTORY},-Wl,--version-script=${CMAKE_CURRENT_BINARY_DIR}/${name}.ver")
+    add_dependencies(${name} ${name}-ver)
+
+    set_target_properties(${name} PROPERTIES PREFIX "")
+    set_target_properties(${name} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/rtlib)
+    set_property(TARGET ${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
+endfunction()
+
+function(compile_component name src relative)
+    if(${relative})
+        set(S ${CMAKE_CURRENT_SOURCE_DIR}/${src})
+    else()
+        set(S ${src})
+    endif()
+    get_filename_component(SRC_NAME ${src} NAME_WE)
+    add_custom_command(OUTPUT ${SRC_NAME}.c
+            COMMAND ${Python3_EXECUTABLE} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/halcompile --preprocess -o ${SRC_NAME}.c ${S}
+            DEPENDS halcompile_script ${src})
+
+    build_component(NAME ${name} SOURCES ${SRC_NAME})
+endfunction()
+
+function(generate_conv_component name typ1 typ2 foo bar baz)
+    add_custom_command(OUTPUT ${name}.comp
+            COMMAND sh ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/mkconv.sh ${typ1} ${typ2} ${foo} ${bar} ${baz} < ${CMAKE_CURRENT_SOURCE_DIR}/conv.comp.in > ${name}.comp
+            DEPENDS scripts conv.comp.in)
+
+    compile_component(${name} ${CMAKE_CURRENT_BINARY_DIR}/${name}.comp OFF)
+endfunction()
