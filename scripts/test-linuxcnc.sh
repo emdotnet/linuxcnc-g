@@ -141,6 +141,7 @@ run_tests () {
                 PATH=$(readlink -f $testdir):$PATH \
                 run_test $testname
         else
+            PATH=$(readlink -f $testdir):$PATH \
             run_test $testname
         fi
 	exitcode=$?
