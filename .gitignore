@@ -43,6 +43,7 @@ position.txt
 # Ignore test results
 *.result
 .idea
-build/*
+build
+!tests/build/
 cmake-build-*
 *.swp
