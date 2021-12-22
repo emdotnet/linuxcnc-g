@@ -18,9 +18,15 @@ function(build_component)
     add_custom_command(OUTPUT ${name}.tmp
             COMMAND ld ${TLINKER} -o ${name}.tmp `echo \"$<TARGET_OBJECTS:obj-${name}>\" | sed 's/\;/ /g'`
             DEPENDS obj-${name})
+    if(${MAIN_BUILD})
     add_custom_command(OUTPUT ${name}.ver
             COMMAND sh ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/generate_version_script.sh ${name}.tmp > ${name}.ver
             DEPENDS ${name}.tmp scripts)
+    else()
+    add_custom_command(OUTPUT ${name}.ver
+            COMMAND generate_version_script.sh ${name}.tmp > ${name}.ver
+            DEPENDS ${name}.tmp)
+    endif()
 
     add_custom_target(${name}-ver ALL DEPENDS ${name}.ver)
 
@@ -35,23 +41,36 @@ function(build_component)
 endfunction()
 
 function(compile_component name src relative)
+
     if(${relative})
         set(S ${CMAKE_CURRENT_SOURCE_DIR}/${src})
     else()
         set(S ${src})
     endif()
     get_filename_component(SRC_NAME ${src} NAME_WE)
-    add_custom_command(OUTPUT ${SRC_NAME}.c
-            COMMAND ${Python3_EXECUTABLE} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/halcompile --preprocess -o ${SRC_NAME}.c ${S}
-            DEPENDS halcompile_script ${src})
+    if(${MAIN_BUILD})
+	    add_custom_command(OUTPUT ${SRC_NAME}.c
+		    COMMAND ${Python3_EXECUTABLE} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/halcompile --preprocess -o ${SRC_NAME}.c ${S}
+		    DEPENDS halcompile_script ${src})
+    else()
+	    add_custom_command(OUTPUT ${SRC_NAME}.c
+		    COMMAND ${Python3_EXECUTABLE} halcompile --preprocess -o ${SRC_NAME}.c ${S}
+		    DEPENDS ${src})
+    endif()
 
     build_component(NAME ${name} SOURCES ${SRC_NAME})
 endfunction()
 
 function(generate_conv_component name typ1 typ2 foo bar baz)
+    if(${MAIN_BUILD})
     add_custom_command(OUTPUT ${name}.comp
             COMMAND sh ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/mkconv.sh ${typ1} ${typ2} ${foo} ${bar} ${baz} < ${CMAKE_CURRENT_SOURCE_DIR}/conv.comp.in > ${name}.comp
             DEPENDS scripts conv.comp.in)
 
     compile_component(${name} ${CMAKE_CURRENT_BINARY_DIR}/${name}.comp OFF)
+    else()
+    add_custom_command(OUTPUT ${name}.comp
+            COMMAND sh ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/mkconv.sh ${typ1} ${typ2} ${foo} ${bar} ${baz} < ${CMAKE_CURRENT_SOURCE_DIR}/conv.comp.in > ${name}.comp
+            DEPENDS conv.comp.in)
+    endif()
 endfunction()

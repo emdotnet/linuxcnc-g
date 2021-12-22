@@ -44,31 +44,17 @@ find_package(GTK2 REQUIRED gtk)
 endif(USE_GTK2)
 find_package(GTK3 REQUIRED gtk)
 
-# specify default C compiler options
-
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_STANDARD_REQUIRED True)
-# debug flags
-if(NOT DEBUG)
-  set(CMAKE_C_FLAGS -Wall\ -O2)
-else()
-  set(CMAKE_C_FLAGS -rdynamic\ -fvisibility=default\ -Wall\ -O0\ -g)
-endif()
-
-# specify the default C++ compiler options
-# change standard to 20 as soon as possible
-# (need gcc8, gcc7 allows 17)
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-if(NOT DEBUG)
-    set(CMAKE_CXX_FLAGS -Wall\ -O2)
-else()
-    set(CMAKE_CXX_FLAGS -rdynamic\ -fvisibility=default\ -Wall\ -O0\ -g)
-endif()
+# C and CXX flags
+include(buildoptions)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+# flag this as main build
+# otherwise the build component and compile component functions
+# will not add the necessary targets for some scripts like halcompile
+set(MAIN_BUILD ON)
 
 # general options
 option(RUN_IN_PLACE "activate this if you want to execute linuxcnc in place, instead of installing it." ON)
@@ -110,7 +96,7 @@ endif()
 
 add_compile_definitions(
         EMC2_VERSION="3.0.0"
-  	    PACKAGE_VERSION="3.0.0"
+  	PACKAGE_VERSION="3.0.0"
         HAVE_READLINE
         SEQUENTIAL_SUPPORT
         HAL_SUPPORT
@@ -125,6 +111,8 @@ if(NOT ${BUILD_UDEV})
 endif()
 
 # configure variables
+# now all defined in activate-linuxcnc.sh
+# read from env variables
 #if(${RUN_IN_PLACE})
 #    set(EMC2_HOME ${CMAKE_BINARY_DIR})
 #    add_compile_definitions(EMC2_HOME="${EMC2_HOME}")
@@ -170,9 +158,6 @@ endif()
 #    #EMC2_IMAGE_DIR=$(fe "$datadir")/linuxcnc
 #    #HALLIB_DIR=${prefix}/share/linuxcnc/hallib
 #endif()
-
-# configure files
-#configure_file(TutorialConfig.h.in TutorialConfig.h)
 
 add_subdirectory(src/rtapi)
 add_subdirectory(src/hal)

@@ -775,17 +775,11 @@ def epilogue(f):
 INSTALL, COMPILE, PREPROCESS, DOCUMENT, INSTALLDOC, VIEWDOC, MODINC = range(7)
 modename = ("install", "compile", "preprocess", "document", "installdoc", "viewdoc", "print-modinc")
 
-modinc = None
 def find_modinc():
-    global modinc
-    if modinc: return modinc
-    d = os.path.abspath(os.path.dirname(os.path.dirname(sys.argv[0])))
-    for e in ['src', 'etc/linuxcnc', '/etc/linuxcnc', 'share/linuxcnc']:
-        e = os.path.join(d, e, 'Makefile.modinc')
-        if os.path.exists(e):
-            modinc = e
-            return e
-    raise SystemExit("Unable to locate Makefile.modinc")
+    modinc = os.environ.get("EMC2_CMAKE_FILES", None)
+    if not modinc:
+        raise SystemExit("Unable to locate CMake Directory")
+    return modinc
 
 def build_usr(tempdir, filename, mode, origfilename):
     binname = os.path.basename(os.path.splitext(filename)[0])
