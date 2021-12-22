@@ -20,3 +20,5 @@ if(NOT DEBUG)
 else()
     set(CMAKE_CXX_FLAGS -rdynamic\ -fvisibility=default\ -Wall\ -O0\ -g)
 endif()
+
+set(RTLIB_DIR ${PROJECT_BINARY_DIR}/rtlib)

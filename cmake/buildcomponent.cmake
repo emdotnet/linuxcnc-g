@@ -36,7 +36,7 @@ function(build_component)
     add_dependencies(${name} ${name}-ver)
 
     set_target_properties(${name} PROPERTIES PREFIX "")
-    set_target_properties(${name} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/rtlib)
+    set_target_properties(${name} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${RTLIB_DIR})
     set_property(TARGET ${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
 endfunction()
 

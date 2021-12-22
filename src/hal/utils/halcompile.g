@@ -775,31 +775,56 @@ def epilogue(f):
 INSTALL, COMPILE, PREPROCESS, DOCUMENT, INSTALLDOC, VIEWDOC, MODINC = range(7)
 modename = ("install", "compile", "preprocess", "document", "installdoc", "viewdoc", "print-modinc")
 
-def find_modinc():
-    modinc = os.environ.get("EMC2_CMAKE_FILES", None)
-    if not modinc:
-        raise SystemExit("Unable to locate CMake Directory")
-    return modinc
-
 def build_usr(tempdir, filename, mode, origfilename):
     binname = os.path.basename(os.path.splitext(filename)[0])
+    bindir = ""
+    if mode == INSTALL:
+        bindir = BINDIR
+    elif mode == COMPILE:
+        bindir = os.getcwd()
 
-    makefile = os.path.join(tempdir, "Makefile")
+    extra_compile_args=options.get("extra_compile_args", "")
+    extra_link_args=options.get("extra_link_args", "")
+
+    makefile = os.path.join(tempdir, "CMakeLists.txt")
     f = open(makefile, "w")
-    print("%s: %s" % (binname, filename), file=f)
-    print("\t$(CC) -I$(EMC2_HOME)/include -I/usr/include/linuxcnc -URTAPI -U__MODULE__ -DULAPI -Os %s -o $@ $< -Wl,-rpath,$(LIBDIR) -L$(LIBDIR) -llinuxcnchal %s" % (
-        options.get("extra_compile_args", ""),
-        options.get("extra_link_args", "")), file=f)
-    print("include %s" % find_modinc(), file=f)
+    data = """ 
+cmake_minimum_required(VERSION 3.14)
+project({binname})
+
+SET(EMC2_CMAKE_DIR "$ENV{{EMC2_CMAKE_DIR}}")
+
+if (EMC2_CMAKE_DIR)
+else()
+	message( FATAL_ERROR  "EMC2_CMAKE_DIR is undefined")
+endif()
+
+SET(EMC2_INCLUDE_DIR "$ENV{{EMC2_INCLUDE_DIR}}")
+
+if (EMC2_INCLUDE_DIR)
+else()
+	message( FATAL_ERROR  "EMC2_INCLUDE_DIR is undefined")
+endif()
+
+list(APPEND CMAKE_MODULE_PATH ${{EMC2_CMAKE_DIR}})
+
+include(buildoptions)
+include(buildcomponent)
+        
+set(CMAKE_C_FLAGS "${{CMAKE_C_FLAGS}} {extra_compile_args}")
+set(CMAKE_EXE_LINKER_FLAGS  "${{CMAKE_EXE_LINKER_FLAGS}} {extra_link_args}")
+set(RTLIB_DIR {bindir})
+
+include_directories(${{EMC2_INCLUDE_DIR}})
+
+build_component(NAME {binname} SOURCES {filename})
+""".format(binname=binname, bindir=bindir, extra_compile_args=extra_compile_args, extra_link_args=extra_link_args, filename=filename)
+    print(data, file=f)
     f.close()
-    result = os.system("cd %s && make -S %s" % (tempdir, binname))
+
+    result = os.system(f"cd {tempdir} && mkdir -p build && cd build && cmake .. && make")
     if result != 0:
         raise SystemExit(os.WEXITSTATUS(result) or 1)
-    output = os.path.join(tempdir, binname)
-    if mode == INSTALL:
-        shutil.copy(output, os.path.join(BINDIR, binname))
-    elif mode == COMPILE:
-        shutil.copy(output, os.path.join(os.path.dirname(origfilename),binname))
 
 def build_rt(tempdir, filename, mode, origfilename):
     objname = os.path.basename(os.path.splitext(filename)[0] + ".o")
@@ -1153,7 +1178,7 @@ def main():
         if args:
             raise SystemExit(
                 "Can not specify input files when using --print-modinc")
-        print(find_modinc())
+        print("MODINC is deprecated, the environment variable EMC2_CMAKE_DIR is used.")
         return 0
 
     for f in args:
