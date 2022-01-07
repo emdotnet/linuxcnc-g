@@ -155,7 +155,8 @@ fi
 
 if [ ! -z "$INTERACTIVE" ]; then $INTERACTIVE; fi
 
-echo "foo"
+halcmd stop || result=$?
+halcmd unload all || result=$?
 halcmd stop || result=$?
 halcmd unload all || result=$?
 

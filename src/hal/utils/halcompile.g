@@ -775,13 +775,17 @@ def epilogue(f):
 INSTALL, COMPILE, PREPROCESS, DOCUMENT, INSTALLDOC, VIEWDOC, MODINC = range(7)
 modename = ("install", "compile", "preprocess", "document", "installdoc", "viewdoc", "print-modinc")
 
-def build_usr(tempdir, filename, mode, origfilename):
+def build_cmake(tempdir, filename, mode, usrmode):
     binname = os.path.basename(os.path.splitext(filename)[0])
     bindir = ""
     if mode == INSTALL:
         bindir = BINDIR
     elif mode == COMPILE:
         bindir = os.getcwd()
+
+    buildcommand = "build_component"
+    if usrmode:
+        buildcommand = "build_component_user"
 
     extra_compile_args=options.get("extra_compile_args", "")
     extra_link_args=options.get("extra_link_args", "")
@@ -806,6 +810,13 @@ else()
 	message( FATAL_ERROR  "EMC2_INCLUDE_DIR is undefined")
 endif()
 
+SET(EMC2_LIB_DIR "$ENV{{EMC2_LIB_DIR}}")
+
+if (EMC2_LIB_DIR)
+else()
+	message( FATAL_ERROR  "EMC2_LIB_DIR is undefined")
+endif()
+
 list(APPEND CMAKE_MODULE_PATH ${{EMC2_CMAKE_DIR}})
 
 include(buildoptions)
@@ -815,10 +826,13 @@ set(CMAKE_C_FLAGS "${{CMAKE_C_FLAGS}} {extra_compile_args}")
 set(CMAKE_EXE_LINKER_FLAGS  "${{CMAKE_EXE_LINKER_FLAGS}} {extra_link_args}")
 set(RTLIB_DIR {bindir})
 
+include_directories({localdir})
 include_directories(${{EMC2_INCLUDE_DIR}})
+link_directories(${{EMC2_LIB_DIR}})
 
-build_component(NAME {binname} SOURCES {filename})
-""".format(binname=binname, bindir=bindir, extra_compile_args=extra_compile_args, extra_link_args=extra_link_args, filename=filename)
+{buildcommand}(NAME {binname} SOURCES {filename})
+target_link_libraries({binname} PRIVATE hal)
+""".format(binname=binname, buildcommand=buildcommand, bindir=bindir, localdir=os.getcwd(), extra_compile_args=extra_compile_args, extra_link_args=extra_link_args, filename=filename)
     print(data, file=f)
     f.close()
 
@@ -826,6 +840,13 @@ build_component(NAME {binname} SOURCES {filename})
     if result != 0:
         raise SystemExit(os.WEXITSTATUS(result) or 1)
 
+def build_usr(tempdir, filename, mode, origfilename):
+    build_cmake(tempdir, filename, mode, True)
+
+def build_rt(tempdir, filename, mode, origfilename):
+    build_cmake(tempdir, filename, mode, False)
+
+"""
 def build_rt(tempdir, filename, mode, origfilename):
     objname = os.path.basename(os.path.splitext(filename)[0] + ".o")
     makefile = os.path.join(tempdir, "Makefile")
@@ -850,6 +871,7 @@ def build_rt(tempdir, filename, mode, origfilename):
                 break
         else:
             raise SystemExit("Unable to copy module from temporary directory")
+"""
 
 def finddoc(section=None, name=None):
     for item in docs:

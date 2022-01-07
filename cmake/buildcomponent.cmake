@@ -40,6 +40,28 @@ function(build_component)
     set_property(TARGET ${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
 endfunction()
 
+function(build_component_user)
+    cmake_parse_arguments(PARSE_ARGV 0 "BUILD_COMPONENT_USER" "" "NAME" "SOURCES")
+
+    # binary stripping
+    if(NOT DEBUG)
+        set(TLINKER -r -s)
+    else()
+        set(TLINKER -r)
+    endif()
+
+    set(name ${BUILD_COMPONENT_USER_NAME})
+    add_executable(${name} ${BUILD_COMPONENT_USER_SOURCES})
+    target_link_libraries(${name} PRIVATE hal)
+    set_property(TARGET ${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
+    target_compile_options(${name} PRIVATE -rdynamic)
+    target_compile_definitions(${name} PRIVATE ULAPI USPACE)
+    target_link_options(${name} PRIVATE "-Bsymbolic,-Wl,-rpath,${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
+    set_target_properties(${name} PROPERTIES PREFIX "")
+    set_target_properties(${name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${RTLIB_DIR})
+    set_property(TARGET ${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
+endfunction()
+
 function(compile_component name src relative)
 
     if(${relative})
