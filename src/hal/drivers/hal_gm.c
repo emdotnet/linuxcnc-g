@@ -1,11 +1,11 @@
-#include <rtapi_pci.h>
-#include <rtapi_io.h>
+#include <rtapi/rtapi_pci.h>
+#include <rtapi/rtapi_io.h>
 
-#include "rtapi.h"		// RTAPI realtime OS API
-#include "rtapi_app.h"		// RTAPI realtime module decls
-#include "hal.h"		// HAL public API decls
-#include "gm.h"			// Hardware dependent defines
-#include "rtapi_math.h"
+#include "rtapi/rtapi.h"		// RTAPI realtime OS API
+#include "rtapi/rtapi_app.h"		// RTAPI realtime module decls
+#include "hal/hal.h"		// HAL public API decls
+#include "hal/drivers/gm.h"			// Hardware dependent defines
+#include "rtapi/rtapi_math.h"
 
 // Module information.
 MODULE_AUTHOR("Bence Kovacs");

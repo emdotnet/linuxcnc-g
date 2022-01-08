@@ -23,16 +23,16 @@
 //
 
 
-#include <rtapi_firmware.h>
+#include <rtapi/rtapi_firmware.h>
 
-#include "rtapi.h"
-#include "rtapi_string.h"
-#include "rtapi_math.h"
+#include "rtapi/rtapi.h"
+#include "rtapi/rtapi_string.h"
+#include "rtapi/rtapi_math.h"
 
-#include "hal.h"
+#include "hal/hal.h"
 
-#include "hostmot2.h"
-#include "bitfile.h"
+#include "hal/drivers/mesa-hostmot2/hostmot2.h"
+#include "hal/drivers/mesa-hostmot2/bitfile.h"
 
 
 

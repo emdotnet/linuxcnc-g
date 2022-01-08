@@ -21,13 +21,13 @@
 // other modules. 
 
 
-#include <rtapi_slab.h>
+#include <rtapi/rtapi_slab.h>
 
-#include "rtapi.h"
-#include "rtapi_string.h"
-#include "rtapi_math.h"
+#include "rtapi/rtapi.h"
+#include "rtapi/rtapi_string.h"
+#include "rtapi/rtapi_math.h"
 
-#include "hal.h"
+#include "hal/hal.h"
 
 #include "hal/drivers/mesa-hostmot2/hostmot2.h"
 

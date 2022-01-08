@@ -9,10 +9,10 @@
 ********************************************************************/
 
 
-#include "rtapi.h"
-#include "rtapi_app.h"
+#include "rtapi/rtapi.h"
+#include "rtapi/rtapi_app.h"
 
-#include "hal.h"
+#include "hal/hal.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -22,7 +22,7 @@
 #include <unistd.h>
 #include <string.h>
 
-#include "beaglebone_gpio.h"
+#include "hal/drivers/beaglebone_gpio.h"
 
 #define MODNAME "hal_bb_gpio"
 

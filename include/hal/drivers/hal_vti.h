@@ -66,45 +66,45 @@
 
 /* Structures used by the PCI card */
 struct encoder {
-    u16 Counter[4];
-    u8 Status;		// 0x08
-    u8 dummy;		// dummy space
-    u16 Reset;		// 0x0a
-    u8 reserved[3];	// dummy space 0x0c - 0x0f
-    u16 Interrupt;	// 0x10
-    u16 DAC;		// 0x12
-    u16 DIO;		// 0x14
+    uint16_t Counter[4];
+    uint8_t Status;		// 0x08
+    uint8_t dummy;		// dummy space
+    uint16_t Reset;		// 0x0a
+    uint8_t reserved[3];	// dummy space 0x0c - 0x0f
+    uint16_t Interrupt;	// 0x10
+    uint16_t DAC;		// 0x12
+    uint16_t DIO;		// 0x14
     };
 
 struct timer {
-    u8 reserved[0x2c];
-    u8 ctc0;		// 8254 Counter 0
-    u8 ctc1;		// 8254 Counter 1
-    u8 ctc2;		// 8254 Counter 2
-    u8 control;		// 8254 command register
+    uint8_t reserved[0x2c];
+    uint8_t ctc0;		// 8254 Counter 0
+    uint8_t ctc1;		// 8254 Counter 1
+    uint8_t ctc2;		// 8254 Counter 2
+    uint8_t control;		// 8254 command register
     };
 
 struct dac {
-    u8 reserved1[0x13f]; // dummy space
-    u16 dac[4];
-    u16 dac_adj[4];
-    u16 mode;
-    u16 update;
-    u16 reset;
-    u8 dummy[0x2a];	// dummy space
-    u8 DIO[0x10];	// Digital IO channels
-    u16 config0;	// Direction configs for channels 00-63
-    u16 config1;	// Direction configs for channels 64-127
-    u16 status;
+    uint8_t reserved1[0x13f]; // dummy space
+    uint16_t dac[4];
+    uint16_t dac_adj[4];
+    uint16_t mode;
+    uint16_t update;
+    uint16_t reset;
+    uint8_t dummy[0x2a];	// dummy space
+    uint8_t DIO[0x10];	// Digital IO channels
+    uint16_t config0;	// Direction configs for channels 00-63
+    uint16_t config1;	// Direction configs for channels 64-127
+    uint16_t status;
     };
 
-/* IndustryPack mappings - Need to check IF u8 or u16, also check boundary address*/
+/* IndustryPack mappings - Need to check IF uint8_t or uint16_t, also check boundary address*/
 struct ip {
-    u8 ID[0x40];	// IndustryPack ID - The first (12*2) addresses used for ID info
+    uint8_t ID[0x40];	// IndustryPack ID - The first (12*2) addresses used for ID info
 			// consult P20 of vip-4encdac.pdf for more info.
-    u16 IP_int;		// Interrupt status
-    u8 reserved[0x3e];	// dummy space
-    u16 IO[0x30];	// IndustryPack IO - Only need the first 0x30 address.
+    uint16_t IP_int;		// Interrupt status
+    uint8_t reserved[0x3e];	// dummy space
+    uint16_t IO[0x30];	// IndustryPack IO - Only need the first 0x30 address.
 			// Again, consult manual - Might it be better to use another struct here ??
 			// and also for the ID stuff....
     };

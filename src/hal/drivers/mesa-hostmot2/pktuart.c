@@ -16,15 +16,15 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 //
 
-#include <rtapi_slab.h>
-#include "rtapi.h"
-#include "rtapi_string.h"
-#include "rtapi_math.h"
-#include "hal.h"
-#include "hostmot2.h"
+#include <rtapi/rtapi_slab.h>
+#include "rtapi/rtapi.h"
+#include "rtapi/rtapi_string.h"
+#include "rtapi/rtapi_math.h"
+#include "hal/hal.h"
+#include "hal/drivers/mesa-hostmot2/hostmot2.h"
 
 // PktUART specific error codes
-#include "pktuart_errno.h"
+#include "hal/drivers/mesa-hostmot2/pktuart_errno.h"
 
 
 #define MaxTrFrames     (16) // Send counts are written to 16 deep FIFO, burst mode

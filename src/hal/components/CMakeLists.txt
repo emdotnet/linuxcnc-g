@@ -166,28 +166,6 @@ compile_component(wcomp wcomp.comp ON)
 compile_component(xhc_hb04_util xhc_hb04_util.comp ON)
 compile_component(xor2 xor2.comp ON)
 
-if(${BUILD_PARPORT})
-	build_component(NAME hal_parport SOURCES ../drivers/hal_parport.c)
-endif()
-
-# drivers
-if(${CMAKE_SYSTEM} MATCHES "Linux")
-	build_component(NAME pci_8255 SOURCES ../drivers/pci_8255.c)
-	build_component(NAME hal_tiro SOURCES ../drivers/hal_tiro.c)
-	build_component(NAME hal_stg SOURCES ../drivers/hal_stg.c)
-	#todo fix vti
-	#build_component(hal_vti ../drivers/hal_vti.c ON)
-	#todo fix evoreg
-	#build_component(hal_evoreg ../drivers/hal_evoreg.c ON)
-	#todo fix motenc
-	#build_component(hal_motenc ../drivers/hal_motenc.c ON)
-	build_component(NAME hal_ax5214h SOURCES ../drivers/hal_ax5214h.c)
-	build_component(NAME hal_speaker SOURCES ../drivers/hal_speaker.c)
-	build_component(NAME hal_skeleton SOURCES ../drivers/hal_skeleton.c)
-	#todo fix opto ac5 driver
-	#build_component(opto_ac5 ../drivers/opto_ac5.c ON)
-endif()
-
 generate_conv_component(conv_float_s32 float s32 "\"\"" -2147483647-1 2147483647)
 generate_conv_component(conv_float_u32 float u32 "\"\"" 2147483647 "")
 generate_conv_component(conv_bit_s32 bit s32 // "" "")

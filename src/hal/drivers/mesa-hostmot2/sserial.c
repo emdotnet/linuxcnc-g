@@ -17,17 +17,17 @@
 //
 
 
-#include <rtapi_slab.h>
+#include <rtapi/rtapi_slab.h>
 
-#include "rtapi.h"
-#include "rtapi_string.h"
-#include "rtapi_math.h"
-#include "rtapi_math64.h"
+#include "rtapi/rtapi.h"
+#include "rtapi/rtapi_string.h"
+#include "rtapi/rtapi_math.h"
+#include "rtapi/rtapi_math64.h"
 
-#include "hal.h"
+#include "hal/hal.h"
 
-#include "hostmot2.h"
-#include "bitfile.h"
+#include "hal/drivers/mesa-hostmot2/hostmot2.h"
+#include "hal/drivers/mesa-hostmot2/bitfile.h"
 
 
 int getbits(hm2_sserial_remote_t *chan, rtapi_u64 *val, int start, int len){

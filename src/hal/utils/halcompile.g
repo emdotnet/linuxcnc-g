@@ -1200,7 +1200,7 @@ def main():
         if args:
             raise SystemExit(
                 "Can not specify input files when using --print-modinc")
-        print("MODINC is deprecated, the environment variable EMC2_CMAKE_DIR is used.")
+        raise SystemExit("MODINC is deprecated, the environment variable EMC2_CMAKE_DIR is used.")
         return 0
 
     for f in args:

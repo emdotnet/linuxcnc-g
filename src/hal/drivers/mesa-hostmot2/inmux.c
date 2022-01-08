@@ -49,10 +49,10 @@
 
 
 
-#include <rtapi_slab.h>
+#include <rtapi/rtapi_slab.h>
 
-#include "rtapi.h"
-#include "hal.h"
+#include "rtapi/rtapi.h"
+#include "hal/hal.h"
 
 #include "hal/drivers/mesa-hostmot2/hostmot2.h"
 
