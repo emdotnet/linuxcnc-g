@@ -9,7 +9,8 @@ set_property(TARGET hal PROPERTY POSITION_INDEPENDENT_CODE ON)
 get_uspace_config(hal)
 target_link_libraries(hal PRIVATE ulapi)
 
-set_property(TARGET hal PROPERTY POSITION_INDEPENDENT_CODE ON)
+set_target_properties(hal PROPERTIES PREFIX "")
+set_target_properties(hal PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 
 set(LIBHALMODULE_SOURCES
@@ -51,6 +52,8 @@ target_include_directories(halsh PRIVATE ${READLINE_INCLUDE})
 target_include_directories(halsh PRIVATE ${TCL_INCLUDE_PATH})
 target_link_libraries(halsh PRIVATE ${READLINE_LIBRARIES})
 target_link_libraries(halsh PRIVATE ${TCL_LIBRARY})
+target_link_libraries(halsh PRIVATE hal)
+target_link_libraries(halsh PRIVATE inifile)
 get_uspace_config(halsh)
 
 add_executable(halstreamer components/streamer_usr.c)

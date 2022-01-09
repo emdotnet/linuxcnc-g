@@ -84,7 +84,7 @@ static int halCmd(ClientData cd, Tcl_Interp *interp, int argc, const char **argv
     return TCL_ERROR;
 }
 
-int Hal_Init(Tcl_Interp *interp) {
+int Halsh_Init(Tcl_Interp *interp) {
     int result = init();
     if(result < 0) {
 	Tcl_ResetResult(interp);

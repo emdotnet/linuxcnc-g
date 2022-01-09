@@ -38,6 +38,7 @@ export HALLIB_DIR=${rpath}/../hallib/
 export LINUXCNC_AUX_GLADEVCP=${rpath}/../aux/
 export LINUXCNC_AUX_EXAMPLES=${rpath}/../aux/examples
 export LINUXCNC_CONFIG_PATH=${EMC2_HOME_DIR}/../configs/
+export HALLIB_PATH=.:$HALLIB_DIR
 
 export EMC2_DEFAULT_NMLFILE=${LINUXCNC_CONFIG_PATH}/common/linuxcnc_big.nml
 export EMC2_DEFAULT_TOOLTABLE=${LINUXCNC_CONFIG_PATH}/sim/sim.tbl
@@ -47,6 +48,7 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${EMC2_LIB_DIR}
 export PYTHONPATH=${EMC2_HOME_DIR}/python:${EMC2_HOME_DIR}/lib
 
 export LIBDIR=${EMC2_LIB_DIR}
+export TCLLIBPATH=${EMC2_TCL_LIB_DIR}
 
 export MODULE_EXT=.so
 
@@ -68,4 +70,3 @@ export LINUXCNC_TCL_DIR=${EMC2_HOME_DIR}/tcl
 # export LINUXCNC_IMAGEDIR=/home/end/projects/linuxcnc
 # export LINUXCNC_TCL_LIB_DIR=/home/end/projects/linuxcnc/tcl
 # export HALLIB_DIR=/home/end/projects/linuxcnc/lib/hallib; export HALLIB_DIR
-# export HALLIB_PATH=.:$HALLIB_DIR; export HALLIB_PATH

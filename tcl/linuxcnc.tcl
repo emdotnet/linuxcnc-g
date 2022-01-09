@@ -63,7 +63,7 @@ load [file join $::linuxcnc::LIB_DIR/liblinuxcnc[info sharedlibextension]]
 
 # Arrange to load hal.so when the 'hal' command is requested
 proc hal {args} {
-    load $::linuxcnc::LIB_DIR/libhal.so
+    load $::linuxcnc::LIB_DIR/hal.so
     eval hal $args
 }
 
