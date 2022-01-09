@@ -9,7 +9,6 @@ set_property(TARGET hal PROPERTY POSITION_INDEPENDENT_CODE ON)
 get_uspace_config(hal)
 target_link_libraries(hal PRIVATE ulapi)
 
-set_target_properties(hal PROPERTIES PREFIX "")
 set_target_properties(hal PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 

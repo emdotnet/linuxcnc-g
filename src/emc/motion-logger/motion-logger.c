@@ -29,12 +29,12 @@
 #include <time.h>
 #include <unistd.h>
 
-#include "hal.h"
-#include "motion_debug.h"
-#include "motion.h"
-#include "motion_struct.h"
-#include "motion_types.h"
-#include "mot_priv.h"
+#include "hal/hal.h"
+#include "emc/motion/motion_debug.h"
+#include "emc/motion/motion.h"
+#include "emc/motion/motion_struct.h"
+#include "emc/nml_intf/motion_types.h"
+#include "emc/motion/mot_priv.h"
 
 static struct motion_logger_data_t {
     hal_bit_t *reopen;
