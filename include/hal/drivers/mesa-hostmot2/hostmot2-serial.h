@@ -19,7 +19,7 @@
 #ifndef __HOSTMOT2_UART_H
 #define __HOSTMOT2_UART_H
 
-#include <rtapi.h>
+#include <rtapi/rtapi.h>
 
 RTAPI_BEGIN_DECLS
 

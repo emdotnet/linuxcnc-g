@@ -3,7 +3,7 @@
 from ctypes import*
 
 
-lib = CDLL('hal.so')
+lib = CDLL('libhal.so')
 lib.hal_malloc.restype = c_void_p
 lib.hal_malloc.argtype = [c_long]
 lib.hal_comp_name.restype = c_char_p

@@ -846,33 +846,6 @@ def build_usr(tempdir, filename, mode, origfilename):
 def build_rt(tempdir, filename, mode, origfilename):
     build_cmake(tempdir, filename, mode, False)
 
-"""
-def build_rt(tempdir, filename, mode, origfilename):
-    objname = os.path.basename(os.path.splitext(filename)[0] + ".o")
-    makefile = os.path.join(tempdir, "Makefile")
-    f = open(makefile, "w")
-    print("obj-m += %s" % objname, file=f)
-    print("include %s" % find_modinc(), file=f)
-    print("EXTRA_CFLAGS += -I%s" % os.path.abspath(os.path.dirname(origfilename)), file=f)
-    print("EXTRA_CFLAGS += -I%s" % os.path.abspath('.'), file=f)
-    f.close()
-    if mode == INSTALL:
-        target = "modules install"
-    else:
-        target = "modules"
-    result = os.system("cd %s && make -S %s" % (tempdir, target))
-    if result != 0:
-        raise SystemExit(os.WEXITSTATUS(result) or 1)
-    if mode == COMPILE:
-        for extension in ".ko", ".so", ".o":
-            kobjname = os.path.splitext(filename)[0] + extension
-            if os.path.exists(kobjname):
-                shutil.copy(kobjname, os.path.basename(kobjname))
-                break
-        else:
-            raise SystemExit("Unable to copy module from temporary directory")
-"""
-
 def finddoc(section=None, name=None):
     for item in docs:
         if ((section == None or section == item[0]) and

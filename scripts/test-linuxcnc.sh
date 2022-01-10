@@ -137,7 +137,7 @@ run_tests () {
 	echo "Running test: $testdir" 1>&2
         #if test -n "$SYSTEM_BUILD"; then
             # Tell `halcompile` where to install comps
-            USER_MODULE_DIR=$(readlink -f $testdir) \
+            #USER_MODULE_DIR=$(readlink -f $testdir) \
                 PATH=$(readlink -f $testdir):$PATH \
                 run_test $testname
         #else

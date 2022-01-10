@@ -14,7 +14,7 @@ set(NMLINTF_SOURCES
         ../nml_intf/interpl.cc
         )
 
-add_library(nmlintf ${NMLINTF_SOURCES})
+add_library(nmlintf STATIC ${NMLINTF_SOURCES})
 set_property(TARGET nmlintf PROPERTY POSITION_INDEPENDENT_CODE ON)
 get_uspace_config(nmlintf)
 #target_link_libraries(linuxcnc PRIVATE Python3::Module)

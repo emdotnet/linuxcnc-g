@@ -1,8 +1,8 @@
-#include <rtapi.h>
-#include <rtapi_app.h>
+#include <rtapi/rtapi.h>
+#include <rtapi/rtapi_app.h>
 #include <errno.h>
 #include <stdio.h>
-#include <hal.h>
+#include <hal/hal.h>
 #include <unistd.h>
 
 int comp;

@@ -1,2 +1,9 @@
 #!/bin/sh
-[ -x "`dirname "$1"`build/rtlib/extralib.so" ]
+
+
+if [ -e "`dirname $1`"/build/rtlib/extralib.so ]
+then
+    	exit 0
+else
+	exit 1
+fi

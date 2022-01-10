@@ -19,7 +19,7 @@
 
 #include <stdint.h>
 
-#define MAX_NML_COMMAND_SIZE 1000
+#define MAX_NML_COMMAND_SIZE 10000
 
 // these go on the interp list
 struct NML_INTERP_LIST_NODE {

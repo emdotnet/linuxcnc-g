@@ -47,6 +47,9 @@ export PATH=${PATH}:${EMC2_BIN_DIR}
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${EMC2_LIB_DIR}
 export PYTHONPATH=${EMC2_HOME_DIR}/python:${EMC2_HOME_DIR}/lib
 
+# for halcompile
+export USER_MODULE_DIR=${HAL_RTMOD_DIR}
+
 export LIBDIR=${EMC2_LIB_DIR}
 export TCLLIBPATH=${EMC2_TCL_LIB_DIR}
 
