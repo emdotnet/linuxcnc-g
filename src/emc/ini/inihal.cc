@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "rtapi/rtapi.h"
 #include "emc/ini/inihal.hh"
 #include "emc/ini/iniaxis.hh"
+#include "emc/ini/inispindle.hh"
 
 static int debug=0;
 static int comp_id;

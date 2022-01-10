@@ -33,7 +33,7 @@
 *  only if UEO, EEST are closed when URE gets strobed.
 *  If any of UEO (user requested stop) or EEST (external estop) have been
 *  opened, then EEI will open as well.
-*  After restoring normal condition (UEO and EEST closed), an aditional
+*  After restoring normal condition (UEO and EEST closed), an additional
 *  URE (user-request-enable) is needed, this is either sent by the GUI
 *  (using the EMC_AUX_ESTOP_RESET NML message), or by a hardware button
 *  connected to the ladder driving URE.
@@ -58,6 +58,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <ctype.h>
+#include "config.h"
 #include "hal/hal.h"                /* access to HAL functions/definitions */
 #include "rtapi/rtapi.h"                /* rtapi_print_msg */
 #include "libnml/rcs/rcs.hh"                /* RCS_CMD_CHANNEL */
@@ -540,14 +541,14 @@ void load_tool(int idx) {
             UNEXPECTED_MSG; return;
         }
         // spindle-->pocket (specified by idx)
-        tooldata_db_notify(tzero.toolno,idx,tzero);
+        tooldata_db_notify(SPINDLE_UNLOAD,tzero.toolno,idx,tzero);
         tzero.pocketno = tpocket.pocketno;
         if (tooldata_put(tzero,idx) != IDX_OK) {
             UNEXPECTED_MSG;
         }
 
         // pocket-->spindle (idx==0)
-        tooldata_db_notify(tpocket.toolno,0,tpocket);
+        tooldata_db_notify(SPINDLE_LOAD,tpocket.toolno,0,tpocket);
         tpocket.pocketno = 0;
         if (tooldata_put(tpocket,0) != IDX_OK) {
             UNEXPECTED_MSG;
@@ -569,7 +570,7 @@ void load_tool(int idx) {
         if (tooldata_put(tdata,0) != IDX_OK) {
             UNEXPECTED_MSG; return;
         }
-        if (tooldata_db_notify(0,0,tdata)) { UNEXPECTED_MSG; }
+        if (tooldata_db_notify(SPINDLE_UNLOAD,0,0,tdata)) { UNEXPECTED_MSG; }
     } else {
         // just copy the desired tool to the spindle
         if (tooldata_get(&tdata,idx) != IDX_OK) {
@@ -581,7 +582,7 @@ void load_tool(int idx) {
         // notify idx==0 tool in spindle:
         CANON_TOOL_TABLE temp;
         if (tooldata_get(&temp,0) != IDX_OK) { UNEXPECTED_MSG; }
-        if (tooldata_db_notify(temp.toolno,0,temp)) { UNEXPECTED_MSG; }
+        if (tooldata_db_notify(SPINDLE_LOAD,temp.toolno,0,temp)) { UNEXPECTED_MSG; }
     }
 } // load_tool()
 
@@ -1004,7 +1005,9 @@ int main(int argc, char *argv[])
                 if (io_db_mode == DB_ACTIVE) {
                     int pno = idx; // for random_toolchanger
                     if (!random_toolchanger) { pno = tdata.pocketno; }
-                    if (tooldata_db_notify(toolno,pno,tdata)) { UNEXPECTED_MSG; }
+                    if (tooldata_db_notify(TOOL_OFFSET,toolno,pno,tdata)) {
+                        UNEXPECTED_MSG;
+                    }
                 }
             }
             break;

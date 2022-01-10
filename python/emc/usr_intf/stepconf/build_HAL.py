@@ -20,7 +20,6 @@
 #
 #    This builds the HAL files from the collected data.
 #
-from __future__ import print_function
 import os
 import time
 import shutil
@@ -348,7 +347,7 @@ class HAL:
 
         # Same as from pncconf
         # the jump list allows multiple hal files to be loaded postgui
-        # this simplifies the problem of overwritting the users custom HAL code
+        # this simplifies the problem of overwriting the users custom HAL code
         # when they change pyvcp sample options
         # if the user picked existing pyvcp option and the postgui_call_list is present
         # don't overwrite it. otherwise write the file.
@@ -749,6 +748,9 @@ class HAL:
             print(_("# Include your custom_postgui HAL commands here"), file=f1)
             print(_("# This file will not be overwritten when you run stepconf again"), file=f1)
             print(file=f1)
+            if self.d.select_qtplasmac:
+                print("# --- PLASMAC:LASER-ON ---", file=f1)
+                print("#net plasmac:laser-on  qtplasmac.laser_on  =>  YOUR_LASER_ON_PIN", file=f1)
             f1.close()
         # if using thcad for arc voltage and not a sim config
         if self.d.thcadenc & 1 and not self.d.sim_hardware:
@@ -811,7 +813,7 @@ class HAL:
         print("net plasmac:program-is-idle      halui.program.is-idle       =>  plasmac.program-is-idle", file=file)
         print("net plasmac:program-is-paused    halui.program.is-paused     =>  plasmac.program-is-paused", file=file)
         print("net plasmac:program-is-running   halui.program.is-running    =>  plasmac.program-is-running", file=file)
-        print("net plasmac:requested-velocity   motion.requested-vel        =>  plasmac.requested-velocity", file=file)
+        print("net plasmac:feed-upm             motion.feed-upm             =>  plasmac.feed-upm", file=file)
         print("net plasmac:scribe-start         spindle.1.on                =>  plasmac.scribe-start", file=file)
         print("net plasmac:spotting-start       spindle.2.on                =>  plasmac.spotting-start", file=file)
         print("net plasmac:thc-disable          motion.digital-out-02       =>  plasmac.thc-disable", file=file)
@@ -836,10 +838,6 @@ class HAL:
         print("net plasmac:xy-offset-enable     plasmac.xy-offset-enable    =>  axis.x.eoffset-enable axis.y.eoffset-enable", file=file)
         print("net plasmac:z-offset-counts      plasmac.z-offset-counts     =>  axis.z.eoffset-counts", file=file)
         print("net plasmac:z-offset-enable      plasmac.z-offset-enable     =>  axis.z.eoffset-enable", file=file)
-
-        if self.d.qtplasmacpmx:
-            print("\n# ---POWERMAX RS485 COMPONENT---", file=file)
-            print("loadusr -Wn pmx485 pmx485 {}".format(self.d.qtplasmacpmx), file=file) 
 
     # Boiler code
     def __getitem__(self, item):

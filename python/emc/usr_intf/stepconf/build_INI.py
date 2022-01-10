@@ -22,16 +22,11 @@
 #    This builds the INI file from the collected data.
 #
 
-from __future__ import print_function
 import os
 import time
 import sys
 import importlib
 import shutil
-
-if sys.version_info[0] == 2:
-    reload(sys)
-    sys.setdefaultencoding('utf8')
 
 class INI:
     def __init__(self,app):
@@ -404,15 +399,9 @@ class INI:
         print("# set the estop type (0=indicator, 1=hidden, 2=button)", file=file)
         print("ESTOP_TYPE = {}".format(self.d.qtplasmacestop), file=file)
         print("# laser touchoff", file=file)
-        if self.d.qtplasmacxlaser or self.d.qtplasmacylaser:
-            print("LASER_TOUCHOFF = X{:0.4f} Y{:0.4f}".format(self.d.qtplasmacxlaser, self.d.qtplasmacylaser), file=file)
-        else:
-            print("#LASER_TOUCHOFF = X0.0 Y0.0", file=file)
+        print("#LASER_TOUCHOFF = X0.0 Y0.0", file=file)
         print("# camera touchoff", file=file)
-        if self.d.qtplasmacxcam or self.d.qtplasmacycam:
-            print("CAMERA_TOUCHOFF = X{:0.4f} Y{:0.4f}".format(self.d.qtplasmacxcam, self.d.qtplasmacycam), file=file)
-        else:
-            print("#CAMERA_TOUCHOFF = X0.0 Y0.0 ", file=file)
+        print("#CAMERA_TOUCHOFF = X0.0 Y0.0 ", file=file)
         print("# powermax communications", file=file)
         if self.d.qtplasmacpmx:
             print("PM_PORT = {}".format(self.d.qtplasmacpmx), file=file)

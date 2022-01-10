@@ -142,6 +142,7 @@ class ScreenOptions(QtWidgets.QWidget, _HalWidgetBase):
         self._zmq_sub_subscribe_name = b""
         self._zmq_sub_socket_address = "tcp://127.0.0.1:5690"
         self._zmq_pub_socket_address = "tcp://127.0.0.1:5690"
+        self._halBaseName = ''
 
     # self.QTVCP_INSTANCE_
     # self.HAL_GCOMP_
@@ -382,18 +383,23 @@ class ScreenOptions(QtWidgets.QWidget, _HalWidgetBase):
             except:
                 answer = True
             # system shutdown
+            HANDLER = self.QTVCP_INSTANCE_.handler_instance
             if answer == QtWidgets.QMessageBox.DestructiveRole:
-                if 'system_shutdown_request__' in dir(self.QTVCP_INSTANCE_):
-                    self.QTVCP_INSTANCE_.system_shutdown_request__()
+                if 'system_shutdown_request__' in dir(HANDLER):
+                    HANDLER.system_shutdown_request__()
                 else:
                     from qtvcp.core import Action
                     ACTION = Action()
                     ACTION.SHUT_SYSTEM_DOWN_PROMPT()
+                if '_hal_cleanup' in dir(HANDLER):
+                    HANDLER._hal_cleanup()
                 event.accept()
             # close linuxcnc
             elif answer:
                 if self.PREFS_ and self.play_sounds and self.shutdown_play_sound:
                     STATUS.emit('play-sound', self.shutdown_exit_sound_type)
+                if '_hal_cleanup' in dir(HANDLER):
+                    HANDLER._hal_cleanup()
                 event.accept()
             # cancel
             elif answer == False:
@@ -984,6 +990,14 @@ class ScreenOptions(QtWidgets.QWidget, _HalWidgetBase):
     def set_runFromLineDialogColor(self, value):
         self._runFromLineDialogColor = value
     runFromLine_overlay_color = QtCore.pyqtProperty(QtGui.QColor, get_runFromLineDialogColor, set_runFromLineDialogColor)
+
+    def getHalCompName(self):
+        return self._halBaseName
+    def setHalCompName(self, value):
+        self._halBaseName = value
+    def resetHalCompName(self):
+        self._halBaseName = ''
+    halCompBaseName = QtCore.pyqtProperty(str, getHalCompName, setHalCompName, resetHalCompName)
 
     ##############################
     # required boiler code #

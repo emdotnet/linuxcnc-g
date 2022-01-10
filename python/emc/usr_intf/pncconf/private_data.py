@@ -462,7 +462,7 @@ class Private_Data:
                      [_("Breakaway"),S.BREAKAWAY ], [_("Move Up"),S.MOVE_UP ], [_("Move Down"),S.MOVE_DOWN ] ]
 
         self.human_input_names = [ [_("Unused Input"),S.UNUSED_INPUT],[_("Limits"),blimits],
-            [_("home"),bhome],[_("Limts/Home Shared"),bshared],
+            [_("home"),bhome],[_("Limits/Home Shared"),bshared],
             [_("Digital"),digital],[_("Axis Selection"),axis_select],[_("Overrides"),override],
             [_("Spindle"),spindle],[_("Operation"),operation],[_("External Control"),control],
             [_("Axis rapid"),rapid],[_("X BLDC Control"),xmotor_control],
@@ -1095,7 +1095,7 @@ class Private_Data:
         '7i80hd':{'DRIVER':'hm2_eth','PINS_PER_CONNECTOR':24,'TOTAL_CONNECTORS':3,'TAB_NUMS':[1,2,3],'TAB_NAMES':['P1','P2','P3']},
         '7i80db':{'DRIVER':'hm2_eth','PINS_PER_CONNECTOR':17,'TOTAL_CONNECTORS':4,'TAB_NUMS':[1,2,3,4],'TAB_NAMES':['P1','P2','P3','P4']},
         '7i90':{'DRIVER':'hm2_7i90','PINS_PER_CONNECTOR':24,'TOTAL_CONNECTORS':3,'TAB_NUMS':[1,2,3],'TAB_NAMES':['P1','P2','P3']},
-        '7i92':{'DRIVER':'hm2_eth','PINS_PER_CONNECTOR':17,'TOTAL_CONNECTORS':2},
+        '7i92':{'DRIVER':'hm2_eth','PINS_PER_CONNECTOR':17,'TOTAL_CONNECTORS':2,'TAB_NUMS':[1,2],'TAB_NAMES':['P1','P2']},
         '7i93':{'DRIVER':'hm2_eth','PINS_PER_CONNECTOR':24,'TOTAL_CONNECTORS':2},
         '7i96':{'DRIVER':'hm2_eth','PINS_PER_CONNECTOR':17,'TOTAL_CONNECTORS':3,'TAB_NUMS':[1,2,3],'TAB_NAMES':['TB3','TB1/TB2','P1']},
         '7i98':{'DRIVER':'hm2_eth','PINS_PER_CONNECTOR':17,'TOTAL_CONNECTORS':3},

@@ -56,7 +56,7 @@ class Pages:
         else:
             return True
 
-    # seaches (self._p.available_page) from the current page forward,
+    # searches (self._p.available_page) from the current page forward,
     # for the next page that is True or till second-to-last page.
     # if state found True: call current page finish function.
     # If that returns False then call the next page prepare function and show page
@@ -84,13 +84,13 @@ class Pages:
         elif u == len(self._p.available_page):
             name,text,state = self._p.available_page[cur]
             self['%s_finish'%name]()
-        # if comming from page 0 to page 1 sensitize 
+        # if coming from page 0 to page 1 sensitize 
         # the back button and change fwd button text
         if cur == 0:
             self.w.button_back.set_sensitive(True)
             self.w.label_fwd.set_text(self._p.MESS_FWD)
 
-    # seaches (self._p.available_page) from the current page backward,
+    # searches (self._p.available_page) from the current page backward,
     # for the next page that is True or till first page.
     # if state found True: call current page finish function.
     # If that returns False then call the next page prepare function and show page
@@ -402,10 +402,6 @@ class Pages:
         else:
             self.w.qtplasmac_estop.set_active(True)
         # set the qtplasmac spinboxes
-        self.w.qtplasmac_cam_x.set_value(self.d.qtplasmacxcam)
-        self.w.qtplasmac_cam_y.set_value(self.d.qtplasmacycam)
-        self.w.qtplasmac_laser_x.set_value(self.d.qtplasmacxlaser)
-        self.w.qtplasmac_laser_y.set_value(self.d.qtplasmacylaser)
         self.w.qtplasmac_pmx_port.set_text(self.d.qtplasmacpmx)
 
     def options_finish(self):
@@ -479,10 +475,6 @@ class Pages:
         self.d.qtplasmacmode = [int(i) for i,r in enumerate(reversed(self.w.qtplasmac_mode.get_group())) if r.get_active()][0]
         self.d.qtplasmacscreen = [int(i) for i,r in enumerate(reversed(self.w.qtplasmac_screen.get_group())) if r.get_active()][0]
         self.d.qtplasmacestop = [int(i) for i,r in enumerate(reversed(self.w.qtplasmac_estop.get_group())) if r.get_active()][0]
-        self.d.qtplasmacxcam = self.w.qtplasmac_cam_x.get_value()
-        self.d.qtplasmacycam = self.w.qtplasmac_cam_y.get_value()
-        self.d.qtplasmacxlaser = self.w.qtplasmac_laser_x.get_value()
-        self.d.qtplasmacylaser = self.w.qtplasmac_laser_y.get_value()
         self.d.qtplasmacpmx = self.w.qtplasmac_pmx_port.get_text()
         self.page_set_state('spindle',((self.a.has_spindle_speed_control() or self.a.has_spindle_encoder()) \
                                         and not self.d.select_qtplasmac))

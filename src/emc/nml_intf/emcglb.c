@@ -13,13 +13,15 @@
 * Last change:
 ********************************************************************/
 
+#include "config.h"		/* these decls */
 #include "emc/nml_intf/emcglb.h"		/* these decls */
 #include "emc/nml_intf/emccfg.h"		/* their initial values */
 #include "emc/nml_intf/emcpos.h"		/* EmcPose */
 
 char emc_inifile[LINELEN] = DEFAULT_EMC_INIFILE;
 
-char emc_nmlfile[LINELEN];
+//const char * DEFAULT_EMC_NMLFILE = EMC2_DEFAULT_NMLFILE;
+char emc_nmlfile[LINELEN] = "";
 
 char rs274ngc_startup_code[LINELEN] =
     DEFAULT_RS274NGC_STARTUP_CODE;

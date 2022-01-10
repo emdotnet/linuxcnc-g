@@ -22,6 +22,7 @@
 #include <tcl.h>
 #include <tk.h>
 
+#include "emc/linuxcnc.h"
 #include "libnml/rcs/rcs.hh"
 #include "libnml/posemath/posemath.h"		// PM_POSE, TO_RAD
 #include "emc/nml_intf/emc.hh"		// EMC NML

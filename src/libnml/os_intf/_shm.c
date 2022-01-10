@@ -13,6 +13,7 @@
 * Last change: 
 ********************************************************************/
 
+#include "config.h"
 #include "libnml/os_intf/_shm.h"
 #include "libnml/rcs/rcs_print.hh"
 #include <stdio.h>		/* NULL */

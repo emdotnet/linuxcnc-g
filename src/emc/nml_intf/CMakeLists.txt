@@ -11,6 +11,7 @@ set(NMLINTF_SOURCES
         ../ini/inijoint.cc
         ../ini/initraj.cc
         ../ini/inihal.cc
+        ../ini/inispindle.cc
         ../nml_intf/interpl.cc
         )
 

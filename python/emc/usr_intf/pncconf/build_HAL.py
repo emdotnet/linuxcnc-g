@@ -20,7 +20,6 @@
 #
 #    This builds the HAL files from the collected data.
 #
-from __future__ import print_function
 import os
 import time
 import shutil
@@ -141,7 +140,7 @@ class HAL:
                 bldc = True
                 break
         chargepump = self.a.findsignal("charge-pump-out")
-        # load PID compnent:
+        # load PID component:
         # if axis needs PID- (has pwm signal) then add its letter to pidlist
         temp = ""
         for i in self.d.available_axes:
@@ -599,10 +598,10 @@ class HAL:
                 print("setp    %s.filter true" % pinname, file=file)
                 print("setp    %s.counter-mode true" % pinname, file=file)
             print(file=file)
-        # was feed overrride option selected? MPG or switch selcted?
+        # was feed override option selected? MPG or switch selected?
         if self.d.externalfo:
             if self.d.fo_usempg:
-                print("# connect feed overide increments - MPG", file=file)
+                print("# connect feed override increments - MPG", file=file)
                 print(file=file)
                 print("    setp halui.feed-override.direct-value false", file=file)
                 print("    setp halui.feed-override.scale .01", file=file)
@@ -617,7 +616,7 @@ class HAL:
                     print("net axis-selected-count => halui.feed-override.counts", file=file)
                 print(file=file)
             elif self.d.fo_useswitch:
-                print("# connect feed overide increments - switches", file=file)
+                print("# connect feed override increments - switches", file=file)
                 print(file=file)
                 print("    setp halui.feed-override.count-enable true", file=file)
                 print("    setp halui.feed-override.direct-value true", file=file)
@@ -656,7 +655,7 @@ class HAL:
                 temp.append(float(self.d[i+"maxvel"]))
             scale = max(temp)/100
             if self.d.mvo_usempg:
-                print("# connect max velocity overide increments - MPG", file=file)
+                print("# connect max velocity override increments - MPG", file=file)
                 print(file=file)
                 print("    setp halui.max-velocity.direct-value false", file=file)
                 print("    setp halui.max-velocity.scale %04f"% scale, file=file)
@@ -671,7 +670,7 @@ class HAL:
                     print("net axis-selected-count =>  halui.max-velocity.counts", file=file)
                 print(file=file)
             elif self.d.mvo_useswitch:
-                print("# connect max velocity overide increments - switches", file=file)
+                print("# connect max velocity override increments - switches", file=file)
                 print(file=file)
                 print("    setp halui.max-velocity.count-enable true", file=file)
                 print("    setp halui.max-velocity.direct-value true", file=file)
@@ -705,7 +704,7 @@ class HAL:
             print(file=file)
         if self.d.externalso:
             if self.d.so_usempg:
-                print("# connect spindle overide increments - MPG", file=file)
+                print("# connect spindle override increments - MPG", file=file)
                 print(file=file)
                 print("    setp halui.spindle.0.override.direct-value false", file=file)
                 print("    setp halui.spindle.0.override.scale .01", file=file)
@@ -720,7 +719,7 @@ class HAL:
                     print("net axis-selected-count  =>  halui.spindle.0.override.counts", file=file)
                 print(file=file)
             elif self.d.so_useswitch:
-                print("# connect spindle overide increments ", file=file)
+                print("# connect spindle override increments ", file=file)
                 print(file=file)
                 print("    setp halui.spindle.0.override.count-enable true", file=file)
                 print("    setp halui.spindle.0.override.direct-value true", file=file)
@@ -964,6 +963,9 @@ class HAL:
                 f1 = open(custom, "w")
                 print(("# Include your %s HAL commands here")%i, file=f1)
                 print(_("# This file will not be overwritten when you run PNCconf again"), file=f1)
+                if i == "custom_postgui":
+                    print("\n# --- PLASMAC:LASER-ON ---", file=f1)
+                    print("#net plasmac:laser-on  qtplasmac.laser_on  =>  YOUR_LASER_ON_PIN", file=f1)
 
         if self.d.frontend == _PD._TOUCHY:# TOUCHY GUI
                 touchyfile = os.path.join(base, "touchy.hal")
@@ -1448,7 +1450,7 @@ class HAL:
                 print(file=file)
                 print("net %s-pos-cmd    <= joint.%d.motor-pos-cmd" % (let, jnum ), file=file)
                 print("net %s-vel-cmd    <= joint.%d.vel-cmd" % (let, jnum ), file=file)
-                print("net %s-output     <= "% (let) + steppinname + ".velocity-cmd", file=file)
+                print("net %s-output     => "% (let) + steppinname + ".velocity-cmd", file=file)
                 print("net %s-pos-fb     <= "% (let) + steppinname + ".position-fb", file=file)
                 print("net %s-pos-fb     => joint.%d.motor-pos-fb" % (let, jnum ), file=file)
                 print("net %s-enable     <= joint.%d.amp-enable-out"% (let,jnum), file=file)
@@ -1716,7 +1718,7 @@ class HAL:
                                 self._substitution_list.append((title.upper(),name))
                             self._substitution_list.append(("",""))
                             break
-            # fot TP pwm pins
+            # for TP pwm pins
             elif t == (_PD.TPPWMA):
                 if not p == "unused-tppwmgen":
                     for sig in (self.d.haltppwmoutputsignames):
@@ -1951,7 +1953,7 @@ class HAL:
         print("net plasmac:program-is-idle      halui.program.is-idle       =>  plasmac.program-is-idle", file=file)
         print("net plasmac:program-is-paused    halui.program.is-paused     =>  plasmac.program-is-paused", file=file)
         print("net plasmac:program-is-running   halui.program.is-running    =>  plasmac.program-is-running", file=file)
-        print("net plasmac:requested-velocity   motion.requested-vel        =>  plasmac.requested-velocity", file=file)
+        print("net plasmac:feed-upm             motion.feed-upm             =>  plasmac.feed-upm", file=file)
         print("net plasmac:scribe-start         spindle.1.on                =>  plasmac.scribe-start", file=file)
         print("net plasmac:spotting-start       spindle.2.on                =>  plasmac.spotting-start", file=file)
         print("net plasmac:thc-disable          motion.digital-out-02       =>  plasmac.thc-disable", file=file)
@@ -1976,10 +1978,6 @@ class HAL:
         print("net plasmac:xy-offset-enable     plasmac.xy-offset-enable    =>  axis.x.eoffset-enable axis.y.eoffset-enable", file=file)
         print("net plasmac:z-offset-counts      plasmac.z-offset-counts     =>  axis.z.eoffset-counts", file=file)
         print("net plasmac:z-offset-enable      plasmac.z-offset-enable     =>  axis.z.eoffset-enable", file=file)
-
-        if self.d.qtplasmacpmx:
-            print("\n# ---POWERMAX RS485 COMPONENT---", file=file)
-            print("loadusr -Wn pmx485 pmx485 {}".format(self.d.qtplasmacpmx), file=file)
 
 # BOILER CODE
     def __getitem__(self, item):

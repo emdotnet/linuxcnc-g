@@ -20,6 +20,7 @@
 #include <unistd.h>             // _exit()
 #include <signal.h>
 
+#include "config.h"
 #include "libnml/rcs/rcs.hh"		// EMC NML
 #include "emc/nml_intf/emc.hh"		// EMC NML
 #include "emc/nml_intf/emc_nml.hh"		// EMC NML

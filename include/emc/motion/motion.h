@@ -145,9 +145,9 @@ extern "C" {
 	EMCMOT_SET_WORLD_HOME,	/* set pose for world home */
 
 	EMCMOT_SET_DEBUG,       /* sets the debug level */
-	EMCMOT_SET_DOUT,        /* sets or unsets a DIO, this can be imediate or synched with motion */
-	EMCMOT_SET_AOUT,	/* sets or unsets a AIO, this can be imediate or synched with motion */
-        EMCMOT_SET_SPINDLESYNC, /* syncronize motion to spindle encoder */
+	EMCMOT_SET_DOUT,        /* sets or unsets a DIO, this can be immediate or synched with motion */
+	EMCMOT_SET_AOUT,	/* sets or unsets a AIO, this can be immediate or synched with motion */
+        EMCMOT_SET_SPINDLESYNC, /* synchronize motion to spindle encoder */
 	EMCMOT_SPINDLE_ON,	/* start the spindle */
 	EMCMOT_SPINDLE_OFF,	/* stop the spindle */
 	EMCMOT_SPINDLE_INCREASE,	/* spindle faster */
@@ -189,6 +189,8 @@ extern "C" {
         EMCMOT_SET_AXIS_ACC_LIMIT,      /* set the max axis acc */
         EMCMOT_SET_AXIS_LOCKING_JOINT,  /* set the axis locking joint */
 
+        EMCMOT_SET_SPINDLE_PARAMS, /* One command to set all spindle params */
+
     } cmd_code_t;
 
 /* this enum lists the possible results of a command */
@@ -220,6 +222,8 @@ extern "C" {
 	double motor_offset;    /* offset from joint to motor position */
 	double maxLimit;	/* pos value for position limit, output */
 	double minLimit;	/* neg value for position limit, output */
+	double min_pos_speed;     /* spindle minimum positive speed */
+	double max_neg_speed;     /* spindle maximum negative speed */
 	EmcPose pos;		/* line/circle endpt, or teleop vector */
 	PmCartesian center;	/* center for circle */
 	PmCartesian normal;	/* normal vec for circle */
@@ -251,7 +255,7 @@ extern "C" {
 	double maxFerror;	/* max following error */
 	int wdWait;		/* cycle to wait before toggling wd */
 	int debug;		/* debug level, from DEBUG in .ini file */
-	unsigned char now, out, start, end;	/* these are related to synched AOUT/DOUT. now=wether now or synched, out = which gets set, start=start value, end=end value */
+	unsigned char now, out, start, end;	/* these are related to synched AOUT/DOUT. now=whether now or synched, out = which gets set, start=start value, end=end value */
 	unsigned char mode;	/* used for turning overrides etc. on/off */
 	double comp_nominal, comp_forward, comp_reverse; /* compensation triplet, nominal, forward, reverse */
     unsigned char probe_type; /* ~1 = error if probe operation is unsuccessful (ngc default)
@@ -541,11 +545,19 @@ Suggestion: Split this in to an Error and a Status flag register..
 	int locked;             // spindle lock engaged after orient
 	int orient_fault;       // fault code from motion.spindle-orient-fault
 	int orient_state;       // orient_state_t
-    int spindle_index_enable;  /* hooked to a canon encoder index-enable */
-    double spindleRevs;     /* position of spindle in revolutions */
-    double spindleSpeedIn;  /* velocity of spindle in revolutions per minute */
-    int at_speed;
+	int spindle_index_enable;  /* hooked to a canon encoder index-enable */
+	double spindleRevs;     /* position of spindle in revolutions */
+	double spindleSpeedIn;  /* velocity of spindle in revolutions per minute */
+	int at_speed;
 	int fault; /* amplifier fault */
+	double max_pos_speed; /* spindle speed limits */
+	double min_pos_speed; /* signed values, so max_neg = 0 */
+	double max_neg_speed; /* and min_neg = -1e99 indicates no limit */
+	double min_neg_speed;
+	double home_angle;
+	double home_search_vel;
+	int home_sequence;
+	double increment;
     } spindle_status_t;
     
     typedef struct {
@@ -616,7 +628,7 @@ Suggestion: Split this in to an Error and a Status flag register..
 	EmcPose world_home;	/* cartesean coords of home position */
 	emcmot_joint_status_t joint_status[EMCMOT_MAX_JOINTS];	/* all joint status data */
     emcmot_axis_status_t axis_status[EMCMOT_MAX_AXIS];	/* all axis status data */
-    int spindleSync;    /* spindle used for syncronised moves. -1 = none */
+    int spindleSync;    /* spindle used for synchronised moves. -1 = none */
     spindle_status_t spindle_status[EMCMOT_MAX_SPINDLES]; /* all spindle data */
 
 
@@ -636,7 +648,7 @@ Suggestion: Split this in to an Error and a Status flag register..
 	int synch_do[EMCMOT_MAX_DIO]; /* outputs to the motion controller, queried by g-code */
 	double analog_input[EMCMOT_MAX_AIO]; /* inputs to the motion controller, queried by g-code */
 	double analog_output[EMCMOT_MAX_AIO]; /* outputs to the motion controller, queried by g-code */
-
+	int misc_error[EMCMOT_MAX_MISC_ERROR]; /* Random Error pins*/
 	struct state_tag_t tag; /* Current interp state corresponding
 				   to motion line */
 
@@ -719,6 +731,9 @@ Suggestion: Split this in to an Error and a Status flag register..
         int numAIO;             /* userdefined number of analog IO. default is 4. (EMCMOT_MAX_AIO=16), 
                                    but can be altered at motmod insmod time */
 
+        int numMiscError;     /* userdefined number of Misc Errors. default is 0.
+                                  but can be altered at motmod insmod time */
+
 /*! \todo FIXME - all structure members beyond this point are in limbo */
 
 	double trajCycleTime;	/* the rate at which the trajectory loop
@@ -763,7 +778,7 @@ Suggestion: Split this in to an Error and a Status flag register..
 	unsigned char tail;	/* flag count for mutex detect */
     } emcmot_internal_t;
 
-/* error structure - A ring buffer used to pass formatted printf stings to usr space */
+/* error structure - A ring buffer used to pass formatted printf strings to usr space */
     typedef struct emcmot_error_t {
 	unsigned char head;	/* flag count for mutex detect */
 	char error[EMCMOT_ERROR_NUM][EMCMOT_ERROR_LEN];

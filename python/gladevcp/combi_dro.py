@@ -139,7 +139,6 @@ class Combi_DRO(Gtk.VBox):
         self.widgets = {}  # will hold all our widgets we need to style
 
         # Make the GUI and connect signals
-        self.css = Gtk.CssProvider()
         
         self.css_text = """
                         .background  {background-color: #000000;}
@@ -268,7 +267,7 @@ class Combi_DRO(Gtk.VBox):
         else:
             if not self.toggle_readout:
                 return
-            self.toogle_readout()
+            self.toggle_readout()
 
     # Get propertys
     def do_get_property(self, property):
@@ -524,7 +523,7 @@ class Combi_DRO(Gtk.VBox):
     # this will toggle the DRO around, mainly used to maintain all DRO
     # at the same state, because a click on one will only change that DRO
     # This can be used to change also the others
-    def toogle_readout(self, Data = None):
+    def toggle_readout(self, Data = None):
         '''
         toggles the order of the DRO in the widget
 
@@ -610,7 +609,7 @@ class Combi_DRO(Gtk.VBox):
         '''
         self._ORDER = order
         self._set_labels()
-        self.toogle_readout(Data=True)
+        self.toggle_readout(Data=True)
 
     # This will return the position information of all three DRO
     # it will be in the order Abs, Rel, DTG
@@ -622,7 +621,7 @@ class Combi_DRO(Gtk.VBox):
 
         returns the position of the DRO as a list of floats
         the order is independent of the order shown on the DRO
-        and will be givven as [Absolute , relative , DTG]
+        and will be given as [Absolute , relative , DTG]
 
         Absolute = the machine coordinates, depends on the actual property
                    will give actual or commanded position
