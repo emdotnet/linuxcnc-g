@@ -66,6 +66,11 @@ shm_t *rcs_shm_open(key_t key, size_t size, int oflag, /* int mode */ ...)
     }
     va_end(ap);
 
+    if (size < 4096) {
+    	rcs_print_debug(PRINT_SHARED_MEMORY_ACTIVITY,"rcs_shm_open size too low, increasing to 4096 (needs to be at least one pagesize)\n");
+    	size = 4096;
+    }
+
 #ifdef USE_POSIX_SHAREDMEM
     rcs_print_debug(PRINT_SHARED_MEMORY_ACTIVITY,
 	"rcs_shm_open(key=%d(0x%X),size=%d(0x%X),oflag=%d)\n",

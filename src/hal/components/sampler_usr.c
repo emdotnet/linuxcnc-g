@@ -102,7 +102,7 @@ static void quit(int sig)
     stop = 1;
 }
 
-#define BUF_SIZE 4000
+//#define BUF_SIZE 4000
 
 int main(int argc, char **argv)
 {
