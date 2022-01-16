@@ -119,5 +119,6 @@ endif(USE_GTK2)
 
 add_custom_command(OUTPUT halcompile
         COMMAND yapps2 ${CMAKE_CURRENT_SOURCE_DIR}/utils/halcompile.g ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/halcompile
+	COMMAND chmod +x ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/halcompile
         DEPENDS utils/halcompile.g)
 add_custom_target(halcompile_script ALL DEPENDS halcompile)
