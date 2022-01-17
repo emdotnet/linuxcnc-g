@@ -31,8 +31,8 @@ function(build_component)
     add_custom_target(${name}-ver ALL DEPENDS ${name}.ver)
 
     add_library(${name} SHARED $<TARGET_OBJECTS:obj-${name}>)
-    target_compile_options(${name} PRIVATE -rdynamic -nostdinc)
-    target_link_options(${name} PRIVATE "-Bsymbolic,-Wl,-rpath,${CMAKE_LIBRARY_OUTPUT_DIRECTORY},-Wl,--version-script=${CMAKE_CURRENT_BINARY_DIR}/${name}.ver")
+    target_compile_options(${name} PUBLIC -rdynamic -nostdinc)
+    target_link_options(${name} PUBLIC "LINKER:-Bsymbolic,-rpath,${CMAKE_LIBRARY_OUTPUT_DIRECTORY},--version-script=${CMAKE_CURRENT_BINARY_DIR}/${name}.ver")
     add_dependencies(${name} ${name}-ver)
 
     set_target_properties(${name} PROPERTIES PREFIX "")
