@@ -289,6 +289,7 @@ int tooldata_load(const char *filename,
     // open tool table file
     if (NULL == (fp = fopen(filename, "r"))) {
         // can't open file
+        fprintf(stderr, "\ntooldata_load: Failed to load tooldata file %s\n\n", filename);
         return -1;
     }
 
