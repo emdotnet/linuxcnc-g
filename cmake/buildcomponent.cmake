@@ -56,7 +56,7 @@ function(build_component_user)
     set_property(TARGET ${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
     target_compile_options(${name} PRIVATE -rdynamic)
     target_compile_definitions(${name} PRIVATE ULAPI USPACE)
-    target_link_options(${name} PRIVATE "-Bsymbolic,-Wl,-rpath,${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
+    target_link_options(${name} PUBLIC "LINKER:-Bsymbolic,-rpath,${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
     set_target_properties(${name} PROPERTIES PREFIX "")
     #todo: variable name not clear / add extra parameter
     set_target_properties(${name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${RTLIB_DIR})
