@@ -1,8 +1,6 @@
 linuxcnc-checklink
 linuxcnc_info
 rip-environment
-haltcl
 runtests
 linuxcncmkdesktop
 linuxcnc_var
-halcmd_twopass
