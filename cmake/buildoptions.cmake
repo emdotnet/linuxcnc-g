@@ -10,7 +10,7 @@ set(CMAKE_C_STANDARD_REQUIRED True)
 if(NOT DEBUG)
   set(CMAKE_C_FLAGS -Wall\ -O2)
 else()
-  set(CMAKE_C_FLAGS -Wall\ -fvisibility=default\ -Wall\ -O0\ -g\ -fsanitize=address\ -fno-omit-frame-pointer)
+  set(CMAKE_C_FLAGS -Wall\ -fvisibility=default\ -Wall\ -O0\ -g)
 endif()
 
 # specify the default C++ compiler options
@@ -21,7 +21,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 if(NOT DEBUG)
     set(CMAKE_CXX_FLAGS -Wall\ -O2)
 else()
-    set(CMAKE_CXX_FLAGS -Wall\ -fvisibility=default\ -O0\ -g\ -fsanitize=address\ -fno-omit-frame-pointer)
+    set(CMAKE_CXX_FLAGS -Wall\ -fvisibility=default\ -O0\ -g)
 endif()
 
 set(RTLIB_DIR ${PROJECT_BINARY_DIR}/rtlib)
