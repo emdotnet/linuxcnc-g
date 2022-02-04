@@ -1366,7 +1366,7 @@ static int unloadrt_comp(char *mod_name)
 
     char *s = malloc(1024*sizeof(char));
 #if defined(RTAPI_USPACE)
-    snprintf(s, 1024*sizeof(s), "%s%s", EMC2_BIN_DIR, "/rtapi_app");
+    snprintf(s, 1024*sizeof(char), "%s%s", EMC2_BIN_DIR, "/rtapi_app");
     argv[0] = s;
     argv[1] = "unload";
 #else

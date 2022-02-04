@@ -5,7 +5,7 @@ function(build_component)
     set(name ${BUILD_COMPONENT_NAME})
     add_library(obj-${name} OBJECT ${BUILD_COMPONENT_SOURCES})
     set_property(TARGET obj-${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
-    target_compile_options(obj-${name} PRIVATE -rdynamic)
+    #    target_compile_options(obj-${name} PRIVATE -rdynamic)
     target_compile_definitions(obj-${name} PRIVATE RTAPI USPACE __MODULE__)
 
     # binary stripping
@@ -31,8 +31,8 @@ function(build_component)
     add_custom_target(${name}-ver ALL DEPENDS ${name}.ver)
 
     add_library(${name} SHARED $<TARGET_OBJECTS:obj-${name}>)
-    target_compile_options(${name} PUBLIC -rdynamic -nostdinc)
-    target_link_options(${name} PUBLIC "LINKER:-Bsymbolic,-rpath,${CMAKE_LIBRARY_OUTPUT_DIRECTORY},--version-script=${CMAKE_CURRENT_BINARY_DIR}/${name}.ver")
+    target_compile_options(${name} PRIVATE -nostdinc)
+    target_link_options(${name} PRIVATE "LINKER:-Bsymbolic,-rpath,${CMAKE_LIBRARY_OUTPUT_DIRECTORY},--version-script=${CMAKE_CURRENT_BINARY_DIR}/${name}.ver")
     add_dependencies(${name} ${name}-ver)
 
     set_target_properties(${name} PROPERTIES PREFIX "")
@@ -56,7 +56,7 @@ function(build_component_user)
     set_property(TARGET ${name} PROPERTY POSITION_INDEPENDENT_CODE ON)
     target_compile_options(${name} PRIVATE -rdynamic)
     target_compile_definitions(${name} PRIVATE ULAPI USPACE)
-    target_link_options(${name} PUBLIC "LINKER:-Bsymbolic,-rpath,${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
+    target_link_options(${name} PRIVATE "LINKER:-Bsymbolic,-rpath,${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
     set_target_properties(${name} PROPERTIES PREFIX "")
     #todo: variable name not clear / add extra parameter
     set_target_properties(${name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${RTLIB_DIR})
