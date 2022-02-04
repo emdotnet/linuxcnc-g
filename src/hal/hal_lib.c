@@ -2879,21 +2879,30 @@ static void thread_task(void *arg)
 
 static int init_hal_data(void)
 {
-    /* has the block already been initialized? */
-    if (hal_data->version != 0) {
-	/* yes, verify version code */
-	if (hal_data->version == HAL_VER) {
-	    return 0;
-	} else {
-	    rtapi_print("HAL: version:%d expected:%d\n",hal_data->version,HAL_VER);
-	    rtapi_print_msg(RTAPI_MSG_ERR,
-		"HAL: ERROR: version code mismatch\n");
-	    return -1;
+
+	/* has the hal_data block already been initialized? */
+
+	/* Lock hal_data by taking the mutex, so that two processes don't
+	 *     both try to initialize hal_data at the same time.  NOTE: This
+	 *         assumes that it's safe to call rtapi_mutex_get() on the mutex in an
+	 *             "uninitialized" hal_data memory buffer.  On uspace it's guaranteed by
+	 *                 rtapi to be initialized to all-bytes-zero, which is what an unlocked
+	 *                     mutex is. FIXME: It's unclear what RTAI does. */
+	rtapi_mutex_get(&(hal_data->mutex));
+
+	if (hal_data->version != 0) {
+		/* hal_data has been initialized already, verify version code */
+		if (hal_data->version == HAL_VER) {
+			rtapi_mutex_give(&(hal_data->mutex));
+			return 0;
+		} else {
+			rtapi_print_msg(RTAPI_MSG_ERR, "HAL: ERROR: version code mismatch\n");
+			rtapi_mutex_give(&(hal_data->mutex));
+			return -1;
+		}
 	}
-    }
-    /* no, we need to init it, grab the mutex unconditionally */
-    rtapi_mutex_try(&(hal_data->mutex));
-    /* set version code so nobody else init's the block */
+
+	/* set version code so nobody else init's the block */
     hal_data->version = HAL_VER;
     /* initialize everything */
     hal_data->comp_list_ptr = 0;
