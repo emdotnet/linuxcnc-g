@@ -53,8 +53,9 @@ set(HOSTMOT2_SOURCES
 		mesa-hostmot2/watchdog.c
 		mesa-hostmot2/xy2mod.c
 		)
-build_component(NAME mesa-hostmot2 SOURCES ${HOSTMOT2_SOURCES})
+build_component(NAME hostmot2 SOURCES ${HOSTMOT2_SOURCES})
 
+build_component(NAME hm2_test SOURCES mesa-hostmot2/hm2_test.c mesa-hostmot2/bitfile.c)
 #obj-$(CONFIG_HOSTMOT2) += hostmot2.o hm2_test.o hm2_pci.o hm2_7i43.o hm2_7i90.o setsserial.o
 #ifeq ($(BUILD_SYS),uspace)
 #obj-$(CONFIG_HOSTMOT2) += hm2_eth.o hm2_spi.o hm2_rpspi.o

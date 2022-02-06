@@ -26,15 +26,15 @@
 //
 
 
-#include "rtapi.h"
-#include "rtapi_app.h"
-#include "rtapi_string.h"
+#include "rtapi/rtapi.h"
+#include "rtapi/rtapi_app.h"
+#include "rtapi/rtapi_string.h"
 
-#include "hal.h"
+#include "hal/hal.h"
 
-#include "hostmot2.h"
-#include "hostmot2-lowlevel.h"
-#include "hm2_test.h"
+#include "hal/drivers/mesa-hostmot2/hostmot2.h"
+#include "hal/drivers/mesa-hostmot2/hostmot2-lowlevel.h"
+#include "hal/drivers/mesa-hostmot2/hm2_test.h"
 
 
 MODULE_LICENSE("GPL");
