@@ -37,4 +37,4 @@ jobs:
           ls build
           cd build
           cd bin
-          bash test-linuxcnc.sh ../../tests/  
+          bash test-linuxcnc.sh -v ../../tests/  
